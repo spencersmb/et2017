@@ -1,0 +1,124 @@
+
+
+[data-name="custom_url"] {
+    /* Styles */
+    clear:none !important;
+    border-left:1px solid #eeeeee !important;
+}
+.update-nag{
+    display: block;
+}
+.redux-dev-mode-notice-container.redux-dev-qtip { display: none; }
+.redux-main .redux-option-image{ max-width: 200px; }
+.redux-group-tab h2{ font-size: 20px;}
+.redux-main .form-table tr{ border-bottom:none; }
+.redux-notice-field{
+    margin: 25px 0 0;
+    background: none;
+    border-left:none;
+    padding: 0;
+}
+.redux-container .redux-group-tab h3{
+    font-size: 20px;
+}
+.redux-main .form-table{
+    margin-left:15px;
+    max-width: 1100px;
+    width: 97%;
+}
+
+.redux-sidebar .redux-group-menu li a{
+
+}
+
+.redux-sidebar .redux-group-menu li a i{
+    color:#0073aa;
+}
+
+.redux-sidebar .redux-group-menu li a .fa.fa-lg{
+    font-size: 1.5em;
+    margin-top:2px;
+}
+.redux-sidebar .redux-group-menu li a .el{
+    font-size: 1.35em;
+}
+.admin-color-fresh #customize-theme-controls .control-section.control-section-redux h3:hover,
+.admin-color-fresh #customize-theme-controls .control-panel.control-panel-redux h3:hover,
+.admin-color-fresh #customize-theme-controls .control-section.control-section-redux h3:focus,
+.admin-color-fresh #customize-theme-controls .control-panel.control-panel-redux h3:focus{
+    color:#23282d !important;
+    background: #f5f5f5 !important;
+}
+.admin-color-fresh #customize-theme-controls .control-section.control-section-redux h3:hover:after,
+.admin-color-fresh #customize-theme-controls .control-panel.control-panel-redux h3:hover:after,
+.admin-color-fresh #customize-theme-controls .control-section.control-section-redux h3:focus:after,
+.admin-color-fresh #customize-theme-controls .control-panel.control-panel-redux h3:focus:after{
+    color:#23282d !important;
+}
+
+/*------------------------------------*\
+  VC Core Admin
+\*------------------------------------*/
+.hide_in_vc_editor {
+    display: none;
+}
+
+.edit_form_line {
+    position: relative;
+    display: block;
+}
+
+.edit_form_line .search {
+    float: right;
+    position: absolute;
+    width: 50%;
+    top: 12px;
+    right: 0;
+}
+
+#icon-dropdown {
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.icon-preview {
+    display: table;
+}
+
+.icon-preview label {
+    display: table-cell;
+}
+
+.icon-preview i {
+    padding: 1rem;
+}
+#icon-dropdown {
+    border-top: 1px solid #cdcdcd;
+    border-bottom: 1px solid #cdcdcd;
+    padding: 20px 0;
+    margin: 20px 0;
+}
+
+#icon-dropdown li{
+    display: inline-block;
+    padding: 1rem;
+    cursor: pointer;
+    margin-bottom:0;
+}
+
+#icon-dropdown li:hover{
+    background: #eee;
+}
+
+#icon-dropdown label{
+    display: none;
+}
+
+#icon-dropdown li.selected{
+    background: #eee;
+}
+
+#icon-dropdown li.selected i{
+    color: #000;
+}

@@ -1,0 +1,173 @@
+.blue-background {
+  background-color: $blue;
+}
+/*------------------------------------*\
+    Navigation
+\*------------------------------------*/
+.eltdf-grid {
+  position: relative;
+}
+
+//logo master container
+.eltdf-page-header .eltdf-grid .logo-primary-container{
+  padding-top: 20px;
+}
+
+// logo container height
+.eltdf-page-header .eltdf-logo-area {
+  height: 122px;
+}
+
+// logo height
+.eltdf-page-header .eltdf-logo-area .eltdf-logo-wrapper a{
+  height: 85px;
+}
+
+//nav dropdown default background
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul, li.eltdf-menu-narrow .eltdf-menu-second .eltdf-menu-inner ul{
+  background-color: $dark-blue;
+}
+
+//nav dropdown default
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner ul li>a:hover{
+  color: $blue-alt !important;
+}
+
+//meta info color on dropdown tabs
+.eltdf-plw-tabs {
+  .eltdf-post-item .eltdf-pt-info-section>div>div{
+    color: $white;
+  }
+}
+
+.site-description {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 18px;
+  position: absolute;
+  margin-left: 32px;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+//border
+.eltdf-header-type3 .eltdf-menu-area .eltdf-vertical-align-containers {
+  border: none;
+  border-right: 0;
+  border-left: 0;
+  // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
+  border-style: dotted;
+  border-color: rgba(213, 126, 0, 1);
+  border-image-source: url('./assets/images/dots.svg');
+  border-image-slice: 20% 20%;
+  border-image-repeat: space;
+  border-width: 3px 0 0 0;
+}
+
+// Global Seperator class
+.et2017-seperator{
+  .eltdf-separator{
+    border: none;
+    border-right: 0;
+    border-left: 0;
+    // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
+    border-style: dotted;
+    border-color: rgba(213, 126, 0, 1);
+    border-image-source: url('./assets/images/dots.svg');
+    border-image-slice: 20% 20%;
+    border-image-repeat: space;
+    border-width: 3px 0 0 0;
+  }
+}
+
+//Store front
+.store-front-wrapper{
+  display: none;
+  position: absolute;
+  top:0;
+  overflow: hidden;
+  width: 137px;
+  height: auto;
+  z-index: 111;
+  right: 0;
+  
+  @include breakpoint(laptop){
+      display: table;
+  }
+
+  .store-front{
+    text-align: right;
+    display: block;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+
+    &.store-hidden{
+      -moz-transform: translateY(-100px);
+      -webkit-transform: translateY(-100px);
+      -o-transform: translateY(-100px);
+      -ms-transform: translateY(-100px);
+      transform: translateY(-100px);
+    }
+  }
+
+  img{
+    margin-left: auto;
+  }
+}
+
+.header-search {
+  position: absolute;
+  width: 200px;
+  top: 50%;
+  @include transform(translateY(-50%));
+  border: 1px solid $cinn;
+  padding: 5px 5px 6px;
+  border-radius: 50px;
+  &::before{
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 6px;
+    font-size: 16px;
+    right: 13px;
+    content: "\f002";
+    color: $black;
+  }
+
+  input {
+    padding-left: 10px;
+    border:none;
+    background: transparent;
+    width: 157px;
+    font-size: 12px;
+    position: relative;
+    &:focus{
+      outline: none;
+    }
+    line-height: 25px;
+  }
+
+  input[type="submit"]{
+    padding: 0;
+    float: right;
+    //border: 1px solid;
+    background: none;
+    width:25px;
+    height: 25px;
+    overflow: hidden;
+    text-indent: 1000%;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  @include breakpoint(laptop){
+    right: 180px;
+  }
+}

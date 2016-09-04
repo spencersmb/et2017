@@ -1,0 +1,188 @@
+/*------------------------------------*\
+    Footer Styles
+\*------------------------------------*/
+footer{
+  position: inherit;
+}
+.dotted-border-top{
+  border: none;
+  border-right: 0;
+  border-left: 0;
+  // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
+  border-style: dotted;
+  border-color: rgba(213, 126, 0, 1);
+  border-image-source: url('./assets/images/dots.svg');
+  border-image-slice: 20% 20%;
+  border-image-repeat: space;
+  border-width: 3px 0 0 0;
+}
+
+.et-footer {
+  padding: 40px 0;
+}
+
+.footer-col{
+  display: inline-block;
+  position: relative;
+  @include breakpoint(laptop){
+    float: left;
+  }
+
+  .eltdf-logo-wrapper{
+    max-width: 226px;
+    margin: 0 auto 25px;
+    padding-left: 15px;
+    img {
+      height: auto;
+    }
+  }
+
+  .eltdf-social-icon-widget-holder{
+    text-align: center;
+    background-color: $blue;
+    border-radius: 50%;
+    @include transition(background-color 0.1s ease-out, border-color 0.1s ease-out);
+    text-align: center;
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    &:hover{
+      background-color: $dark-blue;
+    }
+  }
+
+  h6{
+    font-size: 12px;
+    color: $dark-blue;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
+
+.footer-col-1 {
+  width: 100%;
+  text-align: center;
+  @include breakpoint(laptop){
+      text-align: left;
+      width:30%;
+  }
+  @include breakpoint(desktop){
+    width:27%;
+  }
+
+}
+
+.footer-col-2,
+.footer-col-3
+{
+  text-align: left;
+  float: left;
+  width: 50%;
+  @include breakpoint(tablet){
+      text-align: left;
+  }
+  @include breakpoint(laptop){
+    text-align: left;
+    width: 15%;
+  }
+}
+
+.footer-col-2{
+  text-align: right;
+  @include breakpoint(tablet){
+      text-align: right;
+  }
+  @include breakpoint(laptop){
+      text-align: left;
+  }
+}
+
+
+.footer-col-4
+{
+  width: 100%;
+  clear: both;
+  margin: 35px auto;
+  text-align: center;
+  @include breakpoint(laptop){
+    text-align: left;
+    margin: 0;
+    clear: none;
+    width: 15%;
+
+    a{
+      float: left;
+      margin: 0 10px 10px 0;
+
+      @include every(5){
+        clear: both;
+      }
+    }
+  }
+  @include breakpoint(desktop){
+      width: 16%;
+  }
+}
+
+
+.footer-col-5 {
+  width: 100%;
+  text-align: center;
+  @include breakpoint(laptop){
+    text-align: left;
+    width:25%
+  }
+  @include breakpoint(desktop){
+    width:27%
+  }
+}
+
+.footer-nav{
+  padding: 0 15px;
+
+  li{
+    list-style: none;
+  }
+  a{
+    font-size: 12px;
+    font-weight: 500;
+    color: #95989A;
+    @include transition(all .3s);
+    &:hover{
+      color: $dark-blue;
+    }
+  }
+}
+
+
+// Footer Class Link
+.class-widget{
+  a{
+    display: inline-block !important;
+    position: relative;
+    &:hover{
+      color: $pink !important;
+    }
+  }
+  .class-link-image{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  img{
+    width: 25px;
+    height: 25px;
+  }
+  .class-link-text{
+    display: inline-block;
+    position: relative;
+    line-height: 18px;
+    padding-left: 30px;
+  }
+}
+
+
+

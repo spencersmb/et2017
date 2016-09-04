@@ -1,0 +1,44 @@
+$gold: #F4DBA4;
+$cinn: #DE7157;
+$brown-grey: #7C7C7C;
+$light-brown:#928C85;
+$grey: #C4C7D0;
+$blue: #aae2e4;
+$blue-thin: #81ceda;
+$dark-blue: #313A54;
+$black: #222;
+$lighter-grey-hover: #d4d4d4;
+
+$desktop:                 1201px !default; //1200px
+$laptop:                  992px !default; //992px
+$tablet:                  48em !default; //768px
+$mobile:                  34em !default; //544px
+
+/* ----------------------------------------------------------------------------
+ * Breakpoints
+ *
+
+ * ------------------------------------------------------------------------- */
+@mixin breakpoint($point) {
+  @if $point == desktopXL {
+    @media only screen and (min-width: 1600px) { @content ; }
+  }@else if $point == desktop {
+    // Extra large. Above 75em (1200px)
+    @media only screen and (min-width: $desktop) { @content ; }
+  }@else if $point == laptop {
+    // Large. Above 62em (992px)
+    @media only screen and (min-width: $laptop) { @content ; }
+  }@else if $point == tablet {
+    // Medium. Above 48em (768px)
+    @media only screen and (min-width: $tablet) { @content ; }
+  }@else if $point == mobile {
+    // Small. Above 34em (544px)
+    @media (min-width: $mobile)  { @content ; }
+
+  }
+}
+@import '~bourbon/app/assets/stylesheets/bourbon';
+@import "~family.scss";
+
+// Components
+@import "components/insta-container";

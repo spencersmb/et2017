@@ -1,0 +1,136 @@
+/*------------------------------------*\
+    Single Feature Blog Post
+\*------------------------------------*/
+.et-feature-slide {
+
+  .eltdf-pswt-image{
+
+    display: block;
+    position: relative;
+
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: -webkit-linear-gradient(rgba(34,34,34,0) 54%,rgba(34,34,34,.2) 71%,rgba(34,34,34,.4) 80%,rgba(34,34,34,.6) 90%,rgba(34,34,34,.8));
+      background: linear-gradient(rgba(34,34,34,0) 54%,rgba(34,34,34,.2) 71%,rgba(34,34,34,.4) 80%,rgba(34,34,34,.6) 90%,rgba(34,34,34,.8));
+    }
+
+    img {
+      display: block;
+      position: relative;
+    }
+  }
+
+
+  .eltdf-pswt-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 35px 30px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .eltdf-post-info-category {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 20px;
+    a{
+      color: $white;
+    }
+  }
+
+  .eltdf-pswt-title {
+    color: $white;
+    font-weight: 400;
+  }
+
+  .eltdf-pswt-info {
+    margin-top: 19px;
+  }
+
+  .eltdf-pswt-info-section {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    clear: both;
+    border-top: 1px solid rgba(141,141,141,.4);
+  }
+
+  .eltdf-pswt-info-section-left {
+    float: left;
+  }
+
+  .eltdf-pswt-info-section-right {
+    float: right;
+  }
+
+  .eltdf-blog-like, .eltdf-post-info-date, .eltdf-post-info-comments-holder {
+    display: inline-block;
+    margin: 0 13px 0 0;
+    padding: 9px 0 2px;
+  }
+
+  .eltdf-blog-like {
+    &:before {
+      content: 'W';
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      vertical-align: text-bottom;
+      font-family: linea-basic-10;
+      font-size: 14px;
+      line-height: 1;
+      margin: 0 7px 0 0;
+      color: $pink;
+    }
+
+    a{
+      color: $white;
+    }
+  }
+
+  .eltdf-post-info-date {
+
+    &:before {
+      content: 'b';
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      vertical-align: text-bottom;
+      font-family: linea-basic-10;
+      font-size: 14px;
+      line-height: 1;
+      margin: 0 7px 0 0;
+      color: $white;
+    }
+
+    a{
+      color: $white;
+    }
+  }
+
+  .eltdf-post-info-comments-holder {
+    &:before {
+      content: ',';
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      vertical-align: text-bottom;
+      font-family: linea-basic-10;
+      font-size: 14px;
+      line-height: 1;
+      margin: 0 7px 0 0;
+      color: $white;
+    }
+
+    a{
+      color: $white;
+    }
+  }
+}

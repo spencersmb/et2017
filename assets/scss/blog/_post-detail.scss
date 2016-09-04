@@ -1,0 +1,73 @@
+.et2017-post{
+  //border-bottom: 1px solid $grey;
+  //border-length: 20px;
+  margin-bottom: 0;
+
+  .eltdf-pt-six-image-holder{
+    margin-bottom: 30px;
+  }
+}
+
+.et2017-post-info-category{
+  text-align: center;
+  margin-bottom: 5px;
+  a{
+    color: $cinn;
+  }
+
+  .et2017-post &{
+    margin: 20px auto 10px;
+  }
+
+  .et2017-blog & {
+    text-align: left;
+  }
+}
+
+.et2017-post-title{
+  font-size: 40px;
+  text-align: center;
+  padding: 0 15%;
+}
+
+.et2017-post-date {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  a{
+    color: #818181;
+  }
+}
+
+.eltdf-blog-holder.eltdf-blog-single article {
+  border-bottom: none;
+  margin: 0 0 5px;
+}
+
+.eltdf-comment-form>.comment-respond>.comment-reply-title {
+  color: $cinn;
+}
+
+.eltdf-author-description{
+  padding-bottom: 25px;
+  margin-bottom: 40px;
+}
+
+.eltdf-comment-holder .eltdf-comment-number{
+  margin-bottom: 10px;
+}
+
+.eltdf-author-description .eltdf-author-description-text-holder .eltdf-author-name span {
+  color:$light-brown;
+}
+
+.eltdf-related-posts-holder .eltdf-related-content .eltdf-related-info-section>div>div{
+  color: #818181;
+}
+
+#respond input[type=text]:focus, #respond textarea:focus, .post-password-form input[type=password]:focus, .wpcf7-form-control.wpcf7-date:focus, .wpcf7-form-control.wpcf7-number:focus, .wpcf7-form-control.wpcf7-quiz:focus, .wpcf7-form-control.wpcf7-select:focus, .wpcf7-form-control.wpcf7-text:focus, .wpcf7-form-control.wpcf7-textarea:focus {
+  border-color: $blue;
+}
+#submit_comment:hover, .post-password-form input[type=submit]:hover, input.wpcf7-form-control.wpcf7-submit:hover{
+  color: #818181;
+}
