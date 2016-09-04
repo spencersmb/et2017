@@ -27,6 +27,10 @@ class InstagramApp extends React.Component {
     };
   }
 
+  /*
+    getComments pulls from API to return comments of a specific post
+    once clicked.
+   */
   getComments( photoId, index ){
     return InstagramApi.getPostComments(photoId).then(( response ) => {
 
@@ -57,20 +61,34 @@ class InstagramApp extends React.Component {
     });
   }
 
+
+
+  /*
+   On component mount get data and set state
+   */
   componentDidMount() {
 
-    // this runs after component is mounted to React DOM
+    /*
+     Get Data from API call
+     */
     let photos = InstagramApi.getPhotos();
 
-    //determin if the return is an array to do subscribe or not
+
+
+    /*
+     Check if the data is an array stored in local storage or if its an observable.
+     On complete set state.
+     */
     if(Array.isArray(photos)){
       this.setState({
+        loaded: true,
         photos: photos
       });
     }else{
       photos.subscribe(
         response => {
           this.setState({
+            loaded: true,
             photos: response
           });
         },
@@ -80,28 +98,54 @@ class InstagramApp extends React.Component {
     }
 
 
-
   }
 
+
+  /*
+   Open modal and setStyles so it locks scroll position
+   */
   modalOpen(){
     let scrollPosition = $(window).scrollTop();
     $("body").css({
       top: "-" + scrollPosition + "px",
-      position: "fixed"
+      position: "fixed",
+      width: '100%'
+    });
+    $("footer").css({
+      height: '100vh'
     });
     $(".eltdf-sticky-header").addClass("insta-modal__nav-active");
   }
+
+
+  /*
+   Close modal
+   */
   modalClose(){
     $("body").css({
       top: 0,
-      position: "relative"
+      position: "relative",
+      width: 'auto'
+    });
+    $("footer").css({
+      height: 'auto'
     });
     $(".eltdf-sticky-header").removeClass("insta-modal__nav-active");
-    // $('html, body').animate({scrollBottom:0}, 'slow');
+
+    /*
+     On close remove styles and scroll window back to bottom cus the theme is retarded.
+     */
     window.scrollTo(0,document.body.scrollHeight);
   }
+
+
+  /*
+   User clicks photo:
+   Get current image from InstagramImage.jsx and passed up through props
+   */
   handlePhotoClick(photo){
-    console.log("click");
+    // console.log("click");
+
     let image = this.state.photos[photo.index];
     this.setState({
       modalOpen: true,
@@ -111,35 +155,57 @@ class InstagramApp extends React.Component {
         }
     });
 
-    // check for comments
+    /*
+     Check if the photos array has had comments added to it or not, if not
+     hit the api and then add it to the photos array - then open the array
+     */
     if(!image.comments.user_comments){
       this.getComments(image.id, photo.index);
-    }else{
-      console.log("local storage");
     }
 
     this.modalOpen();
 
   }
+
+
+  /*
+   Close function attached to close button
+   */
   handleClose(){
-    console.log("close");
+
     this.setState({
       modalOpen: false
     });
+
     this.modalClose();
   }
 
   render() {
+
+    /*
+     Places the model to the dom if the state.modalOpen = true;
+     Pass close function to the Modal to hook up to close button
+     Pass selected photo to the modal from the state as well
+     */
     let renderModal = () => {
       if(this.state.modalOpen){
         return <InstagramModal close={this.handleClose} photo={this.state.selectedPhoto.item} />;
       }
     };
-    
+
+
+
     return (
       <div className="insta-container">
-        <InstagramList photos={this.state.photos} photoclick={this.handlePhotoClick}/>
+        <h4>Latest Instagram shots</h4>
+        {/*
+         - Send photos to the list to loop through
+         - photoclick function passed through to InstagramList.jsx and then through to InstagramImage.jsx
+         - dataLoaded passed through to determin preload image display or not
+         */}
+        <InstagramList photos={this.state.photos} photoclick={this.handlePhotoClick} dataLoaded={this.state.loaded}/>
         {renderModal()}
+        <a href="https://www.instagram.com/everytuesday/" className="insta-follow-btn" target="_blank">Follow me</a>
       </div>
     
     )

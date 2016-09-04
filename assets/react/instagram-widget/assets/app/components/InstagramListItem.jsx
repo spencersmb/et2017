@@ -25,7 +25,7 @@ class InstagramListItem extends React.Component {
 
     return (
 
-      <div className="insta-item">
+      <div className="insta-item insta-fadein">
         <a href="#" onClick={this.photoClick}>
           <img src={photo.images.low_resolution.url} alt="Every Tuesday Instagram" className="img-responsive"/>
         </a>

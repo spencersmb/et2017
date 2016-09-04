@@ -36,6 +36,7 @@ module.exports = {
       InstagramApp: 'assets/app/components/InstagramApp.jsx',
       InstagramList: 'assets/app/components/InstagramList.jsx',
       InstagramListItem: 'assets/app/components/InstagramListItem.jsx',
+      InstagramImage: 'assets/app/components/InstagramImage.jsx',
       InstagramModal: 'assets/app/components/InstagramModal.jsx'
     }
   },

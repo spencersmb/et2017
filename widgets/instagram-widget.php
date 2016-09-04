@@ -53,7 +53,7 @@ class et_twenty_seventeen_instagram_widget extends WP_Widget {
 
         ?>
 
-        <div id="instaApp" class="class-widget-instagram">
+        <div id="instaApp" class="class-widget-instagram" data-path="<?php echo esc_url(ET2017_ROOT . '/assets/react/instagram-widget/assets/') ?>">
 
         </div>
 

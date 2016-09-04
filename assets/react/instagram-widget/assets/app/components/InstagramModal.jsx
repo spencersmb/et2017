@@ -80,42 +80,65 @@ class InstagramModal extends React.Component {
       if( comments ){
        return comments.map( (comment, i) => {
           return (
-            <div key={i} className="insta-modal__comment">{comment.text}</div>
+            <li key={i} className="insta-modal__comment">{comment.text}</li>
           );
         });
       } else {
         return (
-          <div>no comments</div>
+          <li>no comments</li>
         )
       }
     };
 
     let renderType = () => {
         if(photo.type === "video"){
-          let width = InstagramHelpers.getDeviceWidth();
-          let videoWidth = 600;
-
-          if( width < 600 ){
-            videoWidth = width;
-          }
 
           return(
-            <video
-              width={videoWidth}
-              height={videoWidth}
-              src={photo.videos.standard_resolution.url}
-              controls autoPlay name="media">
-            </video>
+            <div className="insta-modal__image-inner">
+              <div className="insta-modal__image-border">
+                <div className="insta-modal__image-padding">
+                  <div className="insta-modal__image-position">
+                    <div className="insta-modal__image-content">
+                      <video
+                        width="100%"
+                        height="100%"
+                        src={photo.videos.standard_resolution.url}
+                        controls autoPlay name="media">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           )
         } else {
+
+          let nonSquareImage = '';
+
+          // check photo width & height for square
+          if( photo.images.standard_resolution.width !== photo.images.standard_resolution.height ){
+            nonSquareImage = {
+              paddingBottom: "85%"
+            }
+          }else {
+            nonSquareImage = {
+              paddingBottom: "100%"
+            }
+          }
+
           return (
-            <img
-              alt={photo.caption.from.username}
-              width={photo.images.standard_resolution.width}
-              height={photo.images.standard_resolution.height}
-              src={photo.images.standard_resolution.url}
-            />
-              )
+            <div className="insta-modal__image-border">
+              <div className="insta-modal__image-padding" style={nonSquareImage}>
+                <img
+                  alt={photo.caption.from.username}
+                  width={photo.images.standard_resolution.width}
+                  height={photo.images.standard_resolution.height}
+                  src={photo.images.standard_resolution.url}
+                />
+              </div>
+            </div>
+          )
         }
     };
 
@@ -130,47 +153,64 @@ class InstagramModal extends React.Component {
         <div className="insta-modal" >
           <div ref="instaModal" className="insta-modal__content">
 
-            <div className="insta-modal__image insta-left">
+            <div className="insta-article__wrapper">
+              <article className="insta-modal__article">
 
-              {renderType()}
 
-            </div>
+                {/* Header */}
 
-            <div className="instal-modal__header">
-              <div className="insta-modal__profile">
-                <a href="" className="insta-modal__profile-image">
-                  <img src={photo.caption.from.profile_picture} alt={photo.caption.from.username}/>
-                </a>
-                <div className="insta-modal__profile-name">
-                  <p>{photo.caption.from.username}</p>
+                <header className="instal-modal__header">
+
+                  <div className="insta-modal__profile">
+                    <a href="https://www.instagram.com/everytuesday/" target="_blank" className="insta-modal__profile-image">
+                      <img src={photo.caption.from.profile_picture} alt={photo.caption.from.username}/>
+                    </a>
+                  </div>
+                  <div className="insta-modal__profile-name">
+                    <a href="https://www.instagram.com/everytuesday/">{photo.caption.from.username}</a>
+                  </div>
+                  {/* Close BTN */}
+                  <div className="modal-close__wrapper">
+                    <div className="insta-modal-close">
+                      <a onClick={this.close}>Close</a>
+                    </div>
+                  </div>
+
+                </header>
+
+
+                {/* IMAGE */}
+
+                <div className="insta-modal__image">
+                  {renderType()}
                 </div>
-              </div>
 
-              <div className="insta-modal__stats">
-                <div className="insta-modal__likes">{photo.likes.count}</div>
-              </div>
+                {/* POST */}
+
+                <div className="insta-modal__post">
+
+                  <div className="insta-modal__stats">
+                    <div className="insta-modal__likes">{photo.likes.count}</div>
+                  </div>
+
+                  <ul className="insta-modal__user-comment">
+                    <li><span className="insta-modal__username">{photo.caption.from.username}</span></li>
+                    <li>{photo.caption.text}</li>
+                    {renderComments()}
+                  </ul>
+
+                  <div className="insta-follow">
+                    <a href="https://www.instagram.com/everytuesday/" className="eltdf-btn eltdf-btn-medium eltdf-btn-solid et-btn et-btn-blue" target="_blank">Follow Me</a>
+                  </div>
+
+                </div>
+
+              </article>
             </div>
 
-            <div className="insta-modal__post">
+          </div>{/* ./insta-modal__content */}
 
-              <div className="insta-modal__user-comment">
-                <span className="insta-username">
-                  {photo.caption.from.username}
-                </span>
-                <p>{photo.caption.text}</p>
-              </div>
-
-              <div className="insta-modal__comments">
-                {renderComments()}
-              </div>
-            </div>
-
-          </div>
-          <div className="modal-close__wrapper">
-            <div className="insta-modal-close">
-              <a onClick={this.close}>Close</a>
-            </div>
-          </div>
+        {/* ./insta-modal */}
         </div>
       );
 

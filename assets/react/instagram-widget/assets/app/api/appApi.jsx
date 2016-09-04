@@ -16,7 +16,7 @@ module.exports = {
       const apiData = {
         token: '11037881.a66d80f.4963ba4bf4ec4dc496f24d797a6061aa', // learn how to obtain it below
         userid: 11037881, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
-        num_photos: 8 // how much photos do you want to get
+        num_photos: 16 // how much photos do you want to get
       };
 
       let stringData = localStorage.getItem('etInstagram');
@@ -53,10 +53,10 @@ module.exports = {
 
               let filteredResponse = InstagramHelpers.toArray(response.data);
 
-              observer.next(filteredResponse);
+                observer.next(filteredResponse);
 
               //set data in localstorage
-              localStorage.setItem('etInstagram', JSON.stringify(filteredResponse));
+              // localStorage.setItem('etInstagram', JSON.stringify(filteredResponse));
 
               //capture date
               let curDate = new Date().getTime();
@@ -64,7 +64,7 @@ module.exports = {
               // console.log("API");
               // console.log("curr", curDate);
               // console.log("future", futureDate);
-              localStorage.setItem('InstaDate', futureDate);
+              // localStorage.setItem('InstaDate', futureDate);
 
 
               observer.complete();

@@ -21,6 +21,7 @@
 .et-license-list li:before{position:absolute;top:0;left:0;content:"\f054";font-family:FontAwesome;font-size:14px;color:#de7157}
 .href-link:before{display:block;content:" ";margin-top:-215px;height:200px;visibility:hidden}
 .insta-modal__open{position:fixed;bottom:0}.insta-modal__nav-active{-webkit-transform:translateY(0) !important;transform:translateY(0) !important}
+.eltdf-page-header .eltdf-sticky-header.header-appear{-webkit-transform:translateY(0);transform:translateY(0)}
 .blue-background{background-color:#aae2e4}.eltdf-grid{position:relative}.eltdf-page-header .eltdf-grid .logo-primary-container{padding-top:20px}
 .eltdf-page-header .eltdf-logo-area{height:122px}.eltdf-page-header .eltdf-logo-area .eltdf-logo-wrapper a{height:85px}
 .eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul,li.eltdf-menu-narrow .eltdf-menu-second .eltdf-menu-inner ul{background-color:#313a54}
@@ -118,7 +119,7 @@ h6{color:#de7157}.et2017-post{margin-bottom:0}.et2017-post .eltdf-pt-six-image-h
 #respond input[type=text]:focus,#respond textarea:focus,.post-password-form input[type=password]:focus,.wpcf7-form-control.wpcf7-date:focus,.wpcf7-form-control.wpcf7-number:focus,.wpcf7-form-control.wpcf7-quiz:focus,.wpcf7-form-control.wpcf7-select:focus,.wpcf7-form-control.wpcf7-text:focus,.wpcf7-form-control.wpcf7-textarea:focus{border-color:#aae2e4}
 #submit_comment:hover,.post-password-form input[type=submit]:hover,input.wpcf7-form-control.wpcf7-submit:hover{color:#818181}
 .et_twenty_seventeen_about_widget .about-round{border-radius:50%}.et_twenty_seventeen_about_widget p{text-align:center}
-@media only screen and (min-width:48em){.et-large-search .eltdf-search-menu-holder{width:475px;margin:15px 25px 0}
+.et_twenty_seventeen_instagram_widget{margin:0 !important}@media only screen and (min-width:48em){.et-large-search .eltdf-search-menu-holder{width:475px;margin:15px 25px 0}
 .footer-col-2,.footer-col-3{text-align:left}.footer-col-2{text-align:right}.card__item h2{font-size:32px}
 .et2017-blog .eltdf-pt-three-item .eltdf-pt-three-image-holder{width:350px}}@media only screen and (min-width:992px){.store-front-wrapper{display:table}
 .header-search{right:180px}.et-large-search .widget_text{display:inline-block}.et-large-search .eltdf-search-menu-holder{margin:0 25px}

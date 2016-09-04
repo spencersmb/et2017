@@ -219,6 +219,10 @@ Template: readanddigest
   -webkit-transform: translateY(0) !important;
   transform: translateY(0) !important; }
 
+.eltdf-page-header .eltdf-sticky-header.header-appear {
+  -webkit-transform: translateY(0);
+  transform: translateY(0); }
+
 /* WPCore */
 /* ----------------------------------------------------------------------------
  * Modules
@@ -1105,3 +1109,6 @@ h6 {
 
 .et_twenty_seventeen_about_widget p {
   text-align: center; }
+
+.et_twenty_seventeen_instagram_widget {
+  margin: 0 !important; }

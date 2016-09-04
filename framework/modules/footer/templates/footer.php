@@ -13,7 +13,7 @@
     } ?>
 
     <div class="eltdf-grid">
-        <div class="eltdf-footer-inner clearfix et-footer dotted-border-top">
+        <div class="eltdf-footer-inner clearfix et-footer">
             <div class="eltdf-container">
 
                 <div class="eltdf-container-inner">
