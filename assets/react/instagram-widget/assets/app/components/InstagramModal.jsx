@@ -12,23 +12,11 @@ class InstagramModal extends React.Component {
   constructor() {
     super();
     this.close = this.close.bind(this);
+    this.closeOverlay = this.closeOverlay.bind(this);
     this.getModalPosition = this.getModalPosition.bind(this);
-    this.comments = [];
   }
 
-  // check if you are using this at the end
-  getWindowPosition(){
-    let windowTop = $(window).scrollTop();
-
-    if(windowTop > 55){
-      return 55;
-    }else {
-      return 0;
-    }
-
-  }
-
-  //example on how to access an element
+  //example on how to access an element inside the React DOM
   getModalPosition(){
     let modal = this.refs.instaModal;
 
@@ -46,36 +34,31 @@ class InstagramModal extends React.Component {
 
   componentDidMount(){
 
-    // fires once immediately after inital rendering of the component
-
-    // Remove node if there is one
-    // $(".reveal-overlay").remove();
-    
-
-    // build html and render to string
-    // var $modal = $(ReactDOMServer.renderToString(modalMarkup));
-
-    // Attach to domNode
-    // $(ReactDOM.findDOMNode(this)).html($modal);
-
-    // Create new instance of a modal
-    // var modal = new Foundation.Reveal($('#error-modal'));
-
-    // Open modal
-    // modal.open();
   }
 
+
+  /*
+   Close function that's passed in through props to remove element from DOM inside InstagramApp.jsx
+   */
   close(e){
     e.preventDefault();
     this.props.close();
   }
+  closeOverlay(){
+    this.props.close();
+  }
 
   render() {
-    console.log("props ",this.props);
+    // console.log("props ",this.props);
 
     let {photo} = this.props;
     let comments = photo.comments.user_comments;
 
+
+
+    /*
+     Check if Comments exist, then loop over them and render.
+     */
     let renderComments = () => {
       if( comments ){
        return comments.map( (comment, i) => {
@@ -85,11 +68,50 @@ class InstagramModal extends React.Component {
         });
       } else {
         return (
-          <li>no comments</li>
+          <li></li>
         )
       }
     };
 
+
+
+    /*
+     Calculate padding for the image height.
+     */
+    let paddingCalc = () => {
+
+      let padding = {
+        paddingBottom: '100%'
+      };
+      // equation image height /640 * 100 = the precentage
+
+      // check photo width & height for square
+      if( photo.images.standard_resolution.width !== photo.images.standard_resolution.height ){
+
+        let width = 640;
+        let height = photo.images.standard_resolution.height;
+        let percentageHeight = 100;
+
+        let total = (height / width ) * 100;
+
+        padding = {
+          paddingBottom : total + '%'
+        };
+
+        return padding;
+
+      }
+
+      return padding;
+    };
+
+
+
+
+    /*
+     Determine the type of object:
+     Image or Type
+     */
     let renderType = () => {
         if(photo.type === "video"){
 
@@ -114,22 +136,9 @@ class InstagramModal extends React.Component {
           )
         } else {
 
-          let nonSquareImage = '';
-
-          // check photo width & height for square
-          if( photo.images.standard_resolution.width !== photo.images.standard_resolution.height ){
-            nonSquareImage = {
-              paddingBottom: "85%"
-            }
-          }else {
-            nonSquareImage = {
-              paddingBottom: "100%"
-            }
-          }
-
           return (
             <div className="insta-modal__image-border">
-              <div className="insta-modal__image-padding" style={nonSquareImage}>
+              <div className="insta-modal__image-padding" style={paddingCalc()}>
                 <img
                   alt={photo.caption.from.username}
                   width={photo.images.standard_resolution.width}
@@ -142,12 +151,14 @@ class InstagramModal extends React.Component {
         }
     };
 
-    let renderModal = () => {
-      let windowTop = this.getWindowPosition();
 
-      let modalStyle = {
-        top: windowTop
-      };
+
+
+    /*
+     Render the modal function
+     */
+    let renderModal = () => {
+
 
       let modalMarkup = (
         <div className="insta-modal" >
@@ -207,6 +218,7 @@ class InstagramModal extends React.Component {
 
               </article>
             </div>
+            <div className="insta-modal__overlay" onClick={this.closeOverlay}></div>
 
           </div>{/* ./insta-modal__content */}
 

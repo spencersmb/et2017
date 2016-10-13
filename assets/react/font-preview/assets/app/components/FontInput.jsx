@@ -8,17 +8,28 @@ class FontInput extends React.Component {
     this.changeTextSize = this.changeTextSize.bind(this);
   }
 
+
+
+  /*
+   Function to get text from the input and send it up to FontApp.jsx to setState everytime the text changes
+   for our two-way data binding.
+
+   */
   handleInput(){
     let text = this.refs.example.value;
     this.props.onInput(text);
   }
 
+
+  /*
+   When user clicks on text size button, get the size set on the data-size element
+   and pass it up through props to the sizeChange function to setState with the new size.
+
+   */
   changeTextSize(e){
     e.preventDefault();
     let size = e.target.dataset.size;
     this.props.sizeChange(size);
-
-
   }
 
   render() {

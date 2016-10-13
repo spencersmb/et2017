@@ -5,10 +5,22 @@ import FontListItem from 'FontListItem';
 class FontList extends React.Component {
 
   render() {
-    // pull object in from props
+    /*
+     Get styles string, remove spaces & convert to an array.
+     font = {
+       placeholder: "my placeholder",
+       name: "Hawthorne",
+       styles: ["Regular", "Script"],
+       size: "24",
+       sidebar: "True or false"
+     }
+     */
     let { font } = this.props;
 
-    // loop through and render out each output based on style
+    /*
+     Loop through and render out each output based on the style array
+     pass in styles to it and and the font object
+     */
     let renderTodos = () => {
       return font.styles.map(( style, i ) => {
         return (

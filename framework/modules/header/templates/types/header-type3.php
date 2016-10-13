@@ -49,7 +49,7 @@ if(!function_exists('et_twenty_seventeen_get_logo')) {
 
                 <div class="store-front-wrapper">
                     <div class="store-front store-hidden">
-                        <a class="store-front-link" href="/products"><img class="img-responsive" src="<?php echo ET2017_ROOT ?>/assets/images/shop.png" alt="Every-Tuesday Shop"></a>
+                        <a class="store-front-link" href="/product-react"><img class="img-responsive" src="<?php echo ET2017_ROOT ?>/assets/images/shop.png" alt="Every-Tuesday Shop"></a>
                     </div>
                 </div>
 

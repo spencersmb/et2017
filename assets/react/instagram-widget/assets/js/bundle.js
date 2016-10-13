@@ -136,24 +136,39 @@
 	    value: function getComments(photoId, index) {
 	      var _this2 = this;
 
+	      /*
+	       Make API call and get a PROMISE back
+	       */
 	      return _InstagramApi2.default.getPostComments(photoId).then(function (response) {
 
 	        // take new comments data and find the selected photo in the original array
 	        // and merge it
-	        var currentPhotos = _this2.state.photos;
 
+	        /*
+	         Set Current state of photos array as variable to update it with the new comments data,
+	         then update state with new photos array data
+	         */
+	        var currentPhotos = _this2.state.photos;
 	        var updatePhotoItem = _this2.state.photos[index];
 
-	        //add comments to item in original array
+	        /*
+	         Convert data object to an array and Add comments to selectedObject user has clicked on.
+	         */
 	        updatePhotoItem.comments.user_comments = _InstagramHelpers2.default.toArray(response.data);
 
-	        //change master array
+	        /*
+	         Add the new photo object with comments to the original photos array based on the current index passed in.
+	         */
 	        currentPhotos[index] = updatePhotoItem;
 
-	        //update localstorage
+	        /*
+	         Update the locally stored data with the new photos array
+	         */
 	        localStorage.setItem('etInstagram', JSON.stringify(currentPhotos));
 
-	        // update state
+	        /*
+	         Finally update the state with new photos array and update the current selected item with the new data.
+	         */
 	        _this2.setState({
 	          photos: currentPhotos,
 	          selectedPhoto: {
@@ -208,11 +223,27 @@
 	    key: 'modalOpen',
 	    value: function modalOpen() {
 	      var scrollPosition = $(window).scrollTop();
-	      $("body").css({
-	        top: "-" + scrollPosition + "px",
-	        position: "fixed",
-	        width: '100%'
-	      });
+	      var body = {};
+
+	      /*
+	       Set height to 100% on mobile devices to fix white space issue
+	       */
+	      if (_InstagramHelpers2.default.getDeviceWidth() < 767) {
+	        body = {
+	          top: "-" + scrollPosition + "px",
+	          position: "fixed",
+	          width: '100%',
+	          height: '100%'
+	        };
+	      } else {
+	        body = {
+	          top: "-" + scrollPosition + "px",
+	          position: "fixed",
+	          width: '100%'
+	        };
+	      }
+
+	      $("body").css(body);
 	      $("footer").css({
 	        height: '100vh'
 	      });
@@ -301,21 +332,31 @@
 	        }
 	      };
 
+	      var renderOverlay = function renderOverlay() {
+	        if (_this4.state.modalOpen) {
+	          return React.createElement('div', { className: 'insta-modal__overlay', onClick: _this4.handleClose });
+	        }
+	      };
+
 	      return React.createElement(
 	        'div',
 	        { className: 'insta-container' },
 	        React.createElement(
-	          'h4',
-	          null,
-	          'Latest Instagram shots'
+	          'div',
+	          { className: 'insta-container__header' },
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Latest Instagram shots'
+	          ),
+	          React.createElement(
+	            'a',
+	            { href: 'https://www.instagram.com/everytuesday/', className: 'insta-follow-btn', target: '_blank' },
+	            'Click to follow!'
+	          )
 	        ),
 	        React.createElement(_InstagramList2.default, { photos: this.state.photos, photoclick: this.handlePhotoClick, dataLoaded: this.state.loaded }),
-	        renderModal(),
-	        React.createElement(
-	          'a',
-	          { href: 'https://www.instagram.com/everytuesday/', className: 'insta-follow-btn', target: '_blank' },
-	          'Follow me'
-	        )
+	        renderModal()
 	      );
 	    }
 	  }]);
@@ -10162,23 +10203,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var apiData = {
+	  token: '11037881.a66d80f.4963ba4bf4ec4dc496f24d797a6061aa', // learn how to obtain it below
+	  userid: 11037881, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
+	  num_photos: 16 // how much photos do you want to get
+	};
+
 	module.exports = {
 
-	  setTodos: function setTodos(todos) {
-	    if (Array.isArray(todos)) {
-	      // converts array into a string
-	      localStorage.setItem('todos', JSON.stringify(todos));
-	      return todos;
-	    }
-	  },
+	  /*
+	   Get Photos api call
+	   */
 	  getPhotos: function getPhotos() {
 
-	    var apiData = {
-	      token: '11037881.a66d80f.4963ba4bf4ec4dc496f24d797a6061aa', // learn how to obtain it below
-	      userid: 11037881, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
-	      num_photos: 16 // how much photos do you want to get
-	    };
-
+	    /*
+	     Check for local storage data exists and check time against local storage time.
+	     If there is data and if the stored time is older than the current time, then refresh data.
+	     */
 	    var stringData = localStorage.getItem('etInstagram');
 	    var data = {};
 
@@ -10187,7 +10228,7 @@
 	    var futureDate = 0;
 	    var myObj = '';
 
-	    // check for date
+	    // if there is a date, conver it
 	    if (date !== null) {
 	      futureDate = JSON.parse(date);
 	      futureDate = new Date(futureDate);
@@ -10197,6 +10238,13 @@
 	    // console.log("future", futureDate);
 	    // console.log("compare", futureDate > curDate);
 
+
+	    /*
+	     If there is local data and the future date is still in the future,
+	     serve up the locally stored data.
+	     
+	     Else: Get new data from the API
+	     */
 	    if (stringData !== null && futureDate > curDate) {
 
 	      data = JSON.parse(stringData);
@@ -10210,30 +10258,38 @@
 	          data: { access_token: apiData.token, count: apiData.num_photos },
 	          success: function success(response) {
 
+	            /*
+	             Filter Data Object into an array
+	             */
 	            var filteredResponse = _InstagramHelpers2.default.toArray(response.data);
 
+	            /*
+	             Pass data into observable
+	             */
 	            observer.next(filteredResponse);
 
-	            //set data in localstorage
-	            // localStorage.setItem('etInstagram', JSON.stringify(filteredResponse));
+	            /*
+	             Set new data as localStorage
+	             */
+	            localStorage.setItem('etInstagram', JSON.stringify(filteredResponse));
 
-	            //capture date
+	            /*
+	             Create future data 12 hours ahead of the current date.
+	             Then set the future date into local storage.
+	             */
 	            var curDate = new Date().getTime();
 	            var futureDate = curDate + 12 * 60 * 60 * 1000;
+	            localStorage.setItem('InstaDate', futureDate);
+
 	            // console.log("API");
 	            // console.log("curr", curDate);
 	            // console.log("future", futureDate);
-	            // localStorage.setItem('InstaDate', futureDate);
 
 
+	            /*
+	             Tell Observable its complete
+	             */
 	            observer.complete();
-	            // console.log(data);
-	            // for( let x in data.data ){
-	            //   // $('ul').append('<li><img src="'+data.data[x].images.low_resolution.url+'"></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
-	            //   // data.data[x].images.thumbnail.url - URL of image 150х150
-	            //   // data.data[x].images.standard_resolution.url - URL of image 612х612
-	            //   // data.data[x].link - Instagram post URL
-	            // }
 	          },
 	          error: function error(data) {
 	            console.log(data); // send the error notifications to console
@@ -10243,11 +10299,10 @@
 	    }
 	  },
 
+	  /*
+	   Take in ID of a specific post and get that posts list of comments
+	   */
 	  getPostComments: function getPostComments(mediaId) {
-	    var apiData = {
-	      token: '11037881.a66d80f.4963ba4bf4ec4dc496f24d797a6061aa', // learn how to obtain it below
-	      userid: 11037881 // User ID - get it in source HTML of your Instagram profile or look at the next example :)
-	    };
 
 	    return $.ajax({
 	      url: 'https://api.instagram.com/v1/media/' + mediaId + '/comments', // or /users/self/media/recent for Sandbox
@@ -10255,50 +10310,13 @@
 	      type: 'GET',
 	      data: { access_token: apiData.token },
 	      success: function success(data) {
-	        console.log(data);
+	        // console.log(data);
 	        return data;
 	      },
 	      error: function error(data) {
 	        console.log(data); // send the error notifications to console
 	      }
 	    });
-	  },
-
-	  filterTodos: function filterTodos(todos, showCompleted, searchText) {
-
-	    var filteredTodos = todos;
-
-	    // Filter by showCompleted
-	    filteredTodos = filteredTodos.filter(function (todo) {
-	      // only show items that are not completed
-	      // OR if showCompleted === true, show both false and true items
-	      // bascailly return false || false, or show all return false || true
-	      return !todo.completed || showCompleted;
-	    });
-
-	    // Filter by SearchText
-	    filteredTodos = filteredTodos.filter(function (todo) {
-	      var text = todo.text.toLowerCase();
-
-	      // shorthand way
-	      return searchText.length === 0 || text.indexOf(searchText) > -1;
-	    });
-
-	    // Sort todos with non-completed first
-	    // comparison operator basically
-	    filteredTodos.sort(function (a, b) {
-	      // -1 return a first
-	      // 1 return b first
-	      if (!a.completed && b.completed) {
-	        return -1;
-	      } else if (a.completed && !b.completed) {
-	        return 1;
-	      } else {
-	        return 0;
-	      }
-	    });
-
-	    return filteredTodos;
 	  }
 
 	};
@@ -28226,16 +28244,24 @@
 
 	module.exports = {
 
+	  /*
+	   Convert data object to an array
+	   */
 	  toArray: function toArray(data) {
+
 	    var _arr = [];
-	    for (var subname in data) {
-	      _arr.push(data[subname]);
+
+	    /*
+	     For each Object index in the parent object,
+	     push it into an array. Now we have an array of objects, instead of an object of objects.
+	     */
+	    for (var key in data) {
+
+	      _arr.push(data[key]);
 	    }
+
 	    return _arr;
 	  },
-
-	  setModalStyles: function setModalStyles(modalObj) {},
-
 	  getDeviceWidth: function getDeviceWidth() {
 	    return $(window).width();
 	  }
@@ -28251,11 +28277,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _InstagramListItem = __webpack_require__(348);
-
-	var _InstagramListItem2 = _interopRequireDefault(_InstagramListItem);
-
-	var _InstagramImage = __webpack_require__(528);
+	var _InstagramImage = __webpack_require__(348);
 
 	var _InstagramImage2 = _interopRequireDefault(_InstagramImage);
 
@@ -28286,6 +28308,11 @@
 	    return _this;
 	  }
 
+	  /*
+	   function passed from InstagramApp.jsx to make available to InstagramImage
+	   */
+
+
 	  _createClass(InstagramList, [{
 	    key: 'handlePhotoClick',
 	    value: function handlePhotoClick(photo) {
@@ -28304,6 +28331,10 @@
 	      var photos = this.props.photos;
 	      var dataLoaded = this.props.dataLoaded;
 
+	      /*
+	       Check if photos array is empty if it is that means there is no data yet.
+	       If not data load the placeholder images
+	       */
 
 	      var renderPhotos = function renderPhotos() {
 
@@ -28331,6 +28362,22 @@
 	            placeholder: imagePath + '/images/insta-preload-img.jpg'
 	          }, {
 	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
+	          }, {
+	            placeholder: imagePath + '/images/insta-preload-img.jpg'
 	          }];
 
 	          return tempData.map(function (photo, i) {
@@ -28338,6 +28385,10 @@
 	          });
 	        }
 	      };
+
+	      /*
+	       Styling for the container if the data is loaded 
+	       */
 	      var loadedStyles = {
 	        padding: '0',
 	        width: '100%'
@@ -28372,21 +28423,28 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(349);
-	var ReactDom = __webpack_require__(381);
+	var ReactDOM = __webpack_require__(381);
 
-	var InstagramListItem = function (_React$Component) {
-	  _inherits(InstagramListItem, _React$Component);
+	var InstagramImage = function (_React$Component) {
+	  _inherits(InstagramImage, _React$Component);
 
-	  function InstagramListItem() {
-	    _classCallCheck(this, InstagramListItem);
+	  function InstagramImage() {
+	    _classCallCheck(this, InstagramImage);
 
-	    var _this = _possibleConstructorReturn(this, (InstagramListItem.__proto__ || Object.getPrototypeOf(InstagramListItem)).call(this));
+	    var _this = _possibleConstructorReturn(this, (InstagramImage.__proto__ || Object.getPrototypeOf(InstagramImage)).call(this));
 
 	    _this.photoClick = _this.photoClick.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(InstagramListItem, [{
+	  /*
+	   Click event for each item: 
+	   Get the item clicked and its index and then pass it up the chain to InstagramApp.jsx to initialize the Modal with
+	   the selected Item.
+	   */
+
+
+	  _createClass(InstagramImage, [{
 	    key: 'photoClick',
 	    value: function photoClick(e) {
 	      e.preventDefault();
@@ -28399,28 +28457,85 @@
 	      this.props.photoclick(el);
 	    }
 	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      // console.log('new props');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var photo = this.props.photo;
-	      var index = this.props.index;
+	      var _this2 = this;
 
+	      var photo = this.props.photo;
+	      // console.log(photo);
+
+
+	      /*
+	       Determine what icon to display:
+	       Video or Image
+	       */
+
+	      var displayIcon = function displayIcon() {
+	        if (photo.type === "video") {
+	          return React.createElement(
+	            'span',
+	            { className: 'insta-image__icon' },
+	            React.createElement('i', { className: 'fa fa-video-camera fa-2x', 'aria-hidden': 'true' })
+	          );
+	        } else {
+	          return React.createElement(
+	            'span',
+	            { className: 'insta-image__icon' },
+	            React.createElement('i', { className: 'fa fa-picture-o fa-2x', 'aria-hidden': 'true' })
+	          );
+	        }
+	      };
+
+	      /*
+	       Determine if the image is a square or not to scale its size in the grid
+	       */
+	      var compareImageSize = function compareImageSize() {
+
+	        // check photo width & height for square
+	        if (photo.images.low_resolution.width !== photo.images.low_resolution.height) {
+	          return "insta-image__enlarge";
+	        }
+	      };
+
+	      /*
+	       check if the image object is full of images or empty:
+	       If empty load the preload image graphic, else load the image from the API
+	       */
+	      var checkSrc = function checkSrc(image) {
+
+	        var newSrc = '';
+
+	        if (image) {
+
+	          return React.createElement(
+	            'a',
+	            { href: '#', onClick: _this2.photoClick },
+	            React.createElement('span', { className: 'insta-image__overlay' }),
+	            displayIcon(),
+	            React.createElement('img', { src: photo.images.low_resolution.url, alt: 'Every Tuesday Instagram', className: compareImageSize() })
+	          );
+	        } else {
+	          return React.createElement('img', { src: photo.placeholder, alt: 'Every Tuesday Instagram', className: 'img-responsive preloaded' });
+	        }
+	      };
 
 	      return React.createElement(
 	        'div',
-	        { className: 'insta-item insta-fadein' },
-	        React.createElement(
-	          'a',
-	          { href: '#', onClick: this.photoClick },
-	          React.createElement('img', { src: photo.images.low_resolution.url, alt: 'Every Tuesday Instagram', className: 'img-responsive' })
-	        )
+	        { className: 'insta-item' },
+	        checkSrc(photo.images)
 	      );
 	    }
 	  }]);
 
-	  return InstagramListItem;
+	  return InstagramImage;
 	}(React.Component);
 
-	module.exports = InstagramListItem;
+	module.exports = InstagramImage;
 
 /***/ },
 /* 349 */
@@ -49653,29 +49768,15 @@
 	    var _this = _possibleConstructorReturn(this, (InstagramModal.__proto__ || Object.getPrototypeOf(InstagramModal)).call(this));
 
 	    _this.close = _this.close.bind(_this);
+	    _this.closeOverlay = _this.closeOverlay.bind(_this);
 	    _this.getModalPosition = _this.getModalPosition.bind(_this);
-	    _this.comments = [];
 	    return _this;
 	  }
 
-	  // check if you are using this at the end
+	  //example on how to access an element inside the React DOM
 
 
 	  _createClass(InstagramModal, [{
-	    key: 'getWindowPosition',
-	    value: function getWindowPosition() {
-	      var windowTop = $(window).scrollTop();
-
-	      if (windowTop > 55) {
-	        return 55;
-	      } else {
-	        return 0;
-	      }
-	    }
-
-	    //example on how to access an element
-
-	  }, {
 	    key: 'getModalPosition',
 	    value: function getModalPosition() {
 	      var modal = this.refs.instaModal;
@@ -49692,26 +49793,12 @@
 	    }
 	  }, {
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    value: function componentDidMount() {}
 
-	      // fires once immediately after inital rendering of the component
+	    /*
+	     Close function that's passed in through props to remove element from DOM inside InstagramApp.jsx
+	     */
 
-	      // Remove node if there is one
-	      // $(".reveal-overlay").remove();
-
-
-	      // build html and render to string
-	      // var $modal = $(ReactDOMServer.renderToString(modalMarkup));
-
-	      // Attach to domNode
-	      // $(ReactDOM.findDOMNode(this)).html($modal);
-
-	      // Create new instance of a modal
-	      // var modal = new Foundation.Reveal($('#error-modal'));
-
-	      // Open modal
-	      // modal.open();
-	    }
 	  }, {
 	    key: 'close',
 	    value: function close(e) {
@@ -49719,16 +49806,24 @@
 	      this.props.close();
 	    }
 	  }, {
+	    key: 'closeOverlay',
+	    value: function closeOverlay() {
+	      this.props.close();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
-	      console.log("props ", this.props);
+	      // console.log("props ",this.props);
 
 	      var photo = this.props.photo;
 
 	      var comments = photo.comments.user_comments;
 
+	      /*
+	       Check if Comments exist, then loop over them and render.
+	       */
 	      var renderComments = function renderComments() {
 	        if (comments) {
 	          return comments.map(function (comment, i) {
@@ -49739,14 +49834,43 @@
 	            );
 	          });
 	        } else {
-	          return React.createElement(
-	            'li',
-	            null,
-	            'no comments'
-	          );
+	          return React.createElement('li', null);
 	        }
 	      };
 
+	      /*
+	       Calculate padding for the image height.
+	       */
+	      var paddingCalc = function paddingCalc() {
+
+	        var padding = {
+	          paddingBottom: '100%'
+	        };
+	        // equation image height /640 * 100 = the precentage
+
+	        // check photo width & height for square
+	        if (photo.images.standard_resolution.width !== photo.images.standard_resolution.height) {
+
+	          var width = 640;
+	          var height = photo.images.standard_resolution.height;
+	          var percentageHeight = 100;
+
+	          var total = height / width * 100;
+
+	          padding = {
+	            paddingBottom: total + '%'
+	          };
+
+	          return padding;
+	        }
+
+	        return padding;
+	      };
+
+	      /*
+	       Determine the type of object:
+	       Image or Type
+	       */
 	      var renderType = function renderType() {
 	        if (photo.type === "video") {
 
@@ -49777,25 +49901,12 @@
 	          );
 	        } else {
 
-	          var nonSquareImage = '';
-
-	          // check photo width & height for square
-	          if (photo.images.standard_resolution.width !== photo.images.standard_resolution.height) {
-	            nonSquareImage = {
-	              paddingBottom: "85%"
-	            };
-	          } else {
-	            nonSquareImage = {
-	              paddingBottom: "100%"
-	            };
-	          }
-
 	          return React.createElement(
 	            'div',
 	            { className: 'insta-modal__image-border' },
 	            React.createElement(
 	              'div',
-	              { className: 'insta-modal__image-padding', style: nonSquareImage },
+	              { className: 'insta-modal__image-padding', style: paddingCalc() },
 	              React.createElement('img', {
 	                alt: photo.caption.from.username,
 	                width: photo.images.standard_resolution.width,
@@ -49807,12 +49918,10 @@
 	        }
 	      };
 
+	      /*
+	       Render the modal function
+	       */
 	      var renderModal = function renderModal() {
-	        var windowTop = _this2.getWindowPosition();
-
-	        var modalStyle = {
-	          top: windowTop
-	        };
 
 	        var modalMarkup = React.createElement(
 	          'div',
@@ -49908,7 +50017,8 @@
 	                  )
 	                )
 	              )
-	            )
+	            ),
+	            React.createElement('div', { className: 'insta-modal__overlay', onClick: _this2.closeOverlay })
 	          )
 	        );
 
@@ -50127,7 +50237,7 @@
 
 
 	// module
-	exports.push([module.id, "/* ----------------------------------------------------------------------------\n * Breakpoints\n *\n\n * ------------------------------------------------------------------------- */\n@keyframes fadeIn {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes scaleUp {\n  0% {\n    transform: scale(0.3); }\n  100% {\n    transform: scale(1); } }\n\n.insta-fadein {\n  animation-duration: .5s;\n  animation-delay: .3s;\n  animation-name: fadeIn;\n  -webkit-animation-duration: .5s;\n  -webkit-animation-delay: .3s;\n  -webkit-animation-name: fadeIn;\n  transition-timing-function: ease-in;\n  animation-fill-mode: both;\n  -webkit-animation-fill-mode: both;\n  -webkit-transition-timing-function: ease-in; }\n\n.insta-scaleUp {\n  animation-duration: .3s;\n  animation-name: scaleUp;\n  transition-timing-function: ease-in;\n  animation-fill-mode: both; }\n\n.insta-container {\n  display: flex;\n  display: -webkit-flex !important;\n  display: -ms-flexbox;\n  -webkit-flex-flow: row wrap;\n  /* Safari 6.1+ */\n  padding: 40px 0 0;\n  -webkit-justify-content: center;\n  justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n  flex-flow: row wrap;\n  opacity: 1; }\n  .insta-container h4 {\n    color: #313A54 !important;\n    text-align: center;\n    text-transform: uppercase;\n    font-weight: 500;\n    padding-bottom: 15px; }\n  .insta-container .insta-follow-btn {\n    color: #313A54;\n    padding: 15px 0 0; }\n\n.insta-items {\n  display: flex;\n  display: -webkit-flex !important;\n  display: -ms-flexbox;\n  -webkit-flex-flow: row wrap;\n  /* Safari 6.1+ */\n  flex-wrap: wrap;\n  justify-content: space-between;\n  -webkit-justify-content: space-between;\n  height: 100%;\n  width: auto;\n  opacity: 1;\n  -webkit-transition: all 0.5s;\n  -moz-transition: all 0.5s;\n  transition: all 0.5s;\n  align-items: center; }\n\n.insta-item {\n  -webkit-transition: all 0.5s;\n  -moz-transition: all 0.5s;\n  transition: all 0.5s;\n  position: relative;\n  flex: 1 0 25%;\n  -webkit-flex: 1 0 25%;\n  -webkit-box-flex: 1 0 25%;\n  margin: 0;\n  text-align: center;\n  float: left;\n  opacity: 1;\n  cursor: pointer;\n  overflow: hidden; }\n  .insta-item:nth-child(n + 9) {\n    display: none; }\n  @media only screen and (min-width: 48em) {\n    .insta-item {\n      -webkit-flex: 1 0 12.5%;\n      -webkit-box-flex: 1 0 12.5%;\n      flex: 1 0 12.5%; }\n      .insta-item:nth-child(n + 9) {\n        display: block; } }\n  @media only screen and (min-width: 992px) {\n    .insta-item {\n      -webkit-flex: 1 0 12.5%;\n      -webkit-box-flex: 1 0 12.5%;\n      flex: 1 0 12.5%; } }\n  .insta-item a {\n    -webkit-flex: 1 0 25%;\n    -webkit-box-flex: 1 0 25%;\n    flex: 1 0 25%;\n    height: 25vw;\n    display: block; }\n    @media only screen and (min-width: 48em) {\n      .insta-item a {\n        -webkit-flex: 1 0 12.5%;\n        -webkit-box-flex: 1 0 12.5%;\n        flex: 1 0 12.5%;\n        height: 12.5vw; } }\n    @media only screen and (min-width: 992px) {\n      .insta-item a {\n        -webkit-flex: 1 0 12.5%;\n        -webkit-box-flex: 1 0 12.5%;\n        flex: 1 0 12.5%;\n        height: 12.5vw; } }\n  .insta-item .insta-image__overlay {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    left: 0;\n    background-color: #0a1724;\n    z-index: 1;\n    opacity: 0;\n    -webkit-transition: opacity 0.3s;\n    -moz-transition: opacity 0.3s;\n    transition: opacity 0.3s; }\n  .insta-item .insta-image__icon {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    left: 0;\n    z-index: 2;\n    opacity: 0;\n    color: #fff;\n    -webkit-transition: opacity 0.3s;\n    -moz-transition: opacity 0.3s;\n    transition: opacity 0.3s; }\n    .insta-item .insta-image__icon i {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%) translateX(-50%);\n      -moz-transform: translateY(-50%) translateX(-50%);\n      -ms-transform: translateY(-50%) translateX(-50%);\n      -o-transform: translateY(-50%) translateX(-50%);\n      transform: translateY(-50%) translateX(-50%);\n      left: 50%; }\n  .insta-item img {\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -moz-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -ms-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -o-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    width: 100%;\n    display: block;\n    opacity: 1; }\n    .insta-item img.insta-image__enlarge {\n      -webkit-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -moz-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -ms-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -o-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      transform: translateY(-50%) scale3d(1.5, 1.5, 1.5); }\n  .insta-item:hover .insta-image__overlay {\n    opacity: .6; }\n  .insta-item:hover .insta-image__icon {\n    opacity: 1; }\n\n.insta-modal {\n  z-index: 113;\n  top: 0;\n  right: 0;\n  position: fixed;\n  overflow-y: auto;\n  left: 0;\n  justify-content: space-between;\n  -webkit-justify-content: space-between;\n  -webkit-box-pack: justify;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.75); }\n  .insta-modal div,\n  .insta-modal article,\n  .insta-modal section,\n  .insta-modal header {\n    -webkit-box-align: stretch;\n    -webkit-align-items: stretch;\n    -ms-flex-align: stretch;\n    align-items: stretch;\n    border: 0 solid #000;\n    box-sizing: border-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    -webkit-flex-shrink: 0;\n    -ms-flex-negative: 0;\n    flex-shrink: 0;\n    margin: 0;\n    padding: 0;\n    position: relative; }\n  .insta-modal .insta-modal__content {\n    z-index: 1;\n    width: auto;\n    overflow: auto;\n    min-height: 100%;\n    display: -webkit-flex;\n    display: flex; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__content {\n        padding: 0 40px; } }\n  .insta-modal .insta-article__wrapper {\n    background-color: #fff;\n    align-items: center;\n    -ms-flex-align: center;\n    -webkit-align-items: center;\n    -webkit-box-align: center;\n    margin: auto;\n    max-width: 935px;\n    width: 100%; }\n  .insta-modal .insta-modal__article {\n    overflow-x: hidden; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__article {\n        border-radius: 5px;\n        padding-right: 335px;\n        width: 100%;\n        overflow: hidden; } }\n  .insta-modal .instal-modal__header {\n    flex-direction: row;\n    -webkit-flex-direction: row;\n    -ms-flex-direction: row;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    align-items: center;\n    -ms-flex-align: center;\n    -webkit-align-items: center;\n    -webkit-box-align: center;\n    padding: 18px 20px;\n    height: 64px; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .instal-modal__header {\n        border-bottom: 1px solid #EFEFEF;\n        height: 78px;\n        padding: 20px 0;\n        position: absolute;\n        right: 24px;\n        top: 0;\n        width: 287px; } }\n    .insta-modal .instal-modal__header .insta-modal__profile-image {\n      width: 40px;\n      height: 40px;\n      background-color: #fff;\n      border: 1px solid #dbdbdb;\n      border-radius: 50%;\n      box-sizing: border-box;\n      display: block;\n      overflow: hidden; }\n    .insta-modal .instal-modal__header .insta-modal__profile-name {\n      display: block;\n      overflow: hidden;\n      line-height: 0;\n      flex-shrink: 1;\n      flex-grow: 1;\n      font-weight: 600;\n      color: #313A54; }\n      .insta-modal .instal-modal__header .insta-modal__profile-name a {\n        margin-right: 100%;\n        display: inline-block;\n        max-width: 100%;\n        font-size: 14px;\n        line-height: 17px;\n        padding-left: 5px;\n        margin-left: 5px; }\n  .insta-modal .insta-modal__image {\n    position: relative; }\n    .insta-modal .insta-modal__image .insta-modal__image-border {\n      display: inline-block;\n      border-bottom: 1px solid #efefef;\n      border-top: 1px solid #efefef; }\n      @media only screen and (min-width: 48em) {\n        .insta-modal .insta-modal__image .insta-modal__image-border {\n          border: none;\n          box-shadow: inset 0 0 20px 0 #efefef; } }\n    .insta-modal .insta-modal__image .insta-modal__image-padding {\n      display: block;\n      overflow: hidden;\n      padding-bottom: 100%; }\n      .insta-modal .insta-modal__image .insta-modal__image-padding img {\n        width: 100%;\n        left: 0;\n        position: absolute;\n        top: 0; }\n    .insta-modal .insta-modal__image .insta-modal__image-position {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0; }\n  .insta-modal .insta-modal__post {\n    font-size: 14px;\n    padding: 0 20px; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__post {\n        bottom: 0;\n        box-sizing: border-box;\n        position: absolute;\n        right: 0;\n        top: 78px;\n        width: 335px; } }\n    .insta-modal .insta-modal__post .insta-modal__stats {\n      margin-top: 16px;\n      margin-bottom: 7px;\n      flex-direction: row;\n      justify-content: flex-end; }\n    .insta-modal .insta-modal__post .insta-modal__likes {\n      flex-shrink: 1;\n      flex-grow: 1;\n      padding-left: 20px;\n      color: #313A54;\n      font-weight: 600; }\n      .insta-modal .insta-modal__post .insta-modal__likes:before {\n        color: #DE7157;\n        content: \"\\F004\";\n        position: absolute;\n        left: 0;\n        top: 0;\n        font-family: \"FontAwesome\"; }\n    .insta-modal .insta-modal__post .insta-modal__user-comment {\n      padding-top: 20px;\n      overflow: auto;\n      padding-bottom: 20px;\n      margin-bottom: 7px;\n      flex-grow: 1;\n      color: #222; }\n      .insta-modal .insta-modal__post .insta-modal__user-comment li:first-child {\n        color: #313A54;\n        font-weight: 600; }\n    .insta-modal .insta-modal__post .insta-follow {\n      padding: 15px 0;\n      align-items: center;\n      display: block;\n      text-align: center;\n      border-top: 1px solid #efefef;\n      flex-direction: row;\n      justify-content: center; }\n      .insta-modal .insta-modal__post .insta-follow a {\n        text-align: center; }\n  .insta-modal .modal-close__wrapper {\n    right: 0;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    -o-transform: translateY(-50%);\n    transform: translateY(-50%);\n    z-index: 3;\n    padding: 10px;\n    position: absolute; }\n  .insta-modal .insta-modal-close {\n    display: table;\n    margin: 0;\n    position: relative;\n    text-indent: 1000%;\n    height: 30px;\n    width: 30px;\n    z-index: 3;\n    border: 2px solid #222;\n    border-radius: 50%; }\n    .insta-modal .insta-modal-close a {\n      height: 30px;\n      width: 30px;\n      display: block;\n      z-index: 3;\n      position: relative; }\n    .insta-modal .insta-modal-close::before, .insta-modal .insta-modal-close::after {\n      background-color: #222;\n      content: '';\n      height: 20px;\n      left: 50%;\n      position: absolute;\n      top: 50%;\n      z-index: 1;\n      width: 2px; }\n    .insta-modal .insta-modal-close::before {\n      -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      transform: translateX(-50%) translateY(-50%) rotate(-45deg); }\n    .insta-modal .insta-modal-close::after {\n      -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      transform: translateX(-50%) translateY(-50%) rotate(45deg); }\n", ""]);
+	exports.push([module.id, "/* ----------------------------------------------------------------------------\n * Breakpoints\n *\n\n * ------------------------------------------------------------------------- */\n@keyframes fadeIn {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes scaleUp {\n  0% {\n    transform: scale(0.3); }\n  100% {\n    transform: scale(1); } }\n\n.insta-fadein {\n  animation-duration: .5s;\n  animation-delay: .3s;\n  animation-name: fadeIn;\n  -webkit-animation-duration: .5s;\n  -webkit-animation-delay: .3s;\n  -webkit-animation-name: fadeIn;\n  transition-timing-function: ease-in;\n  animation-fill-mode: both;\n  -webkit-animation-fill-mode: both;\n  -webkit-transition-timing-function: ease-in; }\n\n.insta-scaleUp {\n  animation-duration: .3s;\n  animation-name: scaleUp;\n  transition-timing-function: ease-in;\n  animation-fill-mode: both; }\n\n.insta-container {\n  display: flex;\n  display: -webkit-flex !important;\n  display: -ms-flexbox;\n  -webkit-flex-flow: row wrap;\n  /* Safari 6.1+ */\n  padding: 40px 0 0;\n  -webkit-justify-content: center;\n  justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n  flex-flow: row wrap;\n  opacity: 1; }\n  .insta-container .insta-container__header {\n    text-align: center;\n    padding-bottom: 20px; }\n  .insta-container h4 {\n    color: #313A54 !important;\n    text-align: center;\n    text-transform: uppercase;\n    font-weight: 500;\n    width: 100%; }\n  .insta-container .insta-follow-btn {\n    width: 100%;\n    color: #313A54;\n    padding: 0 0 20px;\n    text-align: center; }\n\n.insta-items {\n  display: flex;\n  display: -webkit-flex !important;\n  display: -ms-flexbox;\n  -webkit-flex-flow: row wrap;\n  /* Safari 6.1+ */\n  flex-wrap: wrap;\n  justify-content: space-between;\n  -webkit-justify-content: space-between;\n  height: 100%;\n  width: auto;\n  opacity: 1;\n  -webkit-transition: all 0.5s;\n  -moz-transition: all 0.5s;\n  transition: all 0.5s;\n  align-items: center; }\n\n.insta-item {\n  -webkit-transition: all 0.5s;\n  -moz-transition: all 0.5s;\n  transition: all 0.5s;\n  position: relative;\n  flex: 1 0 25%;\n  -webkit-flex: 1 0 25%;\n  -webkit-box-flex: 1 0 25%;\n  margin: 0;\n  text-align: center;\n  float: left;\n  opacity: 1;\n  cursor: pointer;\n  overflow: hidden; }\n  .insta-item:nth-child(n + 9) {\n    display: none; }\n  @media only screen and (min-width: 48em) {\n    .insta-item {\n      -webkit-flex: 1 0 12.5%;\n      -webkit-box-flex: 1 0 12.5%;\n      flex: 1 0 12.5%; }\n      .insta-item:nth-child(n + 9) {\n        display: block; } }\n  @media only screen and (min-width: 992px) {\n    .insta-item {\n      -webkit-flex: 1 0 12.5%;\n      -webkit-box-flex: 1 0 12.5%;\n      flex: 1 0 12.5%; } }\n  .insta-item a {\n    -webkit-flex: 1 0 25%;\n    -webkit-box-flex: 1 0 25%;\n    flex: 1 0 25%;\n    height: 25vw;\n    display: block; }\n    @media only screen and (min-width: 48em) {\n      .insta-item a {\n        -webkit-flex: 1 0 12.5%;\n        -webkit-box-flex: 1 0 12.5%;\n        flex: 1 0 12.5%;\n        height: 12.5vw; } }\n    @media only screen and (min-width: 992px) {\n      .insta-item a {\n        -webkit-flex: 1 0 12.5%;\n        -webkit-box-flex: 1 0 12.5%;\n        flex: 1 0 12.5%;\n        height: 12.5vw; } }\n  .insta-item .insta-image__overlay {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    left: 0;\n    background-color: #0a1724;\n    z-index: 1;\n    opacity: 0;\n    -webkit-transition: opacity 0.3s;\n    -moz-transition: opacity 0.3s;\n    transition: opacity 0.3s; }\n  .insta-item .insta-image__icon {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    left: 0;\n    z-index: 2;\n    opacity: 0;\n    color: #fff;\n    -webkit-transition: opacity 0.3s;\n    -moz-transition: opacity 0.3s;\n    transition: opacity 0.3s; }\n    .insta-item .insta-image__icon i {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%) translateX(-50%);\n      -moz-transform: translateY(-50%) translateX(-50%);\n      -ms-transform: translateY(-50%) translateX(-50%);\n      -o-transform: translateY(-50%) translateX(-50%);\n      transform: translateY(-50%) translateX(-50%);\n      left: 50%; }\n  .insta-item img {\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -moz-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -ms-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    -o-transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    transform: translateY(-50%) scale3d(1.2, 1.2, 1.2);\n    width: 100%;\n    display: block;\n    opacity: 1; }\n    .insta-item img.insta-image__enlarge {\n      -webkit-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -moz-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -ms-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      -o-transform: translateY(-50%) scale3d(1.5, 1.5, 1.5);\n      transform: translateY(-50%) scale3d(1.5, 1.5, 1.5); }\n    .insta-item img.preloaded {\n      position: relative;\n      top: 0;\n      -webkit-transform: translateY(0) scale3d(1, 1, 1);\n      -moz-transform: translateY(0) scale3d(1, 1, 1);\n      -ms-transform: translateY(0) scale3d(1, 1, 1);\n      -o-transform: translateY(0) scale3d(1, 1, 1);\n      transform: translateY(0) scale3d(1, 1, 1); }\n  .insta-item:hover .insta-image__overlay {\n    opacity: .6; }\n  .insta-item:hover .insta-image__icon {\n    opacity: 1; }\n\n.insta-modal {\n  z-index: 113;\n  top: 0;\n  right: 0;\n  position: fixed;\n  overflow-y: auto;\n  left: 0;\n  justify-content: space-between;\n  -webkit-justify-content: space-between;\n  -webkit-box-pack: justify;\n  bottom: 0; }\n  .insta-modal div,\n  .insta-modal article,\n  .insta-modal section,\n  .insta-modal header {\n    -webkit-box-align: stretch;\n    -webkit-align-items: stretch;\n    -ms-flex-align: stretch;\n    align-items: stretch;\n    border: 0 solid #000;\n    box-sizing: border-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    -webkit-flex-shrink: 0;\n    -ms-flex-negative: 0;\n    flex-shrink: 0;\n    margin: 0;\n    padding: 0;\n    position: relative; }\n  .insta-modal .insta-modal__content {\n    z-index: 1;\n    width: auto;\n    overflow: auto;\n    min-height: 100%;\n    display: -webkit-flex;\n    display: flex; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__content {\n        padding: 0 40px; } }\n  .insta-modal .insta-article__wrapper {\n    background-color: #fff;\n    align-items: center;\n    -ms-flex-align: center;\n    -webkit-align-items: center;\n    -webkit-box-align: center;\n    margin: auto;\n    max-width: 935px;\n    width: 100%;\n    z-index: 2; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-article__wrapper {\n        border-radius: 5px; } }\n  .insta-modal .insta-modal__article {\n    overflow-x: hidden; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__article {\n        border-radius: 5px;\n        padding-right: 335px;\n        width: 100%;\n        overflow: hidden; } }\n  .insta-modal .instal-modal__header {\n    flex-direction: row;\n    -webkit-flex-direction: row;\n    -ms-flex-direction: row;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    align-items: center;\n    -ms-flex-align: center;\n    -webkit-align-items: center;\n    -webkit-box-align: center;\n    padding: 18px 20px;\n    height: 64px; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .instal-modal__header {\n        border-bottom: 1px solid #EFEFEF;\n        height: 78px;\n        padding: 20px 0;\n        position: absolute;\n        right: 24px;\n        top: 0;\n        width: 287px; } }\n    .insta-modal .instal-modal__header .insta-modal__profile-image {\n      width: 40px;\n      height: 40px;\n      background-color: #fff;\n      border: 1px solid #dbdbdb;\n      border-radius: 50%;\n      box-sizing: border-box;\n      display: block;\n      overflow: hidden; }\n    .insta-modal .instal-modal__header .insta-modal__profile-name {\n      display: block;\n      overflow: hidden;\n      line-height: 0;\n      flex-shrink: 1;\n      flex-grow: 1;\n      font-weight: 600;\n      color: #313A54; }\n      .insta-modal .instal-modal__header .insta-modal__profile-name a {\n        margin-right: 100%;\n        display: inline-block;\n        max-width: 100%;\n        font-size: 14px;\n        line-height: 17px;\n        padding-left: 5px;\n        margin-left: 5px; }\n  .insta-modal .insta-modal__image {\n    position: relative; }\n    .insta-modal .insta-modal__image .insta-modal__image-border {\n      display: inline-block;\n      border-bottom: 1px solid #efefef;\n      border-top: 1px solid #efefef; }\n      @media only screen and (min-width: 48em) {\n        .insta-modal .insta-modal__image .insta-modal__image-border {\n          border: none;\n          box-shadow: inset 0 0 20px 0 #efefef; } }\n    .insta-modal .insta-modal__image .insta-modal__image-padding {\n      display: block;\n      overflow: hidden;\n      padding-bottom: 100%; }\n      .insta-modal .insta-modal__image .insta-modal__image-padding img {\n        width: 100%;\n        left: 0;\n        position: absolute;\n        top: 0; }\n    .insta-modal .insta-modal__image .insta-modal__image-position {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0; }\n  .insta-modal .insta-modal__image-content {\n    height: 100%; }\n  .insta-modal .insta-modal__post {\n    font-size: 14px;\n    padding: 0 20px; }\n    @media only screen and (min-width: 48em) {\n      .insta-modal .insta-modal__post {\n        bottom: 0;\n        box-sizing: border-box;\n        position: absolute;\n        right: 0;\n        top: 78px;\n        width: 335px; } }\n    .insta-modal .insta-modal__post .insta-modal__stats {\n      margin-top: 16px;\n      margin-bottom: 7px;\n      flex-direction: row;\n      justify-content: flex-end; }\n    .insta-modal .insta-modal__post .insta-modal__likes {\n      flex-shrink: 1;\n      flex-grow: 1;\n      padding-left: 20px;\n      color: #313A54;\n      font-weight: 600; }\n      .insta-modal .insta-modal__post .insta-modal__likes:before {\n        color: #DE7157;\n        content: \"\\F004\";\n        position: absolute;\n        left: 0;\n        top: 0;\n        font-family: \"FontAwesome\"; }\n    .insta-modal .insta-modal__post .insta-modal__user-comment {\n      padding-top: 20px;\n      overflow: auto;\n      padding-bottom: 20px;\n      margin-bottom: 7px;\n      flex-grow: 1;\n      color: #222; }\n      .insta-modal .insta-modal__post .insta-modal__user-comment li:first-child {\n        color: #313A54;\n        font-weight: 600; }\n    .insta-modal .insta-modal__post .insta-follow {\n      padding: 15px 0;\n      align-items: center;\n      display: block;\n      text-align: center;\n      border-top: 1px solid #efefef;\n      flex-direction: row;\n      justify-content: center; }\n      .insta-modal .insta-modal__post .insta-follow a {\n        text-align: center; }\n  .insta-modal .modal-close__wrapper {\n    right: 0;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    -o-transform: translateY(-50%);\n    transform: translateY(-50%);\n    z-index: 3;\n    padding: 10px;\n    position: absolute; }\n  .insta-modal .insta-modal-close {\n    display: table;\n    margin: 0;\n    position: relative;\n    text-indent: 1000%;\n    height: 30px;\n    width: 30px;\n    z-index: 3;\n    border: 2px solid #222;\n    border-radius: 50%; }\n    .insta-modal .insta-modal-close a {\n      height: 30px;\n      width: 30px;\n      display: block;\n      z-index: 3;\n      position: relative; }\n    .insta-modal .insta-modal-close::before, .insta-modal .insta-modal-close::after {\n      background-color: #222;\n      content: '';\n      height: 20px;\n      left: 50%;\n      position: absolute;\n      top: 50%;\n      z-index: 1;\n      width: 2px; }\n    .insta-modal .insta-modal-close::before {\n      -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);\n      transform: translateX(-50%) translateY(-50%) rotate(-45deg); }\n    .insta-modal .insta-modal-close::after {\n      -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n      transform: translateX(-50%) translateY(-50%) rotate(45deg); }\n  .insta-modal .insta-modal__overlay {\n    background-color: rgba(0, 0, 0, 0.75);\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 1; }\n", ""]);
 
 	// exports
 
@@ -50439,122 +50549,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 528 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _InstagramListItem = __webpack_require__(348);
-
-	var _InstagramListItem2 = _interopRequireDefault(_InstagramListItem);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(349);
-	var ReactDOM = __webpack_require__(381);
-
-	var InstagramImage = function (_React$Component) {
-	  _inherits(InstagramImage, _React$Component);
-
-	  function InstagramImage() {
-	    _classCallCheck(this, InstagramImage);
-
-	    var _this = _possibleConstructorReturn(this, (InstagramImage.__proto__ || Object.getPrototypeOf(InstagramImage)).call(this));
-
-	    _this.photoClick = _this.photoClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(InstagramImage, [{
-	    key: 'photoClick',
-	    value: function photoClick(e) {
-	      e.preventDefault();
-
-	      var el = {
-	        item: this.props.photo,
-	        index: this.props.index
-	      };
-
-	      this.props.photoclick(el);
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      // console.log('new props');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var photo = this.props.photo;
-
-	      console.log(photo);
-
-	      var displayIcon = function displayIcon() {
-	        if (photo.type === "video") {
-	          return React.createElement(
-	            'span',
-	            { className: 'insta-image__icon' },
-	            React.createElement('i', { className: 'fa fa-video-camera fa-2x', 'aria-hidden': 'true' })
-	          );
-	        } else {
-	          return React.createElement(
-	            'span',
-	            { className: 'insta-image__icon' },
-	            React.createElement('i', { className: 'fa fa-picture-o fa-2x', 'aria-hidden': 'true' })
-	          );
-	        }
-	      };
-
-	      var compareImageSize = function compareImageSize() {
-
-	        // check photo width & height for square
-	        if (photo.images.low_resolution.width !== photo.images.low_resolution.height) {
-	          return "insta-image__enlarge";
-	        }
-	      };
-
-	      var checkSrc = function checkSrc(image) {
-
-	        var newSrc = '';
-
-	        if (image) {
-
-	          return React.createElement(
-	            'a',
-	            { href: '#', onClick: _this2.photoClick },
-	            React.createElement('span', { className: 'insta-image__overlay' }),
-	            displayIcon(),
-	            React.createElement('img', { src: photo.images.low_resolution.url, alt: 'Every Tuesday Instagram', className: compareImageSize() })
-	          );
-	        } else {
-	          return React.createElement('img', { src: photo.placeholder, alt: 'Every Tuesday Instagram', className: 'img-responsive' });
-	        }
-	      };
-
-	      return React.createElement(
-	        'div',
-	        { className: 'insta-item' },
-	        checkSrc(photo.images)
-	      );
-	    }
-	  }]);
-
-	  return InstagramImage;
-	}(React.Component);
-
-	module.exports = InstagramImage;
 
 /***/ }
 /******/ ]);

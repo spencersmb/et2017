@@ -29,8 +29,16 @@ class FontApp extends React.Component {
   componentDidMount() {
     // this runs after component is mounted to React DOM
 
-    // When the component is mounted, grab a reference and add a DOM listener;
-    // this.refs.nv.addEventListener("nv-enter", this.handleNvEnter); // React .14+
+
+    /*
+     When the component is mounted, get data from the element, which has values plaed on it
+     from the php server, depending on what item is clicked.
+     
+     Alternate way - put refs on element try next time
+     // this.refs.nv.addEventListener("nv-enter", this.handleNvEnter); // React .14+
+     
+     */
+    
     let data = this.getData();
     this.setState({
       placeholder: data.placeholder,
@@ -40,10 +48,15 @@ class FontApp extends React.Component {
       sidebar: data.sidebar
     });
 
-    // Create an event listener for buttons clicked on page outside of react app
+
+
+    /*
+     Custom event that is fired outside of the the React app.
+     Happens when user clicks on "try" button.
+
+     */
     document.addEventListener('fontCheck', () => {
 
-      // Once event fires get new data and set state
       let data = this.getData();
       this.setState({
         placeholder: data.placeholder,
@@ -51,6 +64,10 @@ class FontApp extends React.Component {
         styles: data.styles
       });
 
+
+      /*
+       Check for if we should load the sidebar or not
+       */
       if( this.state.sidebar ){
         this.open();
       }
@@ -60,12 +77,16 @@ class FontApp extends React.Component {
     });
   }
 
+
+  /*
+   Open and close states when using sidebar
+
+   */
   open(){
     this.setState({
       isOpen: true
     });
   }
-
   close(e){
     e.preventDefault();
 
@@ -75,6 +96,10 @@ class FontApp extends React.Component {
     
   }
 
+  /*
+   Styles check for if we are loading the sidebar layout.
+
+   */
   isSidebar(){
     if( this.state.sidebar ){
       return "fp-sidebar";
@@ -83,21 +108,34 @@ class FontApp extends React.Component {
     }
   }
 
+
+  /*
+   Function that fires everytime a user types something.
+   This sets up our two way data binding.
+
+   */
   onInputChange( text ) {
-    // function to run when user types into input - set state each time
     this.setState({
       placeholder: text
     });
   }
 
+
+
+  /*
+   Pull data from the element like an API end point. This data changes on user clicking different products.
+
+   */
   getData() {
 
-    // Pull data from the app data- attributes
     let app = document.getElementById('app');
     let sidebar = app.dataset.sidebar;
 
-    console.log(sidebar === "true");
-    // remove spaces and convert string to array
+    // console.log(sidebar === "true");
+    /*
+     Get styles string, remove spaces & convert to an array.
+
+     */
     let styles = app.dataset.styles.replace(/\s+/g, '').split(',');
 
     let initialState = {
@@ -110,6 +148,12 @@ class FontApp extends React.Component {
     return initialState;
   }
 
+  
+  
+  /*
+   Size takes in a number, and we set the state of the current Size.
+
+   */
   onSizeChange( size ) {
     // each time a a button is clicked change the state size attr
     this.setState({
@@ -117,8 +161,20 @@ class FontApp extends React.Component {
     });
   }
 
+  loggedIn(){
+    if($("body").hasClass("admin-bar")){
+      return "fp-logged-in"
+    }
+  }
+
   render() {
+    
     let font = this.state;
+
+    /*
+     Close button element that gets returned if the sidebar version is true.
+
+     */
     let closeBtn = () => {
 
       let output = <a id="fp-nav-close" href="#" onClick={this.close} className="fp-close">Close</a>;
@@ -128,13 +184,19 @@ class FontApp extends React.Component {
       }
 
     };
+
+
+    /*
+     Style that gets applied if the sidebar is open and sidebar gets activated through state.
+
+     */
     let openClass = () => {
       return ( this.state.isOpen ) ? "active" : "";
     };
 
     return (
       <div>
-        <div className={ openClass() + " " + this.isSidebar()+ " fp-shell"}>
+        <div className={ this.loggedIn() + " " +openClass() + " " + this.isSidebar()+ " fp-shell"}>
           <div className="fp-topper">
             {closeBtn()}
             <h4 className="fp-sub-title">Font Preview</h4>

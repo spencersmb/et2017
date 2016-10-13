@@ -125,6 +125,7 @@ Template: readanddigest
     right: -15px;
     display: block;
     -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
@@ -205,6 +206,25 @@ Template: readanddigest
   height: 200px;
   visibility: hidden; }
 
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center; }
+  .embed-responsive .embed-responsive-item, .embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    borderr: 0; }
+
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%; }
+
 /* ----------------------------------------------------------------------------
  * Structure
  * ------------------------------------------------------------------------- */
@@ -217,11 +237,68 @@ Template: readanddigest
 
 .insta-modal__nav-active {
   -webkit-transform: translateY(0) !important;
-  transform: translateY(0) !important; }
+  -ms-transform: translateY(0) !important;
+      transform: translateY(0) !important; }
 
 .eltdf-page-header .eltdf-sticky-header.header-appear {
   -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
   transform: translateY(0); }
+
+.flex-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+@media only screen and (min-width: 48em) {
+  .flex-row-md {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; } }
+
+.flex-row-md {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+
+.flex-xs {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0;
+      -ms-flex: 1 0;
+          flex: 1 0;
+  max-width: 100%;
+  min-height: 1px; }
+
+@media only screen and (min-width: 48em) {
+  .flex-sm-4 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 50%;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%; } }
+
+@media only screen and (min-width: 992px) {
+  .flex-md-6 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 33.333333%;
+        -ms-flex: 1 0 33.333333%;
+            flex: 1 0 33.333333%; } }
 
 /* WPCore */
 /* ----------------------------------------------------------------------------
@@ -261,6 +338,7 @@ Template: readanddigest
   margin-left: 32px;
   top: 50%;
   -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
 .eltdf-header-type3 .eltdf-menu-area .eltdf-vertical-align-containers {
@@ -303,9 +381,11 @@ Template: readanddigest
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
     transform: translateY(0); }
     .store-front-wrapper .store-front.store-hidden {
       -webkit-transform: translateY(-100px);
+      -ms-transform: translateY(-100px);
       transform: translateY(-100px); }
   .store-front-wrapper img {
     margin-left: auto; }
@@ -315,6 +395,7 @@ Template: readanddigest
   width: 200px;
   top: 50%;
   -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   border: 1px solid #DE7157;
   padding: 5px 5px 6px;
@@ -404,6 +485,7 @@ Template: readanddigest
   position: absolute;
   top: 49%;
   -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 9px;
   width: auto; }
@@ -573,6 +655,7 @@ Template: readanddigest
     top: 50%;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%); }
     @media only screen and (max-width: 1024px) {
       .et-latest-news .et2017-tabs-date .et2017-tabs-date__wrapper {
@@ -580,6 +663,7 @@ Template: readanddigest
         top: 0;
         left: 0;
         -webkit-transform: translateX(0) translateY(0);
+        -ms-transform: translateX(0) translateY(0);
         transform: translateX(0) translateY(0); } }
   .et-latest-news .et2017-tabs-date .et2017-tabs-date__day {
     font-size: 24px; }
@@ -621,6 +705,7 @@ Template: readanddigest
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 115px;
     font-size: 18px;
@@ -631,6 +716,7 @@ Template: readanddigest
         position: relative;
         top: 0;
         -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
         transform: translateY(0);
         font-size: 24px;
         max-width: 100%; } }
@@ -879,7 +965,8 @@ footer {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   background: url("./assets/images/confetti-clear.png") top center no-repeat;
-  box-shadow: 0px 18px 70px -19px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0px 18px 70px -19px rgba(0, 0, 0, 0.3);
+  border: 1px solid transparent; }
   .card__item h2 {
     font-size: 28px;
     font-weight: 600;
@@ -891,12 +978,15 @@ footer {
   .card__item .subtitle {
     margin-bottom: 40px;
     font-size: 16px; }
+  .card__item:hover {
+    border: 10px solid transparent; }
 
 .card__item--content {
   text-align: center;
   z-index: 3;
   position: relative;
   -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;

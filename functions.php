@@ -44,7 +44,10 @@ function et_twenty_seventeen_load_scripts() {
 	 *
 	 ***/
 	wp_register_script('products-js', get_stylesheet_directory_uri() . '/assets/js/products_2016/products.js', 'jquery', '', true);
-	wp_register_style('product-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/products.css');
+//	wp_register_style('product-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/products.css');
+
+	// NEW PRODUCTS CSS LINK
+	wp_register_style('product-css', get_stylesheet_directory_uri() . '/products.min.css');
 //	wp_register_style('sp_style', get_stylesheet_directory_uri() . '/assets/css/products_2016/style.min.css');
 
 	if ( is_page_template('page-product.php') ) {
@@ -78,7 +81,7 @@ function et_twenty_seventeen_load_scripts() {
 		wp_enqueue_style('tuesday');
 		//	wp_enqueue_script('bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/products_2016/bootstrap.min.js', 'jquery', '', true);
 		wp_enqueue_script('gumroad-js', 'https://gumroad.com/js/gumroad.js', true);
-		wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/bootstrap.min.css');
+//		wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/bootstrap.min.css');
 		wp_enqueue_style('product-css');
 	}
 

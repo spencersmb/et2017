@@ -1,7 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-import InstagramListItem from "InstagramListItem";
 import InstagramImage from "InstagramImage";
 import InstagramApp from "InstagramApp";
 
@@ -12,6 +11,9 @@ class InstagramList extends React.Component {
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
   }
 
+  /*
+   function passed from InstagramApp.jsx to make available to InstagramImage
+   */
   handlePhotoClick( photo ){
     this.props.photoclick( photo );
   }
@@ -23,7 +25,13 @@ class InstagramList extends React.Component {
   render() {
     let { photos } = this.props;
     let { dataLoaded } = this.props;
-    
+
+
+
+    /*
+     Check if photos array is empty if it is that means there is no data yet.
+     If not data load the placeholder images
+     */
     let renderPhotos = () => {
       
       if( Array.isArray(photos) && photos.length > 0 ){
@@ -60,6 +68,30 @@ class InstagramList extends React.Component {
           },
           {
             placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
+          },
+          {
+            placeholder: imagePath + '/images/insta-preload-img.jpg'
           }
         ];
         
@@ -72,6 +104,12 @@ class InstagramList extends React.Component {
       }
       
     };
+
+    
+    
+    /*
+     Styling for the container if the data is loaded 
+     */
     let loadedStyles = {
       padding: '0',
       width: '100%'

@@ -1,8 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-import InstagramListItem from "InstagramListItem";
-
 class InstagramImage extends React.Component {
 
   constructor() {
@@ -10,6 +8,12 @@ class InstagramImage extends React.Component {
     this.photoClick = this.photoClick.bind(this);
   }
 
+
+  /*
+   Click event for each item: 
+   Get the item clicked and its index and then pass it up the chain to InstagramApp.jsx to initialize the Modal with
+   the selected Item.
+   */
   photoClick(e){
     e.preventDefault();
 
@@ -27,8 +31,13 @@ class InstagramImage extends React.Component {
 
   render() {
     let { photo } = this.props;
-    console.log(photo);
+    // console.log(photo);
 
+
+    /*
+     Determine what icon to display:
+     Video or Image
+     */
     let displayIcon = () => {
       if(photo.type === "video"){
         return (
@@ -45,6 +54,10 @@ class InstagramImage extends React.Component {
       }
     };
 
+
+    /*
+     Determine if the image is a square or not to scale its size in the grid
+     */
     let compareImageSize = () => {
 
       // check photo width & height for square
@@ -54,6 +67,11 @@ class InstagramImage extends React.Component {
 
     };
 
+
+    /*
+     check if the image object is full of images or empty:
+     If empty load the preload image graphic, else load the image from the API
+     */
     let checkSrc = ( image ) => {
 
       let newSrc = '';
@@ -70,7 +88,7 @@ class InstagramImage extends React.Component {
 
       } else {
        return (
-         <img src={photo.placeholder} alt="Every Tuesday Instagram" className="img-responsive"/>
+           <img src={photo.placeholder} alt="Every Tuesday Instagram" className="img-responsive preloaded"/>
        );
       }
 

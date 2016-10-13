@@ -32,24 +32,43 @@ class InstagramApp extends React.Component {
     once clicked.
    */
   getComments( photoId, index ){
+
+
+    /*
+     Make API call and get a PROMISE back
+     */
     return InstagramApi.getPostComments(photoId).then(( response ) => {
 
       // take new comments data and find the selected photo in the original array
       // and merge it
+
+      /*
+       Set Current state of photos array as variable to update it with the new comments data,
+       then update state with new photos array data
+       */
       let currentPhotos = this.state.photos;
-      
       let updatePhotoItem = this.state.photos[index];
 
-      //add comments to item in original array
+      
+      /*
+       Convert data object to an array and Add comments to selectedObject user has clicked on.
+       */
       updatePhotoItem.comments.user_comments = InstagramHelpers.toArray(response.data);
 
-      //change master array
+      
+      /*
+       Add the new photo object with comments to the original photos array based on the current index passed in.
+       */
       currentPhotos[index] = updatePhotoItem;
 
-      //update localstorage
+      /*
+       Update the locally stored data with the new photos array
+       */
       localStorage.setItem('etInstagram', JSON.stringify(currentPhotos));
 
-      // update state
+      /*
+       Finally update the state with new photos array and update the current selected item with the new data.
+       */
       this.setState({
         photos: currentPhotos,
         selectedPhoto:
@@ -106,11 +125,28 @@ class InstagramApp extends React.Component {
    */
   modalOpen(){
     let scrollPosition = $(window).scrollTop();
-    $("body").css({
-      top: "-" + scrollPosition + "px",
-      position: "fixed",
-      width: '100%'
-    });
+    let body = {};
+
+
+    /*
+     Set height to 100% on mobile devices to fix white space issue
+     */
+    if( InstagramHelpers.getDeviceWidth() < 767 ){
+      body = {
+        top: "-" + scrollPosition + "px",
+        position: "fixed",
+        width: '100%',
+        height: '100%'
+      }
+    }else {
+      body = {
+        top: "-" + scrollPosition + "px",
+        position: "fixed",
+        width: '100%'
+      }
+    }
+    
+    $("body").css(body);
     $("footer").css({
       height: '100vh'
     });
@@ -193,11 +229,20 @@ class InstagramApp extends React.Component {
       }
     };
 
-
+    let renderOverlay = () => {
+      if(this.state.modalOpen){
+        return (
+          <div className="insta-modal__overlay" onClick={this.handleClose}></div>
+        );
+      }
+    };
 
     return (
       <div className="insta-container">
-        <h4>Latest Instagram shots</h4>
+        <div className="insta-container__header">
+          <h4>Latest Instagram shots</h4>
+          <a href="https://www.instagram.com/everytuesday/" className="insta-follow-btn" target="_blank">Click to follow!</a>
+        </div>
         {/*
          - Send photos to the list to loop through
          - photoclick function passed through to InstagramList.jsx and then through to InstagramImage.jsx
@@ -205,7 +250,6 @@ class InstagramApp extends React.Component {
          */}
         <InstagramList photos={this.state.photos} photoclick={this.handlePhotoClick} dataLoaded={this.state.loaded}/>
         {renderModal()}
-        <a href="https://www.instagram.com/everytuesday/" className="insta-follow-btn" target="_blank">Follow me</a>
       </div>
     
     )

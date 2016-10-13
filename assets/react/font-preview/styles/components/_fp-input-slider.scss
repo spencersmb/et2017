@@ -37,6 +37,10 @@
       @include transform(translateX(0)translateZ(0));
     }
 
+    &.fp-logged-in{
+      margin-top: 32px;
+    }
+
     .fp-item-type, .text{
       padding-left: 20px;
     }

@@ -1,5 +1,6 @@
 <?php
 /* Template Name: React Product page */
+
 //FEATURED SECTION
 //wp_get_attachment_url gets url and pass in a function to get the post thumbnail ID passing in the ID of the post.
 $thumbnail_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
@@ -47,7 +48,7 @@ get_header(); ?>
             <div class="fullwidth">
 
                 <!-- portfolio items -->
-                <div class="row">
+                <div class="flex-row flex-row-md">
 
                     <!-- custom loop for projects -->
                     <?php
@@ -77,12 +78,16 @@ get_header(); ?>
 
                         $styles_string = "";
 
-                        //convert styles array to string
-                        foreach ( $font_styles as $key => $value){
-                            $styles_string .= $value['style'];
 
-                            if($key == 0 && count($font_styles) > 1){
-                                $styles_string .= ", ";
+                        //check if font style
+                        //convert styles array to string
+                        if($font_styles){
+                            foreach ( $font_styles as $key => $value){
+                                $styles_string .= $value['style'];
+
+                                if($key == 0 && count($font_styles) > 1){
+                                    $styles_string .= ", ";
+                                }
                             }
                         }
 
@@ -98,7 +103,7 @@ get_header(); ?>
 
                         ?>
 
-                        <div class="col-sm-6 col-md-4 product-item">
+                        <div class="flex-xs flex-sm-4 flex-md-6 product-item">
                             <div class="product-content">
                                 <!-- echo out our own url for the image -->
                                 <div class="product-img">

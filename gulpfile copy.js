@@ -65,7 +65,7 @@ var gulp = require('gulp'),
 	notify = require('gulp-notify'),
 	cmq = require('gulp-combine-media-queries'),
 	mmq = require('gulp-merge-media-queries'),
-// runSequence  = require('gulp-run-sequence'),
+	// runSequence  = require('gulp-run-sequence'),
 	runSequence = require('run-sequence'),
 	sass = require('gulp-sass'),
 	plugins = require('gulp-load-plugins')({
@@ -171,7 +171,7 @@ gulp.task('browser-sync', function() {
  * Sass output styles: https://web-design-weekly.com/2014/06/15/different-sass-output-styles/
  */
 var autoprefixerOptions = {
-	browsers: ['last 4 versions', '> 2%', 'Firefox ESR']
+	browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 };
 gulp.task('styles', function() {
 	return gulp.src('./assets/scss/*.scss')

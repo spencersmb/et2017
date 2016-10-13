@@ -15,7 +15,7 @@ $half-line-height: #{$line-height-mobile / 2rem}rem;
   transform: translateY(0) !important;
 }
 
-// fix for nav on safair
+// fix for nav on safari
 .eltdf-page-header .eltdf-sticky-header.header-appear{
   @include transform(translateY(0));
 }

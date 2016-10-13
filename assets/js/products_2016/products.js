@@ -6,10 +6,12 @@ jQuery(document).ready(function($) {
         gumroadData.removeClass('gumroad-button');
     });
 
+    // Youtube Button Open
     $('.youtube-link').click(function(evt){
         evt.preventDefault();
 
         var youtubeLink = $(this).data('youtube');
+
         addZ();
 
         setTimeout(function(){
@@ -19,21 +21,43 @@ jQuery(document).ready(function($) {
 
         setTimeout(function(){
             $('.modal-body').addClass('active');
+
         },300);
+
+        addOverlay();
     });
 
-    // Write code to add temp classes to .eltdf-content & .eltdf-wrapper to remove zindex
+    // Licenes Model Open
     $('.licenseModal').on('click', function(){
-        //console.log('click');
+
         addZ();
+
         setTimeout(function(){
             $('.modal-body').addClass('active');
         },300);
+
+        addOverlay();
     });
 
+    // General modal close
     $('#myModal').on('hidden.bs.modal', function (e) {
         $('.modal-body').removeClass('active');
-        removeZ();
+        removeOverlay();
+    });
+
+    // LicenseModal close
+    $('#licenseModal').on('hidden.bs.modal', function (e) {
+        $('.modal-body').removeClass('active');
+        removeOverlay();
+
+    });
+
+    //stop youtube video on close
+    $('#close-modal').on('click', function (evt) {
+        var video = $("#youtube-player").attr("src");
+        $("#youtube-player").attr("src","");
+        $("#youtube-player").attr("src",video);
+        removeOverlay();
     });
 
     //Product dropdown
@@ -48,13 +72,50 @@ jQuery(document).ready(function($) {
         }
     });
 
+    //initialize
+    initDropdown(productContainer);
+
+    //detect click on the add-to-cart button
+    addToCartBtn.on('click', function(event) {
+
+        var selectedButton = $(this);
+
+
+        if(!animating) {
+            //animate if not already animating
+            animating =  true;
+            resetCustomization(addToCartBtn);
+
+            selectedButton.addClass('is-added').find('path').eq(0).animate({
+                //draw the check icon
+                'stroke-dashoffset':0
+            }, 800, function(){
+                setTimeout(function(){
+                    //updateCart();
+                    selectedButton.removeClass('is-added').find('a').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                        //wait for the end of the transition to reset the check icon
+                        addToCartBtn.find('path').eq(0).css('stroke-dashoffset', '19.79');
+                        animating =  false;
+
+                    });
+
+                    //if( $('.no-csstransitions').length > 0 ) {
+                    //    // check if browser doesn't support css transitions
+                    //    selectedButton.find('path').eq(0).css('stroke-dashoffset', '19.79');
+                    //    animating =  false;
+                    //}
+                }, 600);
+            });
+        }
+    });
+
     function addZ() {
         $(".eltdf-content").addClass("products-zindex");
         $(".eltdf-wrapper").addClass("products-zindex");
     }
 
     function removeZ() {
-        $(".eltdf-content").removeClass("products-zindex");
+        $(".eltdf-content.products-zindex").removeClass("products-zindex");
         $(".eltdf-wrapper").removeClass("products-zindex");
     }
 
@@ -116,49 +177,25 @@ jQuery(document).ready(function($) {
         productContainer.find('[data-type="select"]').removeClass('is-open');
     }
 
-    //initialize
-    initDropdown(productContainer);
+    function addOverlay(){
+        var overlay = '<div class="lic-overlay"></div>';
 
-    //detect click on the add-to-cart button
-    addToCartBtn.on('click', function(event) {
+        //onclick add our own overlay
+        // $(".products-zindex").find(".eltdf-wrapper-inner");
+        $(".app-wrapper").parent(".eltdf-content-inner").append(overlay);
 
-        var selectedButton = $(this);
+        //stop scroll
+        // $("body").addClass("lic-open");
+        $(".eltdf-sticky-header").addClass("modal-open");
+    }
 
+    function removeOverlay() {
+        removeZ();
+        $(".lic-overlay").remove();
 
-        if(!animating) {
-            //animate if not already animating
-            animating =  true;
-            resetCustomization(addToCartBtn);
-
-            selectedButton.addClass('is-added').find('path').eq(0).animate({
-                //draw the check icon
-                'stroke-dashoffset':0
-            }, 800, function(){
-                setTimeout(function(){
-                    //updateCart();
-                    selectedButton.removeClass('is-added').find('a').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-                        //wait for the end of the transition to reset the check icon
-                        addToCartBtn.find('path').eq(0).css('stroke-dashoffset', '19.79');
-                        animating =  false;
-
-                    });
-
-                    //if( $('.no-csstransitions').length > 0 ) {
-                    //    // check if browser doesn't support css transitions
-                    //    selectedButton.find('path').eq(0).css('stroke-dashoffset', '19.79');
-                    //    animating =  false;
-                    //}
-                }, 600);
-            });
-        }
-    });
-
-    //stop youtube video on close
-    $('#close-modal').on('click', function (evt) {
-        var video = $("#youtube-player").attr("src");
-        $("#youtube-player").attr("src","");
-        $("#youtube-player").attr("src",video);
-    });
-
+        //stop scroll
+        // $("body").removeClass("lic-open");
+        $(".eltdf-sticky-header").removeClass("modal-open");
+    }
 
 });
