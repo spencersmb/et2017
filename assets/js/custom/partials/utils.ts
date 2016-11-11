@@ -1,5 +1,6 @@
 import {BpsInterface} from "../interfaces/bps.interface";
-const $ = jQuery;
+import jquery = require('jquery');
+const $ = jquery;
 
 class UtilityComponent {
   windowWidth: number;
@@ -36,6 +37,7 @@ class UtilityComponent {
   };
   private _checkBreakpoint = () => {
     // make breakpoint event available to all files via the window object
+    console.log("check breakpoint on window resize");
     let old_breakpoint = this.breakpoint;
 
     this._setBreakpoint();
@@ -57,7 +59,6 @@ class UtilityComponent {
   private _setWindowWidth = () => {
     this.windowWidth = window.innerWidth;
   };
-
 
   public static whichBrowser() {
     if ( (navigator.userAgent.toLowerCase().indexOf("safari") > -1) && !(
@@ -94,13 +95,13 @@ class UtilityComponent {
   }
 
   init(): void {
-    // console.log("Utilities loaded");
+    console.log("Utilities loaded");
 
     // set breakpoint on window load
     this._setBreakpoint();
     this._setWindowWidth();
 
-    console.log("Current Breakpoint is:", this.breakpoint);
+    // console.log("Current Breakpoint is:", this.breakpoint);
 
     // console.log(this.browser);
 

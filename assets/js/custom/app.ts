@@ -4,23 +4,28 @@
  */
 
 import Utils from "./partials/utils";
-import Search from "./partials/search";
+// import Search from "./partials/search";
 import Nav from "./navigation/navigation";
-import Products from "./partials/products-react";
-
-const $ = jQuery;
+// import Products from "./partials/products-react";
+import Products from "./products/products-main";
+import Forms from "./partials/et-ck-forms";
+// const $ = jQuery;
+import jquery = require('jquery');
+const $ = jquery;
 
 (function() {
   class App {
     constructor() {
+      
     }
 
     init(): void {
-      // console.log("Neat loaded");
+      console.log("Neat loaded");
       Utils.init();
       Nav.init();
-      Search.init();
+      // Search.init();
       Products.init();
+      Forms.init();
     }
   }
 
@@ -28,49 +33,8 @@ const $ = jQuery;
 
   /** run all functions */
   $(document).ready(() => {
+
     bootstrap.init();
-
-    // let app = document.getElementById('app');
-    // console.log(app);
-    //
-    // let event = new CustomEvent(
-    //   "fontCheck",
-    //   {
-    //     detail: {
-    //       message: "Hello World!",
-    //       time: new Date(),
-    //     },
-    //     bubbles: true,
-    //     cancelable: true
-    //   }
-    // );
-    // let myButton = document.getElementById('test');
-    //
-    //
-    //
-    // myButton.addEventListener("click", (e) => {
-    //   console.log("button click");
-    //
-    //   let testData = {
-    //     title: "Tuesday Script",
-    //     text: "Tuesday font preview",
-    //     name: "Tuesday",
-    //     styles: ["Regular"]
-    //   };
-    //
-    //   $(app).attr('data-title', testData.title);
-    //   // app.dataset.title = testData.title;
-    //   // let initialState = {
-    //   //   title: app.dataset.title,
-    //   //   text: app.dataset.text,
-    //   //   name: app.dataset.name,
-    //   //   styles: app.dataset.styles.split(',')
-    //   // };
-    //
-    //   e.currentTarget.dispatchEvent(event);
-    //
-    // });
-
 
   });
 

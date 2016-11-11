@@ -1,5 +1,7 @@
-const $ = jQuery;
 import Utils from "../partials/utils";
+import jquery = require('jquery');
+const $ = jquery;
+
 class NavComponent {
 
   storeIcon: JQuery;
@@ -25,7 +27,7 @@ class NavComponent {
   }
 
   init(): void {
-    // console.log("Nav loaded");
+    console.log("Nav loaded");
 
     this.checkStore();
 

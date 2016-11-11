@@ -1,27 +1,48 @@
 <?php
 
 
-function getImgSrcSet( $post_id, $width, $height, $size ){
+function et2017_getImgSrcSet( $attach_id = null, $attach_url = null, $width = null, $height = null, $crop = true ){
+
 
     $output = '';
+    if(empty($attach_id)) {
+        //get attachment id from attachment url
+        $attach_id = readanddigest_get_attachment_id_from_url($attach_url);
+    }
 
-    $img_src = wp_get_attachment_image_url( $post_id, $size );
-    $img_srcset = wp_get_attachment_image_srcset( $post_id, $size );
-    $img_alt = get_post_meta( $post_id, '_wp_attachment_image_alt', 'true');
+    if(!empty($attach_id) || !empty($attach_url)) {
+        $img_info = readanddigest_resize_image($attach_id, $attach_url, $width, $height, $crop);
+        $img_alt = !empty($attach_id) ? get_post_meta($attach_id, '_wp_attachment_image_alt', true) : '';
+
+        $image_1024 = readanddigest_resize_image($attach_id, $attach_url, 630, 630, $crop);
+        $image_500 = readanddigest_resize_image($attach_id, $attach_url, 450, 450, $crop);
 
 
-    $output .= '
-        <img width="'.$width.'" 
-             height="'.$height.'"
+        $img_src = $img_info['img_url'];
+        $img_srcset = wp_get_attachment_image_srcset( $attach_id, array( $width, $height ) );
+        $img_alt = get_post_meta( $attach_id, '_wp_attachment_image_alt', true);
+
+
+        if(is_array($img_info) && count($img_info)) {
+
+            $output .= '
+        <img width="'.$img_info['img_width'].'"
+             height="'.$img_info['img_height'].'"
              class="attachment-full size-full wp-post-image"
-             src="'.esc_url( $img_src ) .'"
-             srcset="'. esc_attr( $img_srcset ).'"
-             sizes="(max-width: '.$width.'px) 100vw, '.$width.'px" draggable="false" 
+             src="'.$img_info['img_url'].'"
+             srcset="
+                '.$image_500['img_url'].' 480w,
+                '.$image_500['img_url'].' 559w,
+                '.$image_1024['img_url'].' 632w,
+                '.$img_info['img_url'].' 700w"
+             sizes="(max-width: 1750px) 40vw, 700px" draggable="false" 
              alt="'. esc_attr($img_alt).'">
         ';
 
-    return $output;
+        }
+    }
 
+    return $output;
 
 }
 function getBlogCategories( $cat_object ){
@@ -119,7 +140,7 @@ function sprout_ext_get_feature_posts($total, $category) {
 
 }
 
-function sprout_ext_build_featured_posts(){
+function et_twenty_seventeen_build_featured_posts(){
 
     $output = '';
 
@@ -141,17 +162,8 @@ function sprout_ext_build_featured_posts(){
     if( $the_query->have_posts()): while( $the_query->have_posts() ): $the_query->the_post();
 
     // Set post image Id
-    $postId = get_post_thumbnail_id( $the_query->ID );
-
-
-    // build main image
-    $output .= '
-        <div class="eltdf-pswt-image">
-              '. getImgSrcSet($postId, 1920, 928, "large") .'
-             <a itemprop="url" class="eltdf-pswt-link" href="'.get_the_permalink().'" target="_self">
-            </a>
-        </div> <!-- end image -->
-    ';
+    $thumbnailId = get_post_thumbnail_id( get_the_ID() );
+    $url = wp_get_attachment_url( $thumbnailId );
 
     // Set cat object
     $cat_name = get_the_category();
@@ -162,39 +174,47 @@ function sprout_ext_build_featured_posts(){
     $archive_month = get_the_time('m');
     $archive_day   = get_the_time('d');
 
+    // build main image
+    $output .= '
+        <div class="eltdf-pswt-image" style="background-image: url('.et_twenty_seventeen_generate_background_img($thumbnailId, $url, 933, 660, true).')">
+        </div> <!-- end image -->
+    ';
+
     $output .= '
         <div class="eltdf-pswt-content">
         
-            <div class="eltdf-post-info-category">
-            ' . getBlogCategories($cat_name) .'
+            <div class="eltdf-pswt-content-inner">
+                <span class="blog-feature-latest">'. esc_html__('Latest Post', 'et_twenty_seventeen') .'</span>
+                <h1 class="eltdf-pswt-title">
+                    <a itemprop="url" href="'.get_the_permalink().'" target="_self">' .  get_the_title() .'</a>
+                </h1>
+                <div class="eltdf-pt-three-excerpt">
+                    '. et_twenty_seventeen_getExcerpt( 30 ) .'
+                </div>
+                <a itemprop="url" href="'.get_the_permalink().'" target="_self" class="et-btn-round">'. esc_html__('View Post', 'et_twenty_seventeen') .'</a>
+                <div class="eltdf-pswt-info">
+                    <div class="eltdf-pswt-info-section clearfix">
+                    
+                        <div class="eltdf-pswt-info-section-left">
+                            <div itemprop="dateCreated" class="eltdf-post-info-date entry-date updated">
+                                <a itemprop="url" href="'.get_day_link( $archive_year, $archive_month, $archive_day).'">'. wp_kses($date, 'et_twenty_seventeen') .'</a>
+                                <meta itemprop="interactionCount" content="UserComments: 0">
+                            </div>
+    
+                            '.getLikesHtml($display_like).'
+    
+                        </div><!-- ./eltdf-pswt-info-section-left -->
+                        
+                        <div class="eltdf-pswt-info-section-right">
+                            <div class="eltdf-post-info-comments-holder">
+                                <a class="eltdf-post-info-comments" href="'. esc_url( get_comments_link() ) .'" target="_self">'. get_comments_number_text('0 ' . esc_html__('Comments','readanddigest'), '1 '.esc_html__('Comment','readanddigest'), '% '.esc_html__('Comments','readanddigest') ).'</a>
+                            </div>
+                        </div><!-- ./eltdf-pswt-info-section-right -->
+                        
+                    </div><!-- ./eltdf-pswt-info-section -->
+                </div><!-- ./eltdf-pswt-info -->
+            
             </div>
-            
-            <h1 class="eltdf-pswt-title">
-                <a itemprop="url" href="'.get_the_permalink().'" target="_self">' .  get_the_title() .'</a>
-            </h1>
-            
-            <div class="eltdf-pswt-info">
-                <div class="eltdf-pswt-info-section clearfix">
-                
-                    <div class="eltdf-pswt-info-section-left">
-                        <div itemprop="dateCreated" class="eltdf-post-info-date entry-date updated">
-                            <a itemprop="url" href="'.get_day_link( $archive_year, $archive_month, $archive_day).'">'. wp_kses($date, 'et_twenty_seventeen') .'</a>
-                            <meta itemprop="interactionCount" content="UserComments: 0">
-                        </div>
-
-                        '.getLikesHtml($display_like).'
-
-                    </div><!-- ./eltdf-pswt-info-section-left -->
-                    
-                    <div class="eltdf-pswt-info-section-right">
-                        <div class="eltdf-post-info-comments-holder">
-                            <a class="eltdf-post-info-comments" href="'. esc_url( get_comments_link() ) .'" target="_self">'. get_comments_number_text('0 ' . esc_html__('Comments','readanddigest'), '1 '.esc_html__('Comment','readanddigest'), '% '.esc_html__('Comments','readanddigest') ).'</a></div>
-                            
-                        </div>
-                    </div><!-- ./eltdf-pswt-info-section-right -->
-                    
-                </div><!-- ./eltdf-pswt-info-section -->
-            </div><!-- ./eltdf-pswt-info -->
             
         </div><!-- ./eltdf-pswt-content -->
     ';
@@ -236,7 +256,7 @@ function et_twenty_seventeen_getAllPages($type){
     return $page_array;
 }
 
-function sprout_ext_blog_vc_func() {
+function et_twenty_seventeen_blog_vc_func() {
     vc_map( array(
         "name"      => esc_html__( "Feature Blog List", "sprout_ext" ),
         "base"      => "blog",
@@ -275,7 +295,7 @@ function sprout_ext_blog_vc_func() {
     ) );
 
 };
-sprout_ext_blog_vc_func();
+et_twenty_seventeen_blog_vc_func();
 
 // [blog]
 add_shortcode( 'blog', 'sprout_ext_blog_shortcode' );
@@ -297,7 +317,7 @@ function sprout_ext_blog_shortcode( $atts, $content = null ) { // New function p
         'selected_blog' => $selected_blog
     );
     $output .= '<div class="et-feature-slide">';
-    $output .= sprout_ext_build_featured_posts();
+    $output .= et_twenty_seventeen_build_featured_posts();
 
     $output .= '
         </div>

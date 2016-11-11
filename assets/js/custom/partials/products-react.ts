@@ -53,7 +53,7 @@ class ProductsComponent {
       styles: element.data("styles").split(',')
     };
 
-    // set new data on react app
+    // pass new data into react app
     this.setData(data);
 
     // fire event to notify React app to update
@@ -76,7 +76,7 @@ class ProductsComponent {
   }
 
   init(): void {
-    console.log("products");
+    console.log("Products loaded");
     this.createEvent();
     this.addButtonClick();
   }

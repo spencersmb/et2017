@@ -161,7 +161,7 @@ jQuery(document).ready(function($) {
                     selected.siblings('.add-to-cart').find('a').attr('href', gumroadLink);
 
                     //Set price
-                    selected.parents('.product-details').find('.product-price').text(gumroadPrice);
+                    selected.parents('.et-box-item__description').find('.product-price').text(gumroadPrice);
                 }
             });
         });
@@ -180,9 +180,10 @@ jQuery(document).ready(function($) {
     function addOverlay(){
         var overlay = '<div class="lic-overlay"></div>';
 
-        //onclick add our own overlay
-        // $(".products-zindex").find(".eltdf-wrapper-inner");
-        $(".app-wrapper").parent(".eltdf-content-inner").append(overlay);
+        //onclick add our own overlay to body
+        // $(".app-wrapper").parent(".eltdf-content-inner").append(overlay);
+        $(".eltdf-full-width").append(overlay);
+        
 
         //stop scroll
         // $("body").addClass("lic-open");

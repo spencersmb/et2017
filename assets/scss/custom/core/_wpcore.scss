@@ -1,0 +1,273 @@
+/*------------------------------------*\
+  WORDPRESS CORE
+\*------------------------------------*/
+
+.alignnone {
+  margin: .8rem 0 1.6rem 0;
+}
+
+.aligncenter {
+  display: block;
+  margin: 5px auto;
+}
+
+.alignright {
+  float: none;
+  margin: 0 auto 2.4rem;
+
+  @include breakpoint(desktop) {
+    float: right;
+    margin: .8rem 0 1.6rem 1.6rem;
+  }
+}
+
+.alignleft {
+  float: none;
+  margin: 0 auto 2.4rem;
+
+  @include breakpoint(desktop) {
+    float: left;
+    margin: .8rem 1.6rem 1.6rem 0;
+  }
+}
+
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+  margin: .8rem 1.6rem 1.6rem 0;
+}
+
+a img.alignleft {
+  float: left;
+  margin: .8rem 1.6rem 1.6rem 0;
+}
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption {
+  background: darken($grey, 10%);
+  max-width: 100%;
+  padding: 2rem;
+  text-align: center;
+
+  figcaption {
+    padding: .8rem 0 1.6rem;
+  }
+
+  &.aligncenter {
+    margin-bottom: 2.4rem;
+  }
+
+  &.alignleft {
+    margin: 5px 20px 20px 0;
+  }
+
+  &.alignnone {
+    margin: 5px 20px 20px 0;
+  }
+
+  &.alignright {
+    margin: 5px 0 20px 20px;
+  }
+
+  img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: auto;
+  }
+
+}
+
+.wp-caption .wp-caption-text,
+.gallery-caption {
+  margin: 0;
+  padding: .5rem;
+
+  @include breakpoint(mobile) {
+  }
+
+  @include breakpoint(tablet) {
+  }
+
+  @include breakpoint(laptop) {
+  }
+
+  @include breakpoint(desktop) {
+    // font: 300 2rem/3.1rem sans-serif;
+    @include font-size(1.1);
+    @include line-height(1.5);
+  }
+}
+
+.textwidget img {
+  margin: 1rem 0;
+}
+
+.sticky {
+  margin: 0;
+}
+
+.bypostauthor {
+  background: inherit;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+
+.screen-reader-text:focus {
+  background-color: $white;
+  border-radius: 3px;
+  box-shadow: $shadow-m;
+  clip: auto !important;
+  color: $text-color;
+  display: block;
+  font-size: 14px;
+  font-size: .875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
+.gallery-item {
+  display: inline-block;
+  opacity: 1;
+  padding: 0 1.1400652% 2.2801304%;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+
+  img {
+    margin: 0 auto;
+  }
+
+  .gallery-columns-2 & {
+    max-width: 50%;
+  }
+
+  .gallery-columns-3 & {
+    max-width: 33.33%;
+  }
+
+  .gallery-columns-4 & {
+    max-width: 25%;
+  }
+
+  .gallery-columns-5 & {
+    max-width: 20%;
+  }
+
+  .gallery-columns-6 & {
+    max-width: 16.66%;
+  }
+
+  .gallery-columns-7 & {
+    max-width: 14.28%;
+  }
+
+  .gallery-columns-8 & {
+    max-width: 12.5%;
+  }
+
+  .gallery-columns-9 & {
+    max-width: 11.11%;
+  }
+}
+
+/* calendar widget */
+.widget-calendar {
+  display: table;
+  width: 100%;
+}
+
+#wp-calendar {
+  width: 100%;
+
+  caption {
+    color: $b;
+    font-size: 12px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  thead {
+    font-size: 10px;
+
+    th {
+      padding-bottom: 10px;
+    }
+  }
+
+  tbody {
+    color: $b;
+    font-family: sans-serif;
+    font-weight: 300;
+
+    td {
+      background: $w;
+      border: 1px solid $w;
+      padding: 8px;
+      text-align: center;
+    }
+
+    td:hover {
+      background: $w;
+    }
+
+    .pad {
+      background: none;
+    }
+  }
+
+  tfoot {
+    #next {
+      font-size: 10px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    #prev {
+      font-size: 10px;
+      padding-top: 10px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Recommended sizes
+ * ------------------------------------------------------------------------- */
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  height: auto;
+  max-width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+ * Single Posts
+ * ------------------------------------------------------------------------- */

@@ -1,0 +1,1426 @@
+/* Global styles
+   ========================================================================== */
+@media only screen and (max-width: 1200px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 768px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 420px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .eltdf-grid,
+  .eltdf-container-inner,
+  .eltdf-grid-section .eltdf-section-inner {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 818px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 650px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 470px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .eltdf-boxed .eltdf-wrapper .eltdf-wrapper-inner,
+  .eltdf-boxed .eltdf-footer-inner {
+    width: 86%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-no-title-area .eltdf-content {
+    margin-top: 0 !important;
+  }
+  .eltdf-content .eltdf-two-columns-66-33 > .eltdf-column1,
+  .eltdf-content .eltdf-two-columns-66-33 > .eltdf-column2,
+  .eltdf-content .eltdf-two-columns-33-66 > .eltdf-column1,
+  .eltdf-content .eltdf-two-columns-33-66 > .eltdf-column2,
+  .eltdf-content .eltdf-two-columns-75-25 > .eltdf-column1,
+  .eltdf-content .eltdf-two-columns-75-25 > .eltdf-column2,
+  .eltdf-content .eltdf-two-columns-25-75 > .eltdf-column1,
+  .eltdf-content .eltdf-two-columns-25-75 > .eltdf-column2,
+  .eltdf-content .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner > .eltdf-column,
+  .eltdf-content .eltdf-three-columns > .eltdf-three-columns-inner > .eltdf-column,
+  .eltdf-content .eltdf-four-columns > .eltdf-four-columns-inner > .eltdf-column,
+  .eltdf-content .eltdf-five-columns > .eltdf-five-columns-inner > .eltdf-column {
+    width: 100%;
+  }
+  .eltdf-content .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner,
+  .eltdf-content .eltdf-three-columns > .eltdf-three-columns-inner,
+  .eltdf-content .eltdf-four-columns > .eltdf-four-columns-inner,
+  .eltdf-content .eltdf-five-columns > .eltdf-five-columns-inner {
+    margin: 0;
+  }
+  .eltdf-content .eltdf-two-columns-66-33 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-66-33 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-33-66 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-33-66 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-75-25 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-75-25 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-25-75 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-25-75 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-content .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-content .eltdf-three-columns > .eltdf-three-columns-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-content .eltdf-four-columns > .eltdf-four-columns-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-content .eltdf-five-columns > .eltdf-five-columns-inner > .eltdf-column > .eltdf-column-inner {
+    padding: 0;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  h3 {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-two-columns-66-33 > .eltdf-column1,
+  .eltdf-two-columns-66-33 > .eltdf-column2,
+  .eltdf-two-columns-33-66 > .eltdf-column1,
+  .eltdf-two-columns-33-66 > .eltdf-column2,
+  .eltdf-two-columns-75-25 > .eltdf-column1,
+  .eltdf-two-columns-75-25 > .eltdf-column2,
+  .eltdf-two-columns-25-75 > .eltdf-column1,
+  .eltdf-two-columns-25-75 > .eltdf-column2,
+  .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner > .eltdf-column,
+  .eltdf-three-columns > .eltdf-three-columns-inner > .eltdf-column,
+  .eltdf-four-columns > .eltdf-four-columns-inner > .eltdf-column,
+  .eltdf-five-columns > .eltdf-five-columns-inner > .eltdf-column,
+  .eltdf-comment-form .eltdf-three-columns .eltdf-column,
+  .eltdf-three-columns.eltdf-contact-form-layout .eltdf-column {
+    width: 100%;
+  }
+  .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner,
+  .eltdf-three-columns > .eltdf-three-columns-inner,
+  .eltdf-four-columns > .eltdf-four-columns-inner,
+  .eltdf-five-columns > .eltdf-five-columns-inner,
+  .eltdf-comment-form .eltdf-three-columns > .eltdf-three-columns-inner,
+  .eltdf-three-columns.eltdf-contact-form-layout > .eltdf-three-columns-inner {
+    margin: 0;
+  }
+  .eltdf-two-columns-66-33 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-two-columns-66-33 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-two-columns-33-66 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-two-columns-33-66 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-two-columns-75-25 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-two-columns-75-25 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-two-columns-25-75 > .eltdf-column1 > .eltdf-column-inner,
+  .eltdf-two-columns-25-75 > .eltdf-column2 > .eltdf-column-inner,
+  .eltdf-two-columns-50-50 > .eltdf-two-columns-50-50-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-three-columns > .eltdf-three-columns-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-four-columns > .eltdf-four-columns-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-five-columns > .eltdf-five-columns-inner > .eltdf-column > .eltdf-column-inner,
+  .eltdf-comment-form .eltdf-three-columns .eltdf-column .eltdf-column-inner,
+  .eltdf-three-columns.eltdf-contact-form-layout .eltdf-column .eltdf-column-inner {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 19px;
+  }
+  h3 {
+    font-size: 17px;
+  }
+}
+
+/*------------------------------------------------------------------
+ * This is main responsive css file for theme. It is broken into following sections:
+ * 1.  Header Styles
+ * 2.  Footer styles
+ * 3.  Title area styles
+ * 4.  Search functionality styles
+ * 5.  Sidebar responsive styles
+ * 6.  Shortcodes styles
+ * 7.  Blog styles
+ * 8.  Widgets styles
+ * 9.  Side area styles
+
+-------------------------------------------------------------------*/
+/* ==========================================================================
+   1. Header responsive styles
+   ========================================================================== */
+@media only screen and (max-width: 1200px) {
+  .eltdf-top-bar .eltdf-vertical-align-containers {
+    padding: 0 25px;
+  }
+  .eltdf-page-header {
+    padding: 0 25px;
+  }
+  .eltdf-main-menu > ul > li > a span.item_inner {
+    padding: 0px 12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-top-bar .eltdf-vertical-align-containers {
+    padding: 0 30px;
+  }
+  .eltdf-top-bar .eltdf-vertical-align-containers .eltdf-position-center {
+    display: none;
+  }
+  .eltdf-top-bar .eltdf-vertical-align-containers .eltdf-position-left,
+  .eltdf-top-bar .eltdf-vertical-align-containers .eltdf-position-right {
+    width: 50%;
+  }
+  .eltdf-top-bar .eltdf-position-left-inner > .widget,
+  .eltdf-top-bar .eltdf-position-right-inner > .widget {
+    margin: 0 20px 0 0;
+  }
+  .eltdf-top-bar .eltdf-position-left-inner > .widget:last-child,
+  .eltdf-top-bar .eltdf-position-right-inner > .widget:last-child {
+    margin: 0;
+  }
+  .eltdf-top-bar .eltdf-social-icon-widget-holder {
+    padding: 0;
+    margin: 0 15px 0 0;
+    border: 0;
+  }
+  .eltdf-top-bar .eltdf-social-icon-widget-holder:first-child {
+    border: 0;
+  }
+  .eltdf-top-bar .eltdf-social-icon-widget-holder:last-child {
+    margin: 0;
+  }
+  .eltdf-top-bar .widget.widget_nav_menu ul li {
+    margin: 0 15px 5px 0;
+  }
+  .eltdf-top-bar .widget.widget_nav_menu ul li:last-child {
+    margin: 0 0 5px;
+  }
+  .eltdf-page-header {
+    display: none;
+  }
+  .eltdf-mobile-header {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-top-bar .eltdf-vertical-align-containers {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .eltdf-drop-down .wide .second > .inner > ul {
+    width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-drop-down .wide .second > .inner > ul {
+    width: 768px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-boxed.eltdf-sticky-up-mobile-header .mobile-header-appear .eltdf-mobile-header-inner {
+    width: 818px;
+    left: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-boxed.eltdf-sticky-up-mobile-header .mobile-header-appear .eltdf-mobile-header-inner {
+    width: 650px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-boxed.eltdf-sticky-up-mobile-header .mobile-header-appear .eltdf-mobile-header-inner {
+    width: 470px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-boxed.eltdf-sticky-up-mobile-header .mobile-header-appear .eltdf-mobile-header-inner {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .eltdf-boxed.eltdf-sticky-up-mobile-header .mobile-header-appear .eltdf-mobile-header-inner {
+    width: 86%;
+  }
+}
+
+/* ==========================================================================
+   2. Footer responsive styles
+   ========================================================================== */
+/* ==========================================================================
+# Footer responsive style - begin
+========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-footer-bottom-holder .eltdf-two-columns-50-50 .eltdf-column {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-footer-bottom-holder .eltdf-two-columns-50-50 .eltdf-column .eltdf-column-inner {
+    text-align: center !important;
+    margin-bottom: 10px;
+  }
+  .eltdf-footer-bottom-holder .eltdf-two-columns-50-50 .eltdf-column:last-child .eltdf-column-inner {
+    margin-bottom: 0;
+  }
+  footer .eltdf-footer-bottom-holder .widget.widget_nav_menu ul li {
+    margin: 0 12px 0 0;
+  }
+  footer .eltdf-footer-top-holder .eltdf-four-columns .eltdf-column {
+    width: 50%;
+    margin-bottom: 50px;
+  }
+  footer .eltdf-footer-top-holder .eltdf-four-columns .eltdf-column:nth-child(3) {
+    clear: both;
+    margin-bottom: 0;
+  }
+  footer .eltdf-footer-top-holder .eltdf-four-columns .eltdf-column:nth-child(4) {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer .eltdf-footer-top-holder .eltdf-column {
+    margin-bottom: 50px;
+  }
+  footer .eltdf-footer-top-holder .eltdf-column:last-child {
+    margin-bottom: 0;
+  }
+  footer .eltdf-footer-top-holder .eltdf-four-columns .eltdf-column {
+    width: 100%;
+    float: none;
+  }
+  footer .eltdf-footer-bottom-holder {
+    height: auto;
+    line-height: 24px;
+    padding: 11px 0;
+  }
+  footer .eltdf-footer-bottom-holder .eltdf-column-inner {
+    text-align: left !important;
+    margin: 5px 0;
+  }
+  footer .eltdf-footer-bottom-holder .eltdf-social-icon-widget-holder {
+    padding: 0;
+    margin: 0 15px 0 0;
+    border: 0;
+  }
+  footer .eltdf-footer-bottom-holder .eltdf-social-icon-widget-holder:first-child {
+    border: 0;
+  }
+  footer .eltdf-footer-bottom-holder .eltdf-social-icon-widget-holder:last-child {
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+# Footer responsive style - end
+========================================================================== */
+/* ==========================================================================
+   3. Title responsive styles
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-title.eltdf-has-background {
+    background: transparent none repeat scroll 0 0 !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .eltdf-title.eltdf-has-background .eltdf-title-holder {
+    height: 100% !important;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 !important;
+  }
+  .single-post .eltdf-title.eltdf-has-background:not(.eltdf-title-has-thumbnail) .eltdf-title-holder {
+    position: relative;
+  }
+  .eltdf-title.eltdf-title-image-not-responsive .eltdf-title-image {
+    display: block;
+  }
+  .eltdf-title.eltdf-title-image-not-responsive .eltdf-title-image-overlay {
+    width: 100% !important;
+  }
+  .eltdf-title .eltdf-title-holder .eltdf-container {
+    display: block;
+    height: 100%;
+  }
+  .eltdf-title .eltdf-title-holder .eltdf-container-inner {
+    display: table;
+    height: 100%;
+  }
+  .eltdf-title .eltdf-title-holder .eltdf-title-subtitle-holder {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   4. Search responsive styles
+   ========================================================================== */
+/* ==========================================================================
+# Search template responsive style - begin
+========================================================================== */
+/* ==========================================================================
+# Search template responsive style - end
+========================================================================== */
+/* ==========================================================================
+   5. Sidebar responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Sidebar and side menu styles
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-column1 aside.eltdf-sidebar {
+    margin-bottom: 50px;
+  }
+}
+
+/* ==========================================================================
+#Sidebar styles - end
+========================================================================== */
+/* ==========================================================================
+   6. Shortcodes responsive styles
+   ========================================================================== */
+/* Buttons responsive styles
+   ========================================================================== */
+/* ==========================================================================
+# Buttons responsive style - begin
+========================================================================== */
+@media only screen and (max-width: 768px) {
+  .eltdf-btn {
+    padding: 8px 30px;
+  }
+  .eltdf-btn.eltdf-btn-small {
+    padding: 8px 22px;
+  }
+  .eltdf-btn.eltdf-btn-small .eltdf-btn-icon-element {
+    font-size: 1.5em;
+  }
+  .eltdf-btn.eltdf-btn-large {
+    padding: 10px 32px;
+  }
+  .eltdf-btn.eltdf-btn-huge {
+    padding: 13px 20px;
+  }
+  .eltdf-btn .eltdf-btn-text {
+    font-size: 0.85em;
+  }
+  .eltdf-btn .eltdf-btn-icon-element {
+    top: 0;
+    font-size: 1.4em;
+  }
+  .eltdf-btn .eltdf-btn-icon-element.eltdf-icon-font-awesome {
+    top: -2px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-btn {
+    padding: 7px 28px;
+    font-size: 11px;
+  }
+  .eltdf-btn.eltdf-btn-small {
+    padding: 7px 19px;
+  }
+  .eltdf-btn.eltdf-btn-large {
+    padding: 9px 28px;
+  }
+  .eltdf-btn.eltdf-btn-huge {
+    padding: 12px 20px;
+  }
+  .eltdf-btn .eltdf-btn-text {
+    font-size: 0.8em;
+  }
+}
+
+/* ==========================================================================
+# Buttons responsive style - end
+========================================================================== */
+/* Image with hover info responsive styles
+   ========================================================================== */
+/* ==========================================================================
+# Image With Hover Info Style - begin
+   ========================================================================== */
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .eltdf-image-with-hover-info-holder.eltdf-four-columns .eltdf-image-with-hover-info-item {
+    width: calc(33% - 30px);
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .eltdf-image-with-hover-info-holder .eltdf-image-with-hover-info-item {
+    width: calc(50% - 30px) !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-image-with-hover-info-holder .eltdf-image-with-hover-info-item {
+    width: calc(100% - 30px) !important;
+  }
+}
+
+/* ==========================================================================
+# Image With Hover Info Style - end
+   ========================================================================== */
+/* Tabs responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Tabs style - begin
+   ========================================================================== */
+@media only screen and (max-width: 768px) {
+  .eltdf-tabs .eltdf-tabs-nav li {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-tabs .eltdf-tabs-nav li {
+    display: block;
+    float: none;
+  }
+  .eltdf-tabs .eltdf-tabs-nav li.eltdf-tabs-title-holder {
+    clear: both;
+    margin: 0 0 30px;
+  }
+  .eltdf-tabs .eltdf-tabs-nav li.eltdf-tabs-title-holder.eltdf-tab-title-without-image {
+    text-align: center;
+    margin: 0 0 20px;
+  }
+  .eltdf-tabs .eltdf-tabs-nav li:not(.eltdf-tabs-title-holder) a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Tabs style - end
+   ========================================================================== */
+/* Post Slider Classic responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Post Classic Slider responsive start style
+   ========================================================================== */
+@media only screen and (max-width: 1440px) {
+  .eltdf-psc-holder.eltdf-psc-full-screen .eltdf-psc-content .eltdf-psc-info {
+    bottom: 10px;
+  }
+  .eltdf-psc-holder.eltdf-psc-full-screen .flex-control-paging {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-content {
+    padding: 5%;
+  }
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-content .eltdf-psc-author-info,
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-content .eltdf-psc-info {
+    margin-top: 3.5%;
+  }
+  .eltdf-psc-holder .eltdf-psc-info {
+    display: none;
+  }
+  .eltdf-psc-holder .flex-direction-nav li.flex-nav-prev {
+    left: 10px;
+  }
+  .eltdf-psc-holder .flex-direction-nav li.flex-nav-next {
+    right: 10px;
+  }
+  .eltdf-psc-holder .flex-control-nav.flex-control-thumbs {
+    margin: 4px -2px 0;
+  }
+  .eltdf-psc-holder .flex-control-nav.flex-control-thumbs li {
+    padding: 0 2px 4px;
+  }
+  .eltdf-psc-holder .flex-control-paging > li {
+    margin: 0 8px;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-1 .flex-control-nav.flex-control-thumbs li {
+    width: 200%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-2 .flex-control-nav.flex-control-thumbs li {
+    width: 100%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-3 .flex-control-nav.flex-control-thumbs li {
+    width: 66.6666666667%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-4 .flex-control-nav.flex-control-thumbs li {
+    width: 50%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-5 .flex-control-nav.flex-control-thumbs li {
+    width: 40%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-6 .flex-control-nav.flex-control-thumbs li {
+    width: 33.3333333333%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-7 .flex-control-nav.flex-control-thumbs li {
+    width: 28.5714285714%;
+  }
+  .eltdf-psc-holder.eltdf-psc-number-8 .flex-control-nav.flex-control-thumbs li {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-content {
+    padding: 20px 40px;
+    background-color: rgba(34, 34, 34, 0.9);
+  }
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-content .eltdf-psc-info-section > div {
+    display: block;
+    margin: 0;
+  }
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-image + .eltdf-psc-content {
+    position: relative;
+    top: 0;
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+  .eltdf-psc-holder .eltdf-psc-slides .eltdf-psc-slide:after {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-psc-holder .flex-control-nav.flex-control-thumbs > li .eltdf-psc-thumb-title {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Post Classic Slider responsive end style
+   ========================================================================== */
+/* Post Slider With Thumbnails responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Post Classic Slider responsive start style
+   ========================================================================== */
+@media only screen and (max-width: 768px) {
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-content {
+    padding: 10% 5% 5%;
+  }
+  .eltdf-pswt-holder .flex-control-nav.flex-control-thumbs {
+    margin: 4px -2px 0;
+  }
+  .eltdf-pswt-holder .flex-control-nav.flex-control-thumbs li {
+    padding: 0 2px 4px;
+  }
+  .eltdf-pswt-holder .flex-control-paging > li {
+    margin: 0 8px;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-1 .flex-control-nav.flex-control-thumbs li {
+    width: 200%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-2 .flex-control-nav.flex-control-thumbs li {
+    width: 100%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-3 .flex-control-nav.flex-control-thumbs li {
+    width: 66.6666666667%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-4 .flex-control-nav.flex-control-thumbs li {
+    width: 50%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-5 .flex-control-nav.flex-control-thumbs li {
+    width: 40%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-6 .flex-control-nav.flex-control-thumbs li {
+    width: 33.3333333333%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-7 .flex-control-nav.flex-control-thumbs li {
+    width: 28.5714285714%;
+  }
+  .eltdf-pswt-holder.eltdf-pswt-number-8 .flex-control-nav.flex-control-thumbs li {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-content {
+    padding: 20px 40px;
+    background-color: rgba(34, 34, 34, 0.9);
+  }
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-content .eltdf-pswt-info-section > div {
+    display: block;
+    margin: 0;
+  }
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-image + .eltdf-pswt-content {
+    position: relative;
+  }
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-slide:after {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-pswt-holder .flex-control-nav.flex-control-thumbs > li .eltdf-pswt-thumb-title {
+    display: none;
+  }
+  .eltdf-pswt-holder .eltdf-pswt-slides .eltdf-pswt-content .eltdf-pswt-info-section {
+    display: none;
+  }
+  .eltdf-pswt-thumb-slider-holder .eltdf-pswt-title {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Post Classic Slider responsive end style
+   ========================================================================== */
+/* Post Slider Carousel responsive styles
+   ========================================================================== */
+/* Post Slider Carousel Swipe responsive styles
+   ========================================================================== */
+@media only screen and (max-width: 1280px) {
+  .eltdf-pcs-holder .eltdf-post-item.eltdf-pt-five-item .eltdf-pt-five-content h1.eltdf-pt-five-title {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .eltdf-pcs-holder .eltdf-post-item.eltdf-pt-five-item .eltdf-pt-five-content h1.eltdf-pt-five-title {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-pcs-holder .eltdf-post-item.eltdf-pt-five-item .eltdf-pt-five-content .eltdf-pt-five-title {
+    margin-bottom: 0;
+  }
+  .eltdf-pcs-holder .eltdf-post-item.eltdf-pt-five-item .eltdf-pt-info-section {
+    display: none;
+  }
+}
+
+/* Blog Masonry responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Blog Masonry responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 1024px) and (min-width: 480px) {
+  .eltdf-blog-masonry-holder .eltdf-post-item.eltdf-blog-masonry-item {
+    width: 50% !important;
+  }
+  .eltdf-blog-masonry-holder .eltdf-post-item.eltdf-blog-masonry-item.eltdf-masonry-large-width {
+    width: 100% !important;
+  }
+  .eltdf-blog-masonry-holder .eltdf-blog-masonry-grid-sizer {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-blog-masonry-holder .eltdf-blog-masonry-item {
+    width: 100%;
+  }
+  .eltdf-blog-masonry-holder .eltdf-blog-masonry-item.eltdf-masonry-large-width {
+    width: 100%;
+  }
+  .eltdf-blog-masonry-holder .eltdf-blog-masonry-grid-sizer {
+    width: 100%;
+  }
+  .eltdf-blog-masonry-holder .eltdf-blog-masonry-grid-gutter {
+    width: 0;
+  }
+}
+
+/* ==========================================================================
+   Blog Masonry responsive style - end
+   ========================================================================== */
+/* Post Layouts and Blocks responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Post Block and Layout responsive style - start
+   ========================================================================== */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .eltdf-bnl-holder.eltd-post-columns-2 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-2 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-3 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-4 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltd-post-columns-5 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-bnl-holder .eltdf-post-item {
+    width: 100% !important;
+    float: none;
+  }
+}
+
+/* ==========================================================================
+   Post Block and Layout responsive style - end
+   ========================================================================== */
+/* Google Map responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Google Map start style
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-google-map-overlay {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   End of Google Map style
+   ========================================================================== */
+/* Post Layouts responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Post Template One Responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 600px) {
+  .eltdf-pt-one-item .eltdf-pt-one-image-holder {
+    display: block;
+  }
+  .eltdf-pt-one-item .eltdf-pt-one-info-section {
+    display: block;
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   Post Template One Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Two Responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 1200px) {
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-3 .eltdf-post-item:nth-child(3n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-3 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-4 .eltdf-post-item:nth-child(4n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-4 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-5 .eltdf-post-item:nth-child(5n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-5 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-2 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-two-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-pt-two-item .eltdf-pt-two-content-holder {
+    padding: 0 0 0 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-pt-two-item .eltdf-pt-two-image-holder,
+  .eltdf-pt-two-item .eltdf-pt-two-content-holder {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+  .eltdf-pt-two-item .eltdf-pt-two-image-holder a {
+    margin: auto;
+  }
+  .eltdf-pt-two-item .eltdf-pt-two-item-inner > div:nth-child(2) {
+    padding: 15px 0 0;
+  }
+}
+
+/* ==========================================================================
+   Post Template Two Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Three Responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 1200px) {
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-3 .eltdf-post-item:nth-child(3n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-3 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-4 .eltdf-post-item:nth-child(4n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-4 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 50%;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-5 .eltdf-post-item:nth-child(5n+1) {
+    clear: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-5 .eltdf-post-item:nth-child(2n+1) {
+    clear: both;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-2 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-three-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-pt-three-item .eltdf-pt-three-item-inner2 > div.eltdf-pt-three-image-holder, .eltdf-pt-three-item .eltdf-pt-three-item-inner2 > div.eltdf-pt-three-content-holder {
+    width: 100%;
+    display: block;
+    padding: 0;
+  }
+  .eltdf-pt-three-item .eltdf-pt-three-item-inner2 > div.eltdf-pt-three-image-holder {
+    margin-bottom: 15px;
+  }
+}
+
+/* ==========================================================================
+   Post Template Three Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Four Responsive style - start
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Four Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Five Responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 768px) {
+  .eltdf-bnl-holder.eltdf-pl-five-holder.eltd-post-columns-2 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-five-holder.eltd-post-columns-3 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-five-holder.eltd-post-columns-4 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-bnl-holder.eltdf-pl-five-holder.eltd-post-columns-5 .eltdf-post-item {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-pt-five-item.eltdf-post-item .eltdf-pt-info-section {
+    display: none;
+  }
+  .eltdf-pt-five-item.eltdf-post-item .eltdf-pt-five-content .eltdf-pt-five-title {
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   Post Template Five Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Six Responsive style - start
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Six Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Seven Responsive style - start
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Seven Responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Post Template Eight Responsive style - start
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-pt-eight-left .eltdf-pt-eight-title {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-pt-eight-left,
+  .eltdf-pt-eight-right {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-pt-eight-left {
+    margin-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-pt-eight-item .eltdf-pt-eight-image-holder,
+  .eltdf-pt-eight-item .eltdf-pt-eight-content-holder {
+    width: 100%;
+    float: none;
+  }
+  .eltdf-pt-eight-item .eltdf-pt-eight-image-holder {
+    margin-bottom: 15px;
+  }
+  .eltdf-pt-eight-left .eltdf-pt-eight-title {
+    font-size: 20px;
+  }
+}
+
+/* ==========================================================================
+   Post Template Eight Responsive style - end
+   ========================================================================== */
+/* Post Blocks responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Block One responsive start style
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-pb-one-holder.two_half .eltdf-bnl-inner, .eltdf-pb-one-holder.two_third_one_third .eltdf-bnl-inner, .eltdf-pb-one-holder.one_third_two_third .eltdf-bnl-inner, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-bnl-inner {
+    margin: 0;
+  }
+  .eltdf-pb-one-holder.two_half .eltdf-pb-one-featured,
+  .eltdf-pb-one-holder.two_half .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.two_third_one_third .eltdf-pb-one-featured,
+  .eltdf-pb-one-holder.two_third_one_third .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.one_third_two_third .eltdf-pb-one-featured,
+  .eltdf-pb-one-holder.one_third_two_third .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pb-one-featured,
+  .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pb-one-non-featured {
+    width: 100%;
+    float: none !important;
+    padding: 0 !important;
+  }
+  .eltdf-pb-one-holder.two_half .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.two_third_one_third .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.one_third_two_third .eltdf-pb-one-non-featured, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pb-one-non-featured {
+    margin: 30px 0 0;
+  }
+  .eltdf-pb-one-holder.two_half .eltdf-pt-one-item, .eltdf-pb-one-holder.two_third_one_third .eltdf-pt-one-item, .eltdf-pb-one-holder.one_third_two_third .eltdf-pt-one-item, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pt-one-item {
+    margin-bottom: 0;
+  }
+  .eltdf-pb-one-holder.two_half .eltdf-pt-one-item .eltdf-pt-one-image-holder, .eltdf-pb-one-holder.two_third_one_third .eltdf-pt-one-item .eltdf-pt-one-image-holder, .eltdf-pb-one-holder.one_third_two_third .eltdf-pt-one-item .eltdf-pt-one-image-holder, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pt-one-item .eltdf-pt-one-image-holder {
+    display: inline-block;
+    vertical-align: middle;
+    clear: both;
+  }
+  .eltdf-pb-one-holder.two_half .eltdf-pt-one-item .eltdf-pt-one-info-section, .eltdf-pb-one-holder.two_third_one_third .eltdf-pt-one-item .eltdf-pt-one-info-section, .eltdf-pb-one-holder.one_third_two_third .eltdf-pt-one-item .eltdf-pt-one-info-section, .eltdf-pb-one-holder.three_fourths_one_fourth .eltdf-pt-one-item .eltdf-pt-one-info-section {
+    display: block;
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   Block One responsive end style
+   ========================================================================== */
+/* ==========================================================================
+   Block Two responsive start style
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-pb-two-holder.two_half .eltdf-bnl-inner, .eltdf-pb-two-holder.two_third_one_third .eltdf-bnl-inner, .eltdf-pb-two-holder.one_third_two_third .eltdf-bnl-inner, .eltdf-pb-two-holder.three_fourths_one_fourth .eltdf-bnl-inner {
+    margin: 0;
+  }
+  .eltdf-pb-two-holder.two_half .eltdf-pb-two-featured,
+  .eltdf-pb-two-holder.two_half .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.two_third_one_third .eltdf-pb-two-featured,
+  .eltdf-pb-two-holder.two_third_one_third .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.one_third_two_third .eltdf-pb-two-featured,
+  .eltdf-pb-two-holder.one_third_two_third .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.three_fourths_one_fourth .eltdf-pb-two-featured,
+  .eltdf-pb-two-holder.three_fourths_one_fourth .eltdf-pb-two-non-featured {
+    width: 100%;
+    float: none !important;
+    padding: 0 !important;
+  }
+  .eltdf-pb-two-holder.two_half .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.two_third_one_third .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.one_third_two_third .eltdf-pb-two-non-featured, .eltdf-pb-two-holder.three_fourths_one_fourth .eltdf-pb-two-non-featured {
+    margin: 20px 0 0;
+  }
+  .eltdf-pb-two-holder.two_half .eltdf-pt-five-item .eltdf-pt-five-top-content, .eltdf-pb-two-holder.two_third_one_third .eltdf-pt-five-item .eltdf-pt-five-top-content, .eltdf-pb-two-holder.one_third_two_third .eltdf-pt-five-item .eltdf-pt-five-top-content, .eltdf-pb-two-holder.three_fourths_one_fourth .eltdf-pt-five-item .eltdf-pt-five-top-content {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-pb-two-holder .eltdf-post-item .eltdf-pt-info-section {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Block Two responsive end style
+   ========================================================================== */
+/* ==========================================================================
+   Block Three responsive start style
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  .eltdf-pb-three-holder .eltdf-pb-three-featured .eltdf-pb-three-item .eltdf-pb-three-excerpt {
+    display: none;
+  }
+  .eltdf-pb-three-holder.two_half .eltdf-bnl-inner, .eltdf-pb-three-holder.two_third_one_third .eltdf-bnl-inner, .eltdf-pb-three-holder.one_third_two_third .eltdf-bnl-inner, .eltdf-pb-three-holder.three_fourths_one_fourth .eltdf-bnl-inner {
+    margin: 0;
+  }
+  .eltdf-pb-three-holder.two_half .eltdf-pb-three-featured,
+  .eltdf-pb-three-holder.two_half .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.two_third_one_third .eltdf-pb-three-featured,
+  .eltdf-pb-three-holder.two_third_one_third .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.one_third_two_third .eltdf-pb-three-featured,
+  .eltdf-pb-three-holder.one_third_two_third .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.three_fourths_one_fourth .eltdf-pb-three-featured,
+  .eltdf-pb-three-holder.three_fourths_one_fourth .eltdf-pb-three-non-featured {
+    width: 100%;
+    float: none !important;
+    padding: 0 !important;
+  }
+  .eltdf-pb-three-holder.two_half .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.two_third_one_third .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.one_third_two_third .eltdf-pb-three-non-featured, .eltdf-pb-three-holder.three_fourths_one_fourth .eltdf-pb-three-non-featured {
+    margin: 30px 0 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-pb-three-holder .eltdf-pb-three-featured .eltdf-pb-three-item .eltdf-pb-three-content-holder-outer .eltdf-pb-three-content-holder-inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    padding: 0 20px;
+  }
+  .eltdf-pb-three-holder .eltdf-pb-three-featured .eltdf-pb-three-item .eltdf-post-info-category {
+    display: none;
+  }
+  .eltdf-pb-three-holder .eltdf-pb-three-featured .eltdf-pb-three-item h1.eltdf-pb-three-title {
+    color: #fff;
+    font-size: 30px;
+  }
+}
+
+/* ==========================================================================
+   Block One responsive end style
+   ========================================================================== */
+/* ==========================================================================
+   7. Blog responsive styles
+   ========================================================================== */
+@media only screen and (max-width: 1200px) {
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post {
+    width: 50%;
+  }
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post:nth-child(4) {
+    clear: none;
+  }
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post:nth-child(3) {
+    clear: both;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eltdf-content-left-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner,
+  .eltdf-content-right-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner,
+  .eltdf-related-posts-holder .eltdf-related-posts-inner {
+    margin: 0 -8px;
+  }
+  .eltdf-content-left-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post,
+  .eltdf-content-right-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post,
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post {
+    padding: 0 8px;
+    width: 100%;
+    float: none;
+  }
+  .eltdf-comment-holder .eltdf-comment-list .children {
+    padding: 0 0 0 50px;
+  }
+  .single-post .eltdf-title.eltdf-title-has-thumbnail .eltdf-pt-info-section > div {
+    margin: 0 10px 0 0;
+  }
+  .single-post .eltdf-title.eltdf-title-has-thumbnail .eltdf-title-post-info {
+    display: none;
+  }
+  .single-post .eltdf-title .eltdf-pt-info-section > div {
+    margin: 0 10px 0 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .eltdf-blog-holder.eltdf-blog-type-standard article.format-quote, .eltdf-blog-holder.eltdf-blog-type-standard article.format-link {
+    margin: 30px;
+  }
+  .eltdf-single-tags-holder {
+    width: 100%;
+    float: none;
+    margin: 0 0 20px;
+  }
+  .eltdf-blog-single-share {
+    width: 100%;
+    float: none;
+    text-align: left;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev a,
+  .eltdf-blog-single-navigation .eltdf-blog-single-next a {
+    min-width: inherit;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev a span,
+  .eltdf-blog-single-navigation .eltdf-blog-single-next a span {
+    display: none;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev a h4,
+  .eltdf-blog-single-navigation .eltdf-blog-single-next a h4 {
+    padding: 0 15px;
+    width: 100%;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev a .eltdf-blog-single-nav-mark,
+  .eltdf-blog-single-navigation .eltdf-blog-single-next a .eltdf-blog-single-nav-mark {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev a .eltdf-blog-single-nav-text,
+  .eltdf-blog-single-navigation .eltdf-blog-single-next a .eltdf-blog-single-nav-text {
+    display: none;
+    padding: 0;
+  }
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post {
+    width: 100%;
+    margin: 0 0 30px;
+  }
+  .eltdf-content-left-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post,
+  .eltdf-content-right-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post {
+    width: 100%;
+    margin: 0 0 30px;
+  }
+  .eltdf-comment-holder .eltdf-comment-list .children {
+    padding: 0 0 0 30px;
+  }
+  .single-post .eltdf-title.eltdf-title-has-thumbnail .eltdf-title-single-holder {
+    padding: 0 5%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .eltdf-blog-single-navigation .eltdf-blog-single-prev h5 {
+    margin: 0 0 0 9px;
+  }
+  .eltdf-blog-single-navigation .eltdf-blog-single-next h5 {
+    margin: 0 9px 0 0;
+  }
+  .eltdf-author-description .eltdf-author-description-image {
+    float: none;
+  }
+  .eltdf-author-description .eltdf-author-description-text-holder {
+    padding: 15px 0 0;
+  }
+  .eltdf-author-description .eltdf-author-text {
+    margin: 10px 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .eltdf-comment-holder .eltdf-comment-text .eltdf-text-holder > * {
+    padding: 0;
+  }
+  .eltdf-comment-holder .eltdf-comment-text .eltdf-text-holder:before {
+    display: none;
+  }
+  .eltdf-comment-holder .eltdf-comment-image,
+  .eltdf-comment-holder .eltdf-comment-text-and-info {
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+  .eltdf-comment-holder .eltdf-comment-text-and-info {
+    margin-top: 15px;
+  }
+  .eltdf-comment-holder .eltdf-comment-list .children {
+    padding: 0 0 0 20px;
+  }
+  .eltdf-blog-holder article .eltdf-post-info .eltdf-post-info-left,
+  .eltdf-blog-holder article .eltdf-post-info .eltdf-post-info-right {
+    float: none;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .eltdf-blog-holder article .eltdf-post-info .eltdf-post-info-left {
+    margin-right: 5px;
+  }
+  .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-info-section {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   8. Widgets responsive styles
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+  ul.eltdf-instagram-feed.eltdf-col-3, ul.eltdf-instagram-feed.eltdf-col-9 {
+    width: 55%;
+  }
+  ul.eltdf-instagram-feed.eltdf-col-9 li {
+    width: 33.33%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  ul.eltdf-instagram-feed.eltdf-col-6 li {
+    width: 33.33%;
+  }
+  ul.eltdf-instagram-feed.eltdf-col-3, ul.eltdf-instagram-feed.eltdf-col-6 {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  ul.eltdf-instagram-feed.eltdf-col-4 li,
+  ul.eltdf-instagram-feed.eltdf-col-3 li,
+  ul.eltdf-instagram-feed.eltdf-col-6 li,
+  ul.eltdf-instagram-feed.eltdf-col-9 li {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Breaking news responsive start styles
+   ========================================================================== */
+@media only screen and (max-width: 768px) {
+  .eltdf-bn-holder .eltdf-bn-title {
+    position: relative;
+    left: 0;
+    margin: 15px 0 0;
+    line-height: 1.4em;
+  }
+  .eltdf-bn-holder ul.eltdf-bn-slide {
+    padding: 0;
+    margin: 5px 0 10px;
+  }
+  .eltdf-bn-holder ul.eltdf-bn-slide .eltdf-bn-text {
+    line-height: 1;
+  }
+  .eltdf-bn-holder ul.eltdf-bn-slide .eltdf-bn-text a {
+    line-height: 1.4em;
+  }
+}
+
+/* ==========================================================================
+   Breaking news responsive end styles
+   ========================================================================== */
+/* ==========================================================================
+   9. Side area responsive styles
+   ========================================================================== */

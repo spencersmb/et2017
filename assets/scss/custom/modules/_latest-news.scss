@@ -1,0 +1,240 @@
+/*------------------------------------*\
+    Latest News
+\*------------------------------------*/
+
+.et-latest-news {
+  padding: 60px 0 120px;
+
+  .eltdf-bnl-holder .eltdf-bnl-outer .eltdf-bnl-inner{
+    //margin-bottom: -98px;
+    position: relative;
+    display: table;
+  }
+
+  .eltdf-pt-one-item {
+    margin-bottom: 0;
+  }
+
+  .et2017-tabs-date{
+    text-align: center;
+    background: $blue;
+    float: left;
+    width: 92px;
+    height: 92px;
+    position: relative;
+
+    @include breakpoint(tabletmax){
+      display: block;
+      position: relative;
+      text-align: left ;
+      background: $white;
+      float: none;
+      width: auto;
+      height: auto;
+    }
+
+    .et2017-tabs-date__wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translateX(-50%)translateY(-50%));
+
+      @include breakpoint(tabletmax){
+        position: relative;
+        top: 0;
+        left: 0;
+        @include transform(translateX(0)translateY(0));
+      }
+    }
+
+    .et2017-tabs-date__day{
+      font-size: 24px;
+
+      @include breakpoint(tabletmax){
+        font-size: 12px;
+      }
+
+    }
+
+    .et2017-tabs-date__month{
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    span{
+      display: block;
+      font-weight: 600;
+      @include breakpoint(tabletmax){
+        display: inline-block;
+
+      }
+    }
+  }
+
+  .eltdf-pt-one-excerpt{
+    clear: both;
+    padding-top: 15px;
+    display: table;
+    position: relative;
+  }
+  .eltdf-pb-one-holder {
+    .eltdf-pt-one-item{
+      .eltdf-pt-one-title-holder{
+        -webkit-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.3);
+        height: 92px;
+        display: block;
+        position: relative;
+        width: 100%;
+
+        @include breakpoint(tabletmax){
+          height: auto;
+          display: table;
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(desktop){
+            margin-bottom: 0;
+        }
+
+        .eltdf-pt-one-title{
+
+            //padding: 15px 25px 0px;
+            display: block;
+            position: absolute;
+            top:50%;
+            @include transform(translateY(-50%));
+            left:115px;
+            font-size: 18px;
+            max-width: 275px;
+
+          @include breakpoint(tabletmax){
+            left:0;
+            position: relative;
+            top:0;
+            @include transform(translateY(0));
+            font-size: 24px;
+            max-width: 100%;
+          }
+
+          @include breakpoint(desktop){
+              font-size: 24px;
+              max-width: 390px;
+
+          }
+        }
+      }
+    }
+    .et2016-tabs-border-bot{
+      border-style: dotted;
+      border-image-source: url('./assets/images/dots.svg');
+      border-image-slice: 20% 20%;
+      border-image-repeat: space;
+      border-width: 0 0 3px 0;
+    }
+  }
+
+  .eltdf-pt-one-item.eltdf-item-hovered .eltdf-pt-one-title a{
+    color: $light-brown;
+  }
+
+  .eltdf-tabs {
+
+    // top nav
+    .eltdf-tabs-nav {
+      margin:0 0 60px;
+
+      ul{
+        text-align: center;
+      }
+      li {
+        &.ui-state-active a{
+          background-color: $blue;
+          border:transparent;
+        }
+        a{
+          border-radius: 50px;
+          color: $dark-blue;
+        }
+      }
+    }
+
+    .eltdf-pt-one-image-holder{
+      margin-bottom: 23px;
+      @include breakpoint(tabletmax){
+        margin-bottom: 20px;
+      }
+    }
+    
+    //feature item
+    .eltdf-pt-one-content-holder {
+      margin: 0 30px;
+      top: -69px;
+      margin-bottom: -25px;
+      background: $white;
+      width: auto;
+
+      @include breakpoint(tabletmax){
+        position: relative;
+        display: block;
+        background: $white;
+        margin:0 auto;
+        top:0;
+        width: 100%;
+      }
+
+      @include breakpoint(desktop){
+          margin-bottom: -65px;
+      }
+
+
+    }
+  }
+
+  .et2017-tabs-link{
+    margin-top: 15px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+
+    a{
+      display: inline-block;
+      span{
+        margin-left: 5px;
+        position: relative;
+        display: inline-block;
+        width: 65px;
+        height: 16px;
+        top:4px;
+        background: url('./assets/images/read-more.png');
+      }
+    }
+  }
+
+  .btn-padding-lg{
+    margin-top: 60px;
+  }
+
+
+  //3 row-items
+  //border
+  .eltdf-post-item .eltdf-pt-info-section{
+    border-style: dotted;
+    border-image-source: url('./assets/images/dots.svg');
+    border-image-slice: 20% 20%;
+    border-image-repeat: space;
+    border-width: 3px 0 0;
+  }
+}
+
+
+.view-all-blog {
+  float: right;
+  z-index: 5;
+  right: 5px;
+  position: relative;
+}
+
+

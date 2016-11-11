@@ -1,0 +1,81 @@
+/*------------------------------------*\
+   CARD ITEM
+\*------------------------------------*/
+
+.card__item{
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 345px;
+  margin: 0 auto 30px;
+  float: none;
+  position: relative;
+  overflow: visible;
+  @include transition( all .3s);
+  background: url('./assets/images/confetti-clear.png') top center no-repeat;
+  -webkit-box-shadow: 0px 18px 70px -19px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 18px 70px -19px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 18px 70px -19px rgba(0, 0, 0, 0.3);
+  border: 1px solid transparent;
+
+  h2{
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    @include breakpoint(tablet){
+        font-size: 32px;
+    }
+  }
+
+  .subtitle{
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  &:hover{
+    border: 10px solid transparent;
+  }
+
+}
+
+.card__item--content {
+  text-align: center;
+  z-index: $above-content;
+  position: relative;
+  @include transform(translateZ(0));
+  @include transition( all .3s);
+  padding:3rem 2rem;
+  margin: 15px;
+
+
+  ul{
+    padding-bottom: 5rem;
+    margin:0;
+  }
+
+  li{
+    list-style: none;
+    position: relative;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    text-align: left;
+
+    i{
+      padding-right: 10px;
+      position: absolute;
+      left: 0;
+      color: $primary-color;
+    }
+  }
+  .card__list {
+    max-width: 250px;
+    margin: 0 auto;
+    padding-bottom: 0;
+  }
+
+  .eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-icon){
+    margin: 30px 0 0;
+  }
+
+}

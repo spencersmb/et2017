@@ -342,6 +342,7 @@ if(!function_exists('readanddigest_get_filtered_params')) {
             $params_filtered[$new_key] = $value;
         }
 
+
         return $params_filtered;
     }
 }
@@ -425,7 +426,7 @@ if(!function_exists('readanddigest_get_general_shortcode_params')) {
                 'Page' => 'page',
                 'Post' => 'post',
                 'Products' => 'product',
-                'Courses' => 'courses',
+                'Courses' => 'courses'
             ),
             'save_always' => true,
             'description' => '',

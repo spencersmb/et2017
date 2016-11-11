@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    Courses and products slider
+\*------------------------------------*/
+
+//change arrows to fontawesome
+.icon-arrows-left:before{
+  content: '\f104';
+}
+.icon-arrows-right:before{
+  content: '\f105';
+}
+[class^="icon-arrows-"]:before, [class*=" icon-arrows-"]:before{
+  font-family: FontAwesome !important;
+}
+.et-primary-slider{
+
+  .flex-viewport{
+    overflow: visible !important;
+  }
+
+  .eltdf-pt-one-item{
+    text-align: center;
+  }
+
+  .eltdf-pc-title{
+    font-size: 24px;
+    font-weight: 600;
+    color: $pink;
+  }
+
+  .eltdf-pt-one-content-holder{
+    padding: 25px 0;
+  }
+  .eltdf-pt-one-title-holder{
+   margin:0 auto;
+  }
+
+  .eltdf-pt-one-image-holder{
+    margin-bottom: 0;
+  }
+
+  .eltdf-pt-link{
+    font-size: 18px;
+    font-weight: 600;
+    color: $dark-blue;
+  }
+
+  .et-slider-cat{
+    display: block;
+    position: absolute;
+    bottom: -11px;
+    z-index: 1;
+    left: 50%;
+    @include transform(translateX(-50%));
+    padding: 6px 12px;
+    border-radius: 25px;
+
+    &.cat-courses{
+      background-color: $gold;
+    }
+    &.cat-photoshop{
+      background-color: $pink;
+    }
+    &.cat-fonts{
+      background-color: $purple;
+    }
+
+    a{
+      font-size: 11px;
+      line-height: 11px;
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+}

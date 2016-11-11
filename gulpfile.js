@@ -87,10 +87,17 @@ var source = require('vinyl-source-stream');
 /**
  * Lint all custom TypeScript files.
  */
-gulp.task('ts-lint', function() {
-	return gulp.src('./assets/js/custom/**/*.ts').pipe(tslint()).pipe(tslint.report(
-		'prose'));
-});
+// gulp.task('ts-lint', function() {
+// 	return gulp.src('./assets/js/custom/**/*.ts').pipe(tslint()).pipe(tslint.report(
+// 		'prose'));
+// });
+gulp.task("ts-lint", () =>
+		gulp.src("source.ts")
+				.pipe(tslint({
+					formatter: "verbose"
+				}))
+				.pipe(tslint.report())
+);
 
 /**
  * Compile TypeScript and include references to library and app .d.ts files.
@@ -173,8 +180,51 @@ gulp.task('browser-sync', function() {
 var autoprefixerOptions = {
 	browsers: ['last 4 versions', '> 2%', 'Firefox ESR']
 };
+
 gulp.task('styles', function() {
-	return gulp.src('./assets/scss/*.scss')
+	return gulp.src('./assets/scss/custom/*.scss')
+		.pipe(plumber(function(err) {
+			console.log(err.toString());
+			this.emit('end');
+		}))
+		.pipe(sourcemaps.init({
+			loadMaps: true
+		}))
+		.pipe(sass({
+
+		}))
+		.pipe(sourcemaps.write({
+			includeContent: false
+		}))
+
+		// Original prefix settings - but fuck up flexbox
+		// .pipe(autoprefixer('last 2 version', '> 1%', 'safari 5', 'ie 8', 'ie 9',
+		// 	'opera 12.1', 'ios 6', 'android 4'))
+		.pipe(autoprefixer(autoprefixerOptions))
+		.pipe(plumber.stop())
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('./'))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files
+		.pipe(mmq()) // Combines Media Queries
+		.pipe(reload({
+			stream: true
+		})) // Inject Styles when style file is created
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(minifycss({
+			maxLineLen: 80
+		}))
+		.pipe(gulp.dest('./'))
+
+		.pipe(notify({
+			message: 'Styles task complete',
+			onLast: true
+		}));
+});
+
+gulp.task('vendor-styles', function() {
+	return gulp.src('./assets/scss/vendor/*.scss')
 		.pipe(plumber(function(err) {
 			console.log(err.toString());
 			this.emit('end');
@@ -247,8 +297,12 @@ gulp.task('vendorsJs', function() {
  */
 
 gulp.task('scriptsJs', function() {
-	return gulp.src('./assets/js/custom/*.js')
-		// .pipe(concat('sprout-custom.js'))
+	return gulp.src(
+		[
+			'./assets/js/bundle.js',
+			'./assets/react/font-preview/assets/js/*.js'
+		])
+		.pipe(concat('bundle.js'))
 		.pipe(gulp.dest('./assets/js'))
 		.pipe(rename({
 			basename: "bundle",
@@ -397,11 +451,11 @@ gulp.task('build', function(cb) {
 
 
 // Watch Task
-gulp.task('default', ['styles', 'compile-js', 'vendorsJs', 'images',
+gulp.task('default', ['vendor-styles', 'styles', 'compile-js', 'vendorsJs', 'images',
 	'browser-sync'
 ], function() {
 	gulp.watch('./assets/img/raw/**/*', ['images']); //Some issue, have to run manual for now
-	gulp.watch('./assets/scss/**/*.scss', ['styles']);
+	gulp.watch('./assets/scss/custom/**/*.scss', ['styles']);
 	//Watch webpack output
 	gulp.watch('./assets/react/font-preview/assets/js/**/*.js', ['images', browserSync.reload]);
 	// gulp.watch('./assets/js/**/*.js', ['browserify', browserSync.reload]);

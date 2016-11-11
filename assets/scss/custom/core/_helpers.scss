@@ -1,0 +1,346 @@
+/* ----------------------------------------------------------------------------
+ * Helpers
+ * ------------------------------------------------------------------------- */
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-hide {
+  background-color: transparent;
+  border: 0;
+  color: transparent;
+  font: 0/0 a;
+  text-shadow: none;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.white-bg {
+  background: $white;
+}
+
+.black-bg {
+  background: $black;
+}
+
+.light-grey-bg {
+  background-color: $lighter-grey;
+}
+
+.grey-bg {
+  background-color: $grey;
+}
+
+.eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-custom-hover-bg):hover{
+  color:$cinn !important;
+  background-color: $gold !important;
+}
+
+// btn dark blue
+.eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-custom-hover-bg).et-btn-dk-blue:hover{
+  color:$white !important;
+  background-color: $dark-blue !important;
+}
+
+.eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-custom-hover-bg).et-btn-dk-grey:hover{
+  color:$white !important;
+  background-color: $dark-grey-hover !important;
+}
+
+.eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-custom-hover-bg).et-btn-dk-red:hover{
+  color:$white !important;
+  background-color: $dark-red !important;
+}
+
+.et-btn{
+  padding: 1px 25px;
+  cursor: pointer;
+  background-color: $pink !important;
+  min-width: 158px;
+  font-size: .8em;
+  line-height: 3.5em;
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
+
+  &:after{
+    content: '';
+    width: 29px;
+    height: 28px;
+    background-color: $pink;
+    position: absolute;
+    top: 7px;
+    right: -15px;
+    display: block;
+    @include transform(rotate(45deg));
+    @include transition(color .15s ease-in-out, background-color .15s ease-in-out,border-color .15s ease-in-out);
+  }
+
+  &:hover {
+    color: $white;
+    background-color: $dark-blue !important;
+    &:after {
+      background-color: $dark-blue;
+    }
+  }
+}
+
+.et-btn-round,
+.et-btn-round-vc{
+  border: 3px solid $dark-blue;
+  border-radius: 50px;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 15px 40px;
+  max-width: 125px;
+  cursor: pointer;
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
+
+  &:hover{
+    color:$white;
+    background: $dark-blue;
+  }
+
+  &.eltdf-btn.eltdf-btn-outline{
+    border: 3px solid $dark-blue;
+    color: $dark-blue;
+    margin: 0 auto;
+    line-height: 16px;
+    letter-spacing: 0;
+    max-width: 250px;
+    font-weight: bold;
+    padding: 16px 33px;
+    display: block;
+    text-align: center;
+
+    &:hover{
+      border-color: $dark-blue !important;
+      color:$white;
+      background: $dark-blue !important;
+    }
+  }
+}
+
+.et-outline__black{
+  color: #000 !important;
+  border: 3px solid #000 !important;
+  &:hover{
+    color: $pink !important;
+    border: 3px solid $pink !important;
+    background: #fff !important;
+  }
+}
+
+.et-btn-large {
+  font-size: .9em;
+
+  &:after{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 7px;
+    right: -16px;
+  }
+}
+
+.et-btn-blue {
+  background-color: $blue !important;
+  color: $dark-blue !important;
+
+  &:after{
+    background-color: $blue;
+  }
+
+  &:hover {
+    &:after {
+      color: $cinn;
+      background-color: $gold;
+    }
+  }
+}
+
+.et-btn-dk-blue {
+  background-color: #5D6F80 !important;
+  color: $white !important;
+
+  &:after{
+    background-color: #5D6F80;
+  }
+
+  &:hover {
+
+    &:after {
+      background-color: $dark-blue;
+    }
+  }
+}
+
+.et-btn-pink {
+  background-color: $pink !important;
+  color: $white !important;
+
+  &:after{
+    background-color: $pink;
+  }
+
+  &:hover {
+    &:after {
+      background-color: $gold;
+    }
+  }
+}
+
+.et-btn-dk-grey {
+  background-color: $brown-grey !important;
+  color: $white !important;
+
+  &:after{
+    background-color: $brown-grey;
+  }
+
+  &:hover {
+
+    &:after {
+      background-color: $dark-grey-hover;
+    }
+  }
+}
+
+.et-btn-dk-red {
+  background-color: $cinn-dark !important;
+  color: $white !important;
+
+  &:after{
+    background-color: $cinn-dark;
+  }
+
+  &:hover {
+
+    &:after {
+      background-color: $dark-red;
+    }
+  }
+}
+
+.et-license-list{
+
+  li{
+    list-style: none;
+    padding-bottom:20px;
+    position: relative;
+    padding-left: 20px;
+
+    &:before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "\f054";
+      font-family: FontAwesome;
+      font-size: 14px;
+      color: $cinn;
+    }
+  }
+}
+
+.href-link:before {
+  display: block;
+  content: " ";
+  margin-top: -215px;
+  height: 200px;
+  visibility: hidden;
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  //overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+
+  .embed-responsive-item, iframe{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    borderr: 0;
+  }
+}
+
+.embed-responsive-16by9{
+  padding-bottom: 56.25%;
+}
+
+.et-outer-padding{
+  padding: 120px 0;
+}
+
+.shadow-small-btn {
+  -webkit-box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-medium {
+  -webkit-box-shadow: 0px 15px 75px -6px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 15px 75px -6px rgba(0,0,0,0.38);
+  box-shadow: 0px 15px 75px -6px rgba(0,0,0,0.38);
+}
+
+.divider-bottom {
+  border-bottom: 1px solid $light-grey;
+}
+.divider-bottom-top {
+  border-top: 1px solid $light-grey;
+  border-bottom: 1px solid $light-grey;
+}
+.divider-top {
+  border-top: 1px solid $light-grey;
+}
+
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.et-cat{
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: 25px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  line-height: 11px;
+  color: $white;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &.cat-red{
+    background-color: $cinn;
+  }
+
+  .box-two & {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+  }
+}
+
+
+

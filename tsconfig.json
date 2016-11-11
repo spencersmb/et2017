@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "es5",
     "sourceMap": true,
-    "resolveAmbientRefs": true
+    "resolveAmbientRefs": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./assets/js/custom/partials/utils.ts",
-    "./assets/js/custom/partials/navigation.ts",
-    "./assets/js/custom/interfaces/bps.interface.ts",
-    "./typings/tsd.d.ts",
-    "./typings/jquery/jquery.d.ts"
+    "./node_modules/@types/jquery/index.d.ts"
   ]
 }

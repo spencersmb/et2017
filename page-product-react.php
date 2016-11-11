@@ -66,14 +66,18 @@ get_header(); ?>
                         <?php //wp_get_attachment_url gets url and pass in a function to get the post thumbnail ID passing in the ID of the post.
                         $featured_image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
                         $gumroad_link = get_field('gumroad_link');
-                        $youtube_link = get_field('youtube_link');
                         $price = get_field('price');
+                        
+                        $youtube_link = get_field('youtube_link');
+                        
                         $has_extended_price = get_field('has_extended_price');
                         $extended_price = get_field('extended_price');
                         $extended_url = get_field('extended_license_url');
+                        
                         $has_font_preview = get_field('has_font_preview');
                         $font_name = get_field('font_name');
                         $font_styles = get_field('font_styles');
+                        
                         $xtras = false;
 
                         $styles_string = "";

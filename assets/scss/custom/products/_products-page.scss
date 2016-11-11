@@ -1,0 +1,10 @@
+body{
+  &.lic-open{
+    width: 100%;
+    position: fixed;
+  }
+}
+
+.products-zindex{
+  z-index: 1050;
+}

@@ -1,8 +1,6 @@
 <div class="eltdf-tabs clearfix <?php echo esc_attr($tabs_classes) ?>">
-    <div class="eltdf-tabs-nav spencer">
-        <a href="/blog" target="_self" class="eltdf-btn eltdf-btn-medium eltdf-btn-solid view-all-blog et-btn et-btn-pink">
-            <span class="eltdf-btn-text">Take me to the blog!</span>
-        </a>
+    <div class="eltdf-tabs-nav et-news-tabs-wrapper">
+        
         <ul>
             <?php if($tabs_title != '') { ?>
                 <li class="eltdf-tabs-title-holder <?php echo esc_attr($tab_class); ?>">

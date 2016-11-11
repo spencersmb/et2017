@@ -1,0 +1,92 @@
+//When editing this make sure to check the products page that it doesnt get jacked up!
+
+.et-container-inner{
+  position: relative;
+  margin: 0 auto;
+  @include breakpoint(tablet){
+      width: 750px;
+  }
+  @include breakpoint(laptop){
+      width: 768px;
+  }
+  @include breakpoint(desktop){
+    width: 1170px;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5%;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+  };
+
+  &.list{
+
+    flex-direction: column;
+
+    @include breakpoint(tablet) {
+      margin: 0 2%;
+      flex-direction: row;
+    };
+
+    @include breakpoint(laptop) {
+      min-height: 555px;
+    };
+  }
+
+  &.bg-image-container{
+    @include breakpoint(laptop) {
+      min-height: 700px;
+    };
+  }
+
+  &.reverse{
+    @include breakpoint(tablet) {
+      flex-direction: row-reverse;;
+    };
+  }
+
+  &.bonus-container{
+    flex-wrap: wrap;
+  }
+
+}
+
+.flex-row {
+  display: flex;
+  //display: -webkit-flex;
+  flex-direction: column;
+}
+
+.flex-row-md {
+  @include breakpoint(tablet){
+    flex-direction: row;
+    flex-wrap: wrap;
+    //-webkit-flex-wrap: wrap;
+  }
+}
+
+.flex-xs {
+  position: relative;
+  flex: 1 0;
+  max-width: 100%;
+  min-height: 1px;
+  display: flex;
+}
+
+.flex-sm-4{
+  @include breakpoint(tabletmax){
+    flex: 1 0 50%;
+    //-webkit-flex: 1 0 50%;
+  }
+}
+
+.flex-md-6{
+  @include breakpoint(laptop-rd){
+    flex: 1 0 33.333333%;
+    //-webkit-flex: 1 0 33.333333%;
+  }
+}

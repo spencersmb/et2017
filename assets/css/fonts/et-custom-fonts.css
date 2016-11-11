@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'hawthorne';
+    src: url('../../fonts/hawthorne/HawthorneScript-Regular.eot'),
+    url('../../fonts/hawthorne/HawthorneScript-Regular.woff2') format('woff2'),
+    url('../../fonts/hawthorne/HawthorneScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hawthorne{
+    font-family: 'hawthorne';
+}
+
+@font-face {
+    font-family: 'honeymoon';
+    src: url('../../fonts/honeymoon/honeymoon-regular-webfont.eot');
+    src: url('../../fonts/honeymoon/honeymoon-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/honeymoon/honeymoon-regular-webfont.woff2') format('woff2'),
+    url('../../fonts/honeymoon/honeymoon-regular-webfont.woff') format('woff'),
+    url('../../fonts/honeymoon/honeymoon-regular-webfont.ttf') format('truetype'),
+    url('../../fonts/honeymoon/honeymoon-regular-webfont.svg#honeymoonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'tuesday';
+    src: url('../../fonts/tuesday/tuesdayscript-regular-webfont.eot');
+    src: url('../../fonts/tuesday/tuesdayscript-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/tuesday/tuesdayscript-regular-webfont.woff2') format('woff2'),
+    url('../../fonts/tuesday/tuesdayscript-regular-webfont.woff') format('woff');
+    /*url('../fonts/tuesday/tuesdayscript-regular-webfont.ttf') format('truetype');*/
+    font-weight: normal;
+    font-style: normal;
+}

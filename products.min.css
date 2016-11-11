@@ -1,9 +1,11 @@
+@font-face{font-family:'hawthorne';src:url("assets/fonts/hawthorne/HawthorneScript-Regular.eot"),url("assets/fonts/hawthorne/HawthorneScript-Regular.woff2") format("woff2"),url("assets/fonts/hawthorne/HawthorneScript-Regular.woff") format("woff");font-weight:normal;font-style:normal}
+.hawthorne{font-family:'hawthorne'}@font-face{font-family:'honeymoon';src:url("assets/fonts/honeymoon/honeymoon-regular-webfont.eot");src:url("assets/fonts/honeymoon/honeymoon-regular-webfont.eot?#iefix") format("embedded-opentype"),url("assets/fonts/honeymoon/honeymoon-regular-webfont.woff2") format("woff2"),url("assets/fonts/honeymoon/honeymoon-regular-webfont.woff") format("woff"),url("assets/fonts/honeymoon/honeymoon-regular-webfont.ttf") format("truetype"),url("assets/fonts/honeymoon/honeymoon-regular-webfont.svg#honeymoonregular") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'tuesday';src:url("assets/fonts/tuesday/tuesdayscript-regular-webfont.eot");src:url("assets/fonts/tuesday/tuesdayscript-regular-webfont.eot?#iefix") format("embedded-opentype"),url("assets/fonts/tuesday/tuesdayscript-regular-webfont.woff2") format("woff2"),url("assets/fonts/tuesday/tuesdayscript-regular-webfont.woff") format("woff");font-weight:normal;font-style:normal}
 body.lic-open{width:100%;position:fixed}.eltdf-content.products-zindex{z-index:111}
 .products-zindex{z-index:1050}.product-list{margin-bottom:60px}.img-responsive{display:block;max-width:100%;height:auto}
-.archive-box.products-page{margin-top:0}.archive-box.products-page h1{font-family:"Playfair Display"}
-.archive-box a:focus{outline:0}.archive-box .more-button{color:#000;border:1px solid #c69f73;padding:9px 24px 10px;margin:16px auto 0;background-color:transparent}
+.archive-box.products-page{margin-top:0}.archive-box a:focus{outline:0}.archive-box .more-button{color:#000;border:1px solid #c69f73;padding:9px 24px 10px;margin:16px auto 0;background-color:transparent}
 .archive-box .more-button:hover{background-color:#c69f73}.archive-box .more-button:focus{outline:0}
-.product-item{padding:0 0 30px}.product-item h2{font-size:18px;font-weight:bold;text-align:center;padding-top:60px;margin-top:0;font-family:'Lato'}
+.product-item{padding:0 0 30px}.product-item h2{font-size:18px;font-weight:bold;text-align:center;padding-top:60px;margin-top:0}
 .product-item .product-price{text-align:center;font-weight:bold;font-size:16px;color:#c69f73}
 .product-item .product-content{margin:0 15px;border:1px solid #e0e0e0;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch}
 .product-item .product-details{position:relative;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}
@@ -44,7 +46,7 @@ body.lic-open{width:100%;position:fixed}.eltdf-content.products-zindex{z-index:1
 .product-item .products-cta .select li{padding:0;position:relative;height:44px;line-height:44px}
 .product-item .products-cta .select li:first-of-type{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
 .product-item .products-cta .select li:nth-of-type(2){opacity:0;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
-.product-item a.gumroad-button{background-image:none !important;margin:0 5px;font-size:10px !important;font-weight:700 !important;font-family:'Lato' !important;text-transform:uppercase;box-shadow:none !important;color:#424242 !important;border-radius:0 !important;line-height:42px !important}
+.product-item a.gumroad-button{background-image:none !important;margin:0 5px;font-size:10px !important;font-weight:700 !important;text-transform:uppercase;box-shadow:none !important;color:#424242 !important;border-radius:0 !important;line-height:42px !important}
 .product-item a.gumroad-button .gumroad-button-logo{margin:0 !important;height:0 !important;width:0 !important}
 .play-btn{position:absolute;top:50%;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%)}
 .play-btn i{-webkit-transition:color .3s;transition:color .3s;color:rgba(11,11,11,0.43)}
@@ -61,10 +63,9 @@ body.lic-open{width:100%;position:fixed}.eltdf-content.products-zindex{z-index:1
 .modal .nav-tabs li.active a{cursor:pointer}.modal-dialog{position:relative;width:auto;margin:10px}
 .modal-open .modal{overflow-x:hidden;overflow-y:auto}.modal-content{position:relative;background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,0.2);border-radius:6px;outline:0}
 .modal-header{padding:21px 15px 20px;border:0}.modal-header .close{margin-top:6px;padding:0;cursor:pointer;background:0;border:0;float:right;font-size:21px;font-weight:700;line-height:1%;color:#000;text-shadow:0 1px 0 #fff;opacity:.2}
-#licenseModal h3{font-family:"Playfair Display"}#licenseModal p{margin-bottom:18px;line-height:23px;font-family:Lato,sans-serif;color:#424242;font-size:16px}
-#licenseModal ul{list-style:none;line-height:23px;font-family:Lato,sans-serif;color:#424242;font-size:16px}
-#licenseModal ul li{list-style:square;margin-bottom:12px}#licenseModal .tab-content{padding:0 40px}
-#licenseModal .tab-content ul{padding-left:45px;margin-bottom:20px;font-size:14px}
+#licenseModal p{margin-bottom:18px;line-height:23px;color:#424242;font-size:16px}
+#licenseModal ul{list-style:none;line-height:23px;color:#424242;font-size:16px}#licenseModal ul li{list-style:square;margin-bottom:12px}
+#licenseModal .tab-content{padding:0 40px}#licenseModal .tab-content ul{padding-left:45px;margin-bottom:20px;font-size:14px}
 #licenseModal .tab-pane{padding-top:20px}#licenseModal .modal-body{padding:0}#licenseModal .nav-tabs.nav-justified>li>a{border-radius:0;background-color:#eee;border:0;color:#000}
 #licenseModal .nav-tabs.nav-justified>li>a:hover{background-color:#ddd}#licenseModal .nav-tabs.nav-justified>.active>a{border:0;color:#fff;background-color:#c69f73}
 #licenseModal .nav-tabs.nav-justified>.active>a:hover{background-color:#c69f73}#myModal .modal-body.active{padding:15px}
@@ -83,4 +84,3 @@ ol,ul,li{list-style:none}.archive-box{text-align:center;background:#f4f4f4;margi
 }@media only screen and (min-width:768px) and (max-width:960px){.container{width:726px}
 }@media only screen and (min-width:942px) and (max-width:1170px){.container{width:940px}
 }@media only screen and (max-width:767px){.container{width:300px}}
-/*# sourceMappingURL=products.min.css.map */
