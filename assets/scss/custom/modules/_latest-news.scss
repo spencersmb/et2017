@@ -5,6 +5,10 @@
 .et-latest-news {
   padding: 60px 0 120px;
 
+  .eltdf-pt-three-title{
+    font-weight: 500;
+  }
+
   .eltdf-bnl-holder .eltdf-bnl-outer .eltdf-bnl-inner{
     //margin-bottom: -98px;
     position: relative;
@@ -33,11 +37,15 @@
       height: auto;
     }
 
+    @include breakpoint(rd-mobile-h-max){
+      display: none;
+    }
+
     .et2017-tabs-date__wrapper{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        @include transform(translateX(-50%)translateY(-50%));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translateX(-50%)translateY(-50%));
 
       @include breakpoint(tabletmax){
         position: relative;
@@ -76,7 +84,13 @@
     padding-top: 15px;
     display: table;
     position: relative;
+
+    @include breakpoint(rd-mobile-h-max){
+      padding:0;
+    }
+
   }
+
   .eltdf-pb-one-holder {
     .eltdf-pt-one-item{
       .eltdf-pt-one-title-holder{
@@ -87,27 +101,30 @@
         display: block;
         position: relative;
         width: 100%;
+        margin-bottom: 0;
 
         @include breakpoint(tabletmax){
           height: auto;
           display: table;
-          margin-bottom: 0;
         }
 
-        @include breakpoint(desktop){
-            margin-bottom: 0;
+        @include breakpoint(rd-mobile-h-max){
+          height: auto;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
         }
 
         .eltdf-pt-one-title{
 
-            //padding: 15px 25px 0px;
-            display: block;
-            position: absolute;
-            top:50%;
-            @include transform(translateY(-50%));
-            left:115px;
-            font-size: 18px;
-            max-width: 275px;
+          display: block;
+          position: absolute;
+          top:50%;
+          @include transform(translateY(-50%));
+          left:115px;
+          font-size: 18px;
+          line-height: 24px;
+          padding-right: 20px;
 
           @include breakpoint(tabletmax){
             left:0;
@@ -118,11 +135,17 @@
             max-width: 100%;
           }
 
-          @include breakpoint(desktop){
-              font-size: 24px;
-              max-width: 390px;
-
+          @include breakpoint(rd-mobile-h-max){
+            width: auto;
+            position: relative;
+            left: auto;
+            padding:15px 0;
+            font-weight: 500;
+            line-height: 24px;
+            top: 0;
+            @include transform(translateY(0));
           }
+
         }
       }
     }
@@ -151,11 +174,16 @@
       li {
         &.ui-state-active a{
           background-color: $blue;
-          border:transparent;
+          border: 2px solid $blue;
         }
         a{
           border-radius: 50px;
           color: $dark-blue;
+          border-width: 2px;
+
+          &:hover{
+            border-width: 2px;
+          }
         }
       }
     }
@@ -166,12 +194,11 @@
         margin-bottom: 20px;
       }
     }
-    
+
     //feature item
     .eltdf-pt-one-content-holder {
-      margin: 0 30px;
+      margin: 0 30px -25px;
       top: -69px;
-      margin-bottom: -25px;
       background: $white;
       width: auto;
 
@@ -183,13 +210,18 @@
         top:0;
         width: 100%;
       }
+      @include breakpoint(rd-mobile-h-max){
+        margin: 0 auto;
+      }
 
       @include breakpoint(desktop){
-          margin-bottom: -65px;
+        margin-bottom: -65px;
       }
 
 
     }
+
+
   }
 
   .et2017-tabs-link{

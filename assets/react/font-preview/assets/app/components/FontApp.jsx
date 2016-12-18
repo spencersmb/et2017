@@ -22,7 +22,8 @@ class FontApp extends React.Component {
       styles: [],
       size: "24",
       sidebar: false,
-      isOpen: false
+      isOpen: false,
+      touched: false
     };
   }
 
@@ -116,7 +117,8 @@ class FontApp extends React.Component {
    */
   onInputChange( text ) {
     this.setState({
-      placeholder: text
+      placeholder: text,
+      touched:true
     });
   }
 
@@ -136,7 +138,12 @@ class FontApp extends React.Component {
      Get styles string, remove spaces & convert to an array.
 
      */
+    console.log(app.dataset.styles);
     let styles = app.dataset.styles.replace(/\s+/g, '').split(',');
+
+    //check if user has touched input
+    let previewText = '';
+
 
     let initialState = {
       placeholder: app.dataset.placeholder,
@@ -144,6 +151,12 @@ class FontApp extends React.Component {
       styles: styles,
       sidebar: (sidebar === "true")
     };
+
+    //check if input has been touched
+    if(this.state.touched){
+      initialState.placeholder = this.state.placeholder;
+    }
+
 
     return initialState;
   }

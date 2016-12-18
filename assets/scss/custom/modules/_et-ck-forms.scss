@@ -169,7 +169,7 @@
   }
 }
 
-.et-input__field {
+.et-input__field{
   position: relative;
   display: block;
   float: right;
@@ -212,9 +212,11 @@
   display: block;
   padding: 1.6em 0;
   width: 100%;
+
 }
 
-.input__field--yoshiko {
+.input__field--yoshiko,
+.et-input-container .wpcf7-form-control{
   width: 100%;
   // background-color: #d0d1d0;
   border: 3px solid transparent;
@@ -223,7 +225,7 @@
 
 }
 
-.input__label--yoshiko {
+.input__label--yoshiko{
   // width: 100%;
   text-align: left;
   position: absolute;
@@ -262,6 +264,54 @@
   font-size: 0.85em;
 }
 
+
+//subscribe form on main page
+.et-form-front-page{
+
+  .et_ck_form_container {
+    // could add width to the modal as well if needed.
+    background: transparent;
+  }
+
+  .et-input{
+    margin: 1em;
+
+    @include breakpoint(tablet){
+      margin: 1em .5em;
+    }
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .et-input-container{
+    max-width: 850px;
+    width: 100%;
+    padding: .5em 0 1em 0;
+
+    @include breakpoint(tablet){
+     padding: 1em 0;
+    }
+  }
+
+  .et-btn-round{
+    max-width: none;
+    cursor: pointer;
+    background: transparent;
+    color: $white;
+    border-color: $white;
+
+    &:hover{
+      background: transparent;
+      border-color: $dark-blue;
+      color: $dark-blue;
+    }
+  }
+
+}
+
 .input__field--yoshiko:focus + .input__label--yoshiko,
 .input--filled .input__label--yoshiko {
   -webkit-transform: translate3d(0, 0, 0);
@@ -280,39 +330,218 @@
   border-color: $dark-blue;
 }
 
+@keyframes animate-out-envelop {
+  //beginning of animation
 
-//subscribe form on main page
-.et-form-front-page{
-  .et_ck_form_container {
-    // could add width to the modal as well if needed.
-    background: transparent;
+  0% {
+    @include transform(rotate(-15deg) translate3d(45px, -30px, 0));
   }
 
-  .et-input{
-    margin: 1em;
+  50% {
+    @include transform(rotate(-30deg) translate3d(-134px, -72px, 0));
   }
 
-  form{
-    display: flex;
-    flex-direction: column;
+  100%{
+    @include transform(rotate(-15deg) translate3d(45px, -30px, 0));
+  }
+}
+
+@keyframes animate-out-form {
+  //beginning of animation
+  0% {
+    @include transform(rotate(0deg) translate3d(0px, 0px, 0));
+  }
+
+  50% {
+    @include transform(rotate(-30deg) translate3d(-134px, -72px, 0));
+  }
+
+  100%{
+    @include transform(rotate(0deg) translate3d(0px, 0px, 0));
+  }
+}
+.et2017__contact{
+  position: relative;
+
+  .wpcf7{
+    z-index: 2;
+    position: relative;
+  }
+  .wpcf7-form{
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .input__label.input__label--yoshiko{
+    z-index: 2;
+  }
+  .et2017__contact--form-inner{
+    background: #FFEABA;
+    padding: 20px 0;
+    z-index: 1;
+    @include transform(rotate(0deg) translate3d(0px, 0px, 0));
+    @include transform-origin(center bottom);
+    @include transition( all .3s ease-in-out);
+
+    &.form-animate-out{
+      animation-duration:.8s;
+      animation-name: animate-out-form;
+    }
+  }
+
+  .wpcf7-form-control.wpcf7-text:focus,
+  .wpcf7-form-control.wpcf7-textarea:focus{
+    border-color:$dark-blue;
+  }
+
+  .wpcf7-form input.wpcf7-form-control.wpcf7-submit{
+    margin-top:30px;
+    padding: 16px 33px;
+    font-size: 16px;
+    @include transition(color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out);
+  }
+
+  .wpcf7-form-control.wpcf7-text, .wpcf7-form-control.wpcf7-number, .wpcf7-form-control.wpcf7-date, .wpcf7-form-control.wpcf7-textarea, .wpcf7-form-control.wpcf7-select, .wpcf7-form-control.wpcf7-quiz, #respond textarea, #respond input[type='text'], .post-password-form input[type='password']{
+    font-size: 16px;
+    text-transform: inherit;
   }
 
   .et-input-container{
-    max-width: 850px;
-    width: 100%;
+
+    @include first(1){
+      padding-top: 0;
+    }
+
+    .wpcf7-form-control-wrap{
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex: 2;
+      vertical-align: top;
+    }
+
+    .wpcf7-form-control.wpcf7-text{
+      margin: 0 auto;
+    }
+
+    &.et-contact__page{
+      padding-bottom: 0;
+
+      .et-input{
+        @include last(1) {
+          margin-right:0;
+        }
+      }
+    }
+
+    .et-input{
+      margin-bottom: 0;
+    }
+    .input--yoshinko__textarea{
+      height:175px;
+    }
+
+    .et-input__field--textarea{
+      border-radius: 10px;
+    }
+
   }
 
-  .et-btn-round{
-    max-width: none;
-    cursor: pointer;
-    background: transparent;
-    color: $white;
-    border-color: $white;
+  //SVG
 
-    &:hover{
-      background: transparent;
-      border-color: $dark-blue;
-      color: $dark-blue;
+  .svg-c-background{fill:#F05555;}
+
+  .svg-c-left-flap,
+  .svg-c-right-flap{fill:#F9B0A3;}
+
+  .svg-c-bottom-flap{fill:#FAD273;}
+
+  .svg-c-top-flap{fill:#FF6464;}
+
+  .et2017-contact__svg{
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index: 1;
+    @include transform-origin(center top);
+    @include transition( all .3s ease-in-out);
+    width:600px;
+    @include transform(rotate(-15deg) translate3d(45px, -130px, 0));
+
+    @include breakpoint(rd-desktop-max){
+      width:400px;
+      @include transform(rotate(-15deg) translate3d(10%, -130px, 0));
+    }
+
+    @include breakpoint(rd-tablet-max){
+      width: 300px;
+      @include transform(rotate(-15deg) translate3d(15%, -150px, 0));
+    }
+
+    @include breakpoint(rd-mobile-h-max){
+      display: none;
+    }
+
+    &.et2017-contact_top-svg{
+
+
+      &.pristine{
+        z-index:2;
+      }
+
+      &.touched{
+        z-index:2;
+      }
+    }
+
+    &.envelop-animate-out{
+      animation-duration:.8s;
+      animation-name: animate-out-envelop;
+    }
+  }
+
+  .et2017-contact__hello-svg{
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width:500px;
+    @include transform(translate3d(624px, -100px, 0) rotate(9deg));
+
+    @include breakpoint(rd-desktop-max){
+      width: 450px;
+      @include transform(translate3d(90%, -150px, 0) rotate(9deg));
+    }
+
+    @include breakpoint(rd-laptop-max){
+      width: 350px;
+      @include transform(translate3d(425px, -150px, 0) rotate(9deg));
+    }
+
+    @include breakpoint(rd-tablet-max){
+      width: 300px;
+      @include transform(translate3d(325px, -80%, 0) rotate(9deg));
+    }
+
+    @include breakpoint(rd-mobile-h-max){
+      width: 250px;
+      @include transform(translate3d(-20px, -80%, 0) rotate(-9deg));
+    }
+
+    .et2017-text-svg{
+      fill: #E0E0E0;
     }
   }
 }
+
+//outside of main container
+.et2017-contact__padding-top{
+  padding-top:120px;
+  position: relative;
+  display: block;
+
+  @include breakpoint(tablet){
+    padding-top:250px;
+  }
+}
+
+

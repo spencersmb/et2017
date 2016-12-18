@@ -81,6 +81,15 @@ function et_twenty_seventeen_load_scripts() {
 	// et-2016 theme JS
 	wp_register_script('et2017-js', ET2017_ROOT . '/assets/js/bundle.js', array('jquery'), '1.1', true); // Custom scripts
 	wp_enqueue_script('et2017-js'); // Enqueue it!
+	
+	//localize for products page
+	wp_localize_script(
+		'et2017-js',
+		'et_products',
+		array(
+			'url' => site_url()
+		)
+	);
 
 	// font-preview app
 	wp_register_script('et2017-font-preview', ET2017_ROOT . '/assets/react/font-preview/assets/js/bundle.js', 'jquery', '', true);
@@ -187,7 +196,8 @@ function jquery_mumbo_jumbo()
 {
 	wp_deregister_script('jquery');
 	wp_deregister_script('jquery-migrate');
-	wp_register_script('jquery', "/wp-includes/js/jquery/jquery.js", false, '1.12', true);
+//	wp_register_script('jquery', "/wp-includes/js/jquery/jquery.js", false, '1.12', true);
+	wp_register_script('jquery', 'https://code.jquery.com/jquery-1.12.4.min.js"', false, '1.12', true);
 	wp_register_script('jquery-migrate', "/wp-includes/js/jquery/jquery-migrate.min.js", 'jquery', '', true);
 
 	// enqueue creates the order
@@ -196,6 +206,11 @@ function jquery_mumbo_jumbo()
 }
 
 function de_que_parent_styles(){
+
+	//wp-core
+	wp_deregister_style('wp-mediaelement');
+
+
 	//deregister parent theme style sheet
 	wp_deregister_style('readanddigest_default_style');
 	wp_deregister_style('readanddigest_modules');
@@ -212,6 +227,14 @@ function de_que_parent_styles(){
 	//access pinterest plugin
 	wp_deregister_style('apsp-font-opensans');
 	wp_deregister_style('apsp-frontend-css');
+
+	//contact7 plugin css
+	wp_deregister_style('contact-form-7');
+	
+	//jquery pinit - client css
+	wp_deregister_style('jpibfi-style');
+	wp_dequeue_script('jpibfi-script');
+	add_JPIBFI_scripts();
 
 	//deque js from parent theme
 	wp_deregister_script('readanddigest_third_party');
@@ -673,20 +696,39 @@ function et_getAllPages($type){
 function et_array_to_string($array){
 	
 	$output = '';
-	
+	$curr = 0;
 	if( is_array($array) ){
 		foreach ( $array as $key => $value){
-			$output .= $value['style'];
 
-			if($key == 0 && count($array) > 1){
+			$output .= $value['style'];
+			$curr = $curr + 1;
+			
+			if(count($array) > 1 && $curr != count($array)){
 				$output .= ", ";
 			}
+
 		}
-		
+
 		return $output;
 	} else {
 		echo 'sorry thats not an array';
 	}
+}
+
+function et_get_category_link($slug){
+	
+	$category_id = get_cat_ID($slug);
+	
+	return get_category_link($category_id);
+}
+
+function et_get_courses_link(){
+
+	$pageObject = get_page_by_path( 'courses' );
+
+	$pageId = $pageObject->ID;
+
+	return get_page_link($pageId);
 }
 
 if(!function_exists('convert_string_comma_to_array')){
@@ -779,6 +821,27 @@ if(!function_exists('et_check_border')){
 		}
 	}
 }
+if (!function_exists('et2017_modify_read_more_link')) {
+
+	/**
+	 * Function that modifies read more link output.
+	 * Hooks to the_content_more_link
+	 * @return string modified output
+	 */
+	function et2017_modify_read_more_link() {
+		$link = '<div class="eltdf-more-link-container et2017-more-link">';
+		$link .= readanddigest_get_button_html(array(
+			'link' => get_permalink().'#more-'.get_the_ID(),
+			'text' => esc_html__('Continue reading', 'readanddigest')
+		));
+
+		$link .= '</div>';
+
+		return $link;
+	}
+
+	add_filter( 'the_content_more_link', 'et2017_modify_read_more_link', 100);
+}
 
 
 if( et_twenty_seventeen_visual_composer_installed() ){
@@ -789,4 +852,108 @@ if( et_twenty_seventeen_visual_composer_installed() ){
 	include  get_stylesheet_directory() . '/vc-templates/vc-feature-box-two.php';
 	include  get_stylesheet_directory() . '/vc-templates/vc-box-list.php';
 	include  get_stylesheet_directory() . '/vc-templates/vc-header-sm.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-box-intro.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-grid-one.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-link-card.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-box-gallery-one.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-bio-card.php';
+	include  get_stylesheet_directory() . '/vc-templates/vc-2col-list.php';
+}
+
+
+
+class et_register_endpoints{
+
+	function __construct()
+	{
+		// this gets called automatically when a class gets created
+		add_action('rest_api_init', array($this, 'register_routes' ) );
+	}
+
+	function et_license_callback( WP_REST_Request $request ){
+
+		$url = get_site_url();
+		$postid = url_to_postid( $url . '/products' );
+		$standard_data = get_field('standard_content', $postid);
+		$extended_data = get_field('extended', $postid);
+
+		$standard_string = str_replace(array("\r\n", "\r", "\n"), "", $standard_data);
+		$extended_string = str_replace(array("\r\n", "\r", "\n"), "", $extended_data);
+
+		$test = array(
+			'standard' => wp_kses_post($standard_string),
+			'extended' => wp_kses_post($extended_string)
+		);
+
+		return $test;
+	}
+
+	public function register_routes(){
+		register_rest_route(
+			'product-licenses/v1',
+			'/license/',
+			array(
+				'methods' => 'GET',
+				'callback' => array($this, 'et_license_callback' )
+			)
+		);
+
+	}
+
+	function init(){
+
+	}
+
+}
+
+global $et_rest_endpoints;
+$et_rest_endpoints = new et_register_endpoints();
+
+global $allowed_html;
+$allowed_html = array(
+	'a' => array(
+		'href' => array(),
+		'title' => array()
+	),
+	'br' => array(),
+	'p' => array(),
+	'em' => array(),
+	'strong' => array(),
+);
+
+//put emojies in the footer
+function disable_emojis() {
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+//	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+//	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+//	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+//	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+//	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+//	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+//	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+	add_action( 'wp_footer', 'print_emoji_detection_script' );
+}
+add_action( 'init', 'disable_emojis' );
+
+
+function add_JPIBFI_scripts(){
+
+	if(class_exists(JPIBFI_Client)){
+
+		$current_page = get_post_type( get_the_ID() );
+
+		$show_on_str = get_option( 'jpibfi_selection_options' )['show_on'];
+
+		$replace_characters = ['[', ']'];
+		$show_on_str = str_replace($replace_characters,'', $show_on_str);
+
+		$show_on_array = explode(',', $show_on_str);
+//		var_dump(in_array($current_page, $show_on_array));
+
+		if(!in_array($current_page, $show_on_array)){
+			wp_enqueue_script('jpibfi-script', WP_PLUGIN_URL . '/jquery-pin-it-button-for-images/js/jpibfi.client.js', 'jquery', null ,true);
+		}
+
+	}
+
 }

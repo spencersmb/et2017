@@ -51,12 +51,11 @@ class ProductsLicenseSelect {
   }
 
   init(): void {
-    console.log("Products License Select Loaded");
-    ProductStore.createStore();
+    // console.log("Products License Select Loaded");
     this.checkClickArea();
     
     //initialize
-    this.initDropdown(this.productContainer)
+    this.initDropdown(this.productContainer) //loop through all select btns and create dropdown
   }
 
 }

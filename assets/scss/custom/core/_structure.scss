@@ -19,3 +19,114 @@ $half-line-height: #{$line-height-mobile / 2rem}rem;
 .eltdf-page-header .eltdf-sticky-header.header-appear{
   @include transform(translateY(0));
 }
+
+p{
+  color: $text-color;
+
+  a{
+    color: $dark-blue;
+    font-weight: 500;
+  }
+}
+
+//Category page list
+.category{
+  .eltdf-bnl-inner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .eltdf-bnl-holder .eltdf-bnl-outer .eltdf-bnl-inner>.eltdf-post-item{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 33%;
+    float: none;
+    box-sizing: inherit;
+    padding: 0;
+
+    @include breakpoint(rd-laptop-max){
+      flex: 1 0 50%;
+    }
+
+    @include breakpoint(rd-tablet-max){
+      flex: 1 0 50%;
+    }
+
+    @include breakpoint(rd-mobile-h-max){
+      flex: 1 0 100%;
+    }
+
+  }
+
+  .eltdf-pt-one-item{
+
+    & > div{
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .eltdf-pt-one-image-holder{
+    }
+    .eltdf-pt-one-content-holder{
+      display: flex;
+      padding-bottom: 39px;
+      flex-direction: column;
+      width: auto;
+    }
+    .eltdf-pt-info-section{
+      position: absolute;
+      bottom:0;
+    }
+
+    &:hover{
+      .eltdf-pt-one-title-holder .eltdf-pt-one-title{
+        a{
+          color:$light-brown;
+        }
+      }
+    }
+  }
+}
+
+//Related Posts
+.eltdf-related-posts-holder .eltdf-related-posts-inner{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.eltdf-content-left-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post{
+  float: none;
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 50%;
+
+  @include breakpoint(rd-mobile-h-max){
+    flex: 1 0 100%;
+  }
+}
+
+.eltdf-related-post{
+  &:hover{
+    .eltdf-related-content .eltdf-related-title{
+      a{
+        color: $light-brown;
+      }
+    }
+  }
+}
+
+//Added opactiy transition for pinit animation
+a{
+  img{
+    @include transition(opacity .3s);
+  }
+}
+
+//back to top
+#eltdf-back-to-top>span i{
+  position: absolute;
+  top: 40%;
+  @include transform(translateY(-50%));
+}

@@ -63,176 +63,6 @@
   background-color: $dark-red !important;
 }
 
-.et-btn{
-  padding: 1px 25px;
-  cursor: pointer;
-  background-color: $pink !important;
-  min-width: 158px;
-  font-size: .8em;
-  line-height: 3.5em;
-  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
-
-  &:after{
-    content: '';
-    width: 29px;
-    height: 28px;
-    background-color: $pink;
-    position: absolute;
-    top: 7px;
-    right: -15px;
-    display: block;
-    @include transform(rotate(45deg));
-    @include transition(color .15s ease-in-out, background-color .15s ease-in-out,border-color .15s ease-in-out);
-  }
-
-  &:hover {
-    color: $white;
-    background-color: $dark-blue !important;
-    &:after {
-      background-color: $dark-blue;
-    }
-  }
-}
-
-.et-btn-round,
-.et-btn-round-vc{
-  border: 3px solid $dark-blue;
-  border-radius: 50px;
-  font-size: 16px;
-  line-height: 16px;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 15px 40px;
-  max-width: 125px;
-  cursor: pointer;
-  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
-
-  &:hover{
-    color:$white;
-    background: $dark-blue;
-  }
-
-  &.eltdf-btn.eltdf-btn-outline{
-    border: 3px solid $dark-blue;
-    color: $dark-blue;
-    margin: 0 auto;
-    line-height: 16px;
-    letter-spacing: 0;
-    max-width: 250px;
-    font-weight: bold;
-    padding: 16px 33px;
-    display: block;
-    text-align: center;
-
-    &:hover{
-      border-color: $dark-blue !important;
-      color:$white;
-      background: $dark-blue !important;
-    }
-  }
-}
-
-.et-outline__black{
-  color: #000 !important;
-  border: 3px solid #000 !important;
-  &:hover{
-    color: $pink !important;
-    border: 3px solid $pink !important;
-    background: #fff !important;
-  }
-}
-
-.et-btn-large {
-  font-size: .9em;
-
-  &:after{
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: 7px;
-    right: -16px;
-  }
-}
-
-.et-btn-blue {
-  background-color: $blue !important;
-  color: $dark-blue !important;
-
-  &:after{
-    background-color: $blue;
-  }
-
-  &:hover {
-    &:after {
-      color: $cinn;
-      background-color: $gold;
-    }
-  }
-}
-
-.et-btn-dk-blue {
-  background-color: #5D6F80 !important;
-  color: $white !important;
-
-  &:after{
-    background-color: #5D6F80;
-  }
-
-  &:hover {
-
-    &:after {
-      background-color: $dark-blue;
-    }
-  }
-}
-
-.et-btn-pink {
-  background-color: $pink !important;
-  color: $white !important;
-
-  &:after{
-    background-color: $pink;
-  }
-
-  &:hover {
-    &:after {
-      background-color: $gold;
-    }
-  }
-}
-
-.et-btn-dk-grey {
-  background-color: $brown-grey !important;
-  color: $white !important;
-
-  &:after{
-    background-color: $brown-grey;
-  }
-
-  &:hover {
-
-    &:after {
-      background-color: $dark-grey-hover;
-    }
-  }
-}
-
-.et-btn-dk-red {
-  background-color: $cinn-dark !important;
-  color: $white !important;
-
-  &:after{
-    background-color: $cinn-dark;
-  }
-
-  &:hover {
-
-    &:after {
-      background-color: $dark-red;
-    }
-  }
-}
-
 .et-license-list{
 
   li{
@@ -294,7 +124,11 @@
   -moz-box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
 }
-
+.shadow-small {
+  -webkit-box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  -moz-box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
 .shadow-medium {
   -webkit-box-shadow: 0px 15px 75px -6px rgba(0,0,0,0.38);
   -moz-box-shadow: 0px 15px 75px -6px rgba(0,0,0,0.38);
@@ -334,13 +168,56 @@
     background-color: $cinn;
   }
 
+  a{
+    color: $white;
+  }
+
   .box-two & {
     position: absolute;
     top: 25px;
     left: 25px;
+  }
+}
+.circle-dot{
+  position: relative;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i{
+    text-align: center;
+    font-size: 20px;
+  }
+
+  @include breakpoint(tablet){
+    width: 66px;
+    height: 66px;
+    margin-right: 20px;
+
+    i{
+      font-size: 36px;
+    }
 
   }
+
 }
 
 
-
+// Global Seperator class
+.et2017-seperator .eltdf-separator,
+.et-dotted-divider{
+    border: none;
+    border-right: 0;
+    border-left: 0;
+    // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
+    border-style: dotted;
+    border-color: rgba(213, 126, 0, 1);
+    border-image-source: url('./assets/images/dots.svg');
+    border-image-slice: 20% 20%;
+    border-image-repeat: space;
+    border-width: 3px 0 0 0;
+}

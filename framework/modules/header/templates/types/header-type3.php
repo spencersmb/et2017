@@ -56,7 +56,7 @@ if(!function_exists('et_twenty_seventeen_get_logo')) {
                 <div class="eltdf-vertical-align-containers logo-primary-container">
                     <?php et_twenty_seventeen_get_logo(); ?>
                     <div class="site-description">
-                        <p>PROFESSIONAL GRAPHIC </br> DESIGN LEARNING</p>
+                        <p><?php echo esc_html__('PROFESSIONAL GRAPHIC', 'et_twenty_seventeen') ?></br><?php echo esc_html__('DESIGN LEARNING', 'et_twenty_seventeen') ?></p>
                     </div>
 
                     <div class="header-search">

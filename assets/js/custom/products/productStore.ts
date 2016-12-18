@@ -3,11 +3,12 @@ import Utils from "../partials/utils";
 
 /**
  *
- * License Select Class
+ * State for Products
  * ......................
- * Inspired by CodyHouse.co
+ * 
  *
  * */
+
 interface IProductStore{
   isOpen:boolean;
   currentIndex: number;
@@ -22,11 +23,6 @@ class ProductStore {
       isOpen: false,
       currentIndex: 0
     }
-  }
-
-
-  createStore(): void {
-
   }
 
 }

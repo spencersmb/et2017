@@ -85,9 +85,15 @@ class ProductsFontPreviewComponent {
   }
 
   init(): void {
-    console.log("Products Font Preview loaded");
+
     this.createEvent();
     this.addButtonClick();
+
+    //delay showing the app for just a sec for safari fix
+    setTimeout(()=>{
+      console.log("Products Font Preview loaded");
+      $('#app').addClass('loaded');
+    }, 100);
   }
 
 }

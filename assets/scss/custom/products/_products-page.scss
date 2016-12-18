@@ -8,3 +8,10 @@ body{
 .products-zindex{
   z-index: 1050;
 }
+
+#app{
+  display: none;
+  &.loaded{
+    display: block;
+  }
+}

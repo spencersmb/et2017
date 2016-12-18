@@ -33,3 +33,40 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'espresso';
+    src: url('../../fonts/espresso-roast/EspressoRoast-Script.eot'),
+    url('../../fonts/espresso-roast/EspressoRoast-Script.woff2') format('woff2'),
+    url('../../fonts/espresso-roast/EspressoRoast-Script.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'espresso-caps';
+    src: url('../../fonts/espresso-roast/EspressoRoast-Caps.eot'),
+    url('../../fonts/espresso-roast/EspressoRoast-Caps.woff2') format('woff2'),
+    url('../../fonts/espresso-roast/EspressoRoast-Caps.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'espresso-symbols';
+    src: url('../../fonts/espresso-roast/EspressoRoast-Symbols.eot'),
+    url('../../fonts/espresso-roast/EspressoRoast-Symbols.woff2') format('woff2'),
+    url('../../fonts/espresso-roast/EspressoRoast-Symbols.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.espresso{
+    font-family: 'espresso';
+}
+.espresso.caps{
+    font-family: 'espresso-caps';
+}
+.espresso.symbols{
+    font-family: 'espresso-symbols';
+}

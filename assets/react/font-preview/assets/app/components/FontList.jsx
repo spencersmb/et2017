@@ -21,6 +21,7 @@ class FontList extends React.Component {
      Loop through and render out each output based on the style array
      pass in styles to it and and the font object
      */
+    
     let renderTodos = () => {
       return font.styles.map(( style, i ) => {
         return (

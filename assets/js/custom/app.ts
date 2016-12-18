@@ -14,6 +14,7 @@ import jquery = require('jquery');
 const $ = jquery;
 
 (function() {
+
   class App {
     constructor() {
       

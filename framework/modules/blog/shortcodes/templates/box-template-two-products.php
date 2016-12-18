@@ -13,7 +13,7 @@ if(isset($acf)){
     if(isset($acf['has_font_preview']) && $acf['has_font_preview']){
 
         $has_font_preview = true;
-
+        
         //convert font styles to string for output
         $font_names = et_array_to_string($acf['font_styles']);
 

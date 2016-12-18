@@ -5,12 +5,17 @@
     "sourceMap": true,
     "resolveAmbientRefs": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "lib": ["es5", "es2015.promise"],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./node_modules/@types/jquery/index.d.ts"
+    "./node_modules/@types/jquery/index.d.ts",
+    "./node_modules/@types/es6-promise/index.d.ts"
   ]
 }

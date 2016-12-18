@@ -34,6 +34,7 @@ Template: readanddigest
  * ------------------------------------------------------------------------- */
 @import 'core/structure';
 @import 'core/flex-grid';
+@import 'core/buttons';
 
 /* WPCore */
 //@import 'core/wpcore';
@@ -49,7 +50,15 @@ Template: readanddigest
 @import 'modules/footer';
 @import 'modules/card-item';
 @import 'modules/et-box';
+@import 'modules/et-box-intro';
+@import 'modules/et-grid-one';
+@import 'modules/et-link-card';
+@import 'modules/et-gallery';
+@import 'modules/et-bio-cards';
 @import 'modules/et-ck-forms';
+@import 'modules/et-flex-list';
+@import 'modules/modals';
+@import 'modules/contact-module';
 
 /* ----------------------------------------------------------------------------
  * Pages

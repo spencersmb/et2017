@@ -166,14 +166,39 @@
     @media (min-width: $mobile) {
       @content;
     }
-  } @else if $point == tabletmax {
-    // Medium.max width 1024
-    @media only screen and (min-width: 769px) {
-      @content;
-    }
   } @else if $point == laptop-rd {
     // Medium.max width 1024
     @media only screen and (min-width: 1025px) {
+      @content;
+    }
+  } @else if $point == rd-mobile-v-max {
+    // Medium.max width 1024
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }@else if $point == rd-mobile-h-max {
+    // Medium.max width 1024
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  } @else if $point == rd-tablet-max {
+    // Medium.max width 1024
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  } @else if $point == rd-laptop-max {
+    // Medium.max width 1024
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+  } @else if $point == rd-desktop-max {
+    // Medium.max width 1024
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  } @else if $point == rd-desktopXL{
+    // Medium.max width 1024
+    @media only screen and (min-width: 1300px) {
       @content;
     }
   }

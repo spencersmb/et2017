@@ -72,8 +72,6 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
 
     ), $atts ) );
 
-
-
     //check for both queries
     if( $query_type == 'both'){
         $query_type = array(
@@ -99,12 +97,27 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
     );
 
     $output = '
-        <div class="et-box-list">
-            <!-- course items -->
-            <div class="flex-row flex-row-md">
+        <div class="et-box-list">';
+
+
+    // Check if products page to place license button
+    if( $query_type == 'product' ){
+        $output .= '
+            <div class="licenseModal-wrapper">
+                <a href=""
+                   class="licenseModal et-btn-round" 
+                   data-target="#licenseModal">
+                    <span class="more-button">'. esc_html__('View License Info', 'et-twenty-seventeen') .'</span>
+                </a>
+            </div>
+        ';
+    }
+
+    $output .='
+        <!-- course items -->
+        <div class="flex-row flex-row-md">
     ';
 
-//    var_dump(is_page('courses'));
 
     $wp_query = new WP_Query($args);
 

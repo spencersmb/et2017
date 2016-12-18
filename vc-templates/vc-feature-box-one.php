@@ -26,6 +26,16 @@ function et_twenty_seventeen_feature_box_one_func() {
             ),
             array(
                 'type' => 'dropdown',
+                'heading' => 'Large Image',
+                'param_name' => 'large_image',
+                'value' => array(
+                    'No' => 'no',
+                    'Yes' => 'yes',
+                ),
+                'save_always' => true
+            ),
+            array(
+                'type' => 'dropdown',
                 'heading' => 'Image Type',
                 'param_name' => 'image_type',
                 'value' => array(
@@ -46,8 +56,19 @@ function et_twenty_seventeen_feature_box_one_func() {
             ),
             array(
                 'type' => 'dropdown',
+                'heading' => 'Show Category',
+                'param_name' => 'show_category',
+                'value' => array(
+                    'Yes' => 'yes',
+                    'No' => 'no'
+                ),
+                'save_always' => true
+            ),
+            array(
+                'type' => 'dropdown',
                 'heading' => 'Category Type',
                 'param_name' => 'category_type',
+                'dependency' => array('element' => 'show_category', 'value' => array('yes')),
                 'value' => et_getAllCategories(),
                 'save_always' => true
             ),
@@ -58,9 +79,9 @@ function et_twenty_seventeen_feature_box_one_func() {
                 'description' => ''
             ),
             array(
-                'type' => 'textarea',
+                'type' => 'textarea_html',
                 'heading' => 'Description',
-                'param_name' => 'description',
+                'param_name' => 'content',
                 'description' => ''
             ),
             array(
@@ -120,10 +141,11 @@ function et_feature_box_one_shortcode( $atts, $content = null ) { // New functio
         'class' => '',
         'main_image' => '',
         'image_type' => '',
+        'large_image' => '',
         'reverse_layout' => '',
         'category_type' => '',
+        'show_category' => '',
         'headline' => '',
-        'description' => '',
         'add_button' => '',
         'border' => '',
         'button_text' => '',
@@ -132,7 +154,7 @@ function et_feature_box_one_shortcode( $atts, $content = null ) { // New functio
 
     ), $atts ) );
 
-    $output = readanddigest_get_list_shortcode_module_template_part('box-template-one', 'templates', '', $atts);
+    $output = readanddigest_get_list_shortcode_module_template_part('box-template-one', 'templates', '', $atts, $content);
 
     return $output;
 }

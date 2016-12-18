@@ -1017,7 +1017,7 @@ function et_twenty_seventeen_single_licence_item_func( $atts, $content = null ) 
 
     if($layout_link == "true"):
         $output .= '
-            <a href="#'.esc_attr($link_id).'" target="_self" class="eltdf-btn eltdf-btn-medium eltdf-btn-solid et-btn '.esc_attr($button_style).'">
+            <a href="#'.esc_attr($link_id).'" target="_self" class="et-btn-round '.esc_attr($button_style).'">
                         <span class="eltdf-btn-text">'.esc_html__('Read more', 'et_twenty_seventeen').'</span>
             </a>
         ';

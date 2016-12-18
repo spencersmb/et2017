@@ -1,0 +1,79 @@
+/* ----------------------------------------------------------------------------
+ * Link card
+ * ------------------------------------------------------------------------- */
+.et-linkcard{
+  padding: 60px 0;
+
+  a{
+    &:hover{
+      .et-linkcard__item{
+        @include transform(translate3d(0,-5px,0));
+      }
+      h3{
+        color: #6b7c93 !important;
+      }
+    }
+  }
+
+  @include e(item){
+    @include transition(all .2s ease-in-out);
+    @include transform(translate3d(0,0,0));
+    position: relative;
+    margin: 15px;
+    padding: 30px 30px 25px 0;
+    overflow: hidden;
+    flex:1;
+    border-radius: 6px;
+    background-color: $white;
+
+    @include breakpoint(tablet){
+      margin: 15px 15px;
+    }
+  }
+
+  @include e(image){
+    width: 180px;
+    position: absolute;
+    top: 50%;
+    @include transform(translateY(-50%));
+    left: -80px;
+    z-index: 1;
+
+    @include breakpoint(tablet){
+      left: -100px;
+    }
+  }
+
+  @include e(content){
+    z-index: 2;
+    position: relative;
+    padding-left: 120px;
+
+    @include breakpoint(tablet){
+      padding-left: 100px;
+    }
+
+    h3{
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      @include transition (all .3s);
+    }
+    span{
+      display: flex;
+    }
+    i{
+      margin-left: 10px;
+      line-height: 13px;
+      font-size: 13px;
+      top:-1px;
+      position: relative;
+    }
+    p{
+      color:$text-color;
+    }
+  }
+}

@@ -48,6 +48,7 @@ function et_twenty_seventeen_font_preview( $args, $content="" ){
     
         <div
             id="app"
+            class="loaded"
             data-name="'. esc_attr($font_name) .'"
             data-placeholder="'. esc_attr($font_name) .' Font preview"
             data-styles="'. esc_attr($font_styles) .'">

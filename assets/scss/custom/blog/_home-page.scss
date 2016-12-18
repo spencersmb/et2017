@@ -8,6 +8,11 @@ $image_size: 350px;
 }
 
 .et2017-blog{
+
+  .eltdf-pt-six-title{
+    font-size: 24px;
+  }
+
   .eltdf-pt-three-item .eltdf-pt-three-image-holder{
     @media only screen and (max-width: 600px) {
       width: 100%;
@@ -39,12 +44,15 @@ $image_size: 350px;
   }
 
   .eltdf-pt-three-item{
-
     margin-bottom: 20px;
 
     .eltdf-post-info-category{
       a{
         color: $cinn;
+
+        &:hover{
+          color: $light-brown;
+        }
       }
     }
   }
@@ -89,20 +97,19 @@ $image_size: 350px;
       &.active{
         span{
           border-radius: 50%;
-          background-color: $gold;
-          color: $cinn;
+          background-color: $lighter-grey-hover;
+          color: $dark-blue;
         }
       }
       a{
         border-radius: 50%;
-        background-color: $blue;
+        background-color: transparent;
         color: $dark-blue;
         @include transition( background-color .15s ease-in-out, color .15s ease-in-out);
       }
       &:hover{
         a{
-          color: $cinn !important;
-          background-color: $gold;
+          background-color: $blue;
         }
       }
     }
@@ -160,4 +167,15 @@ p a:hover,
 
 h6{
   color: $cinn;
+}
+
+//blog list hovered
+.eltdf-pt-three-item{
+  &.eltdf-item-hovered{
+    .eltdf-pt-three-title{
+      a{
+        color: $light-brown;
+      }
+    }
+  }
 }

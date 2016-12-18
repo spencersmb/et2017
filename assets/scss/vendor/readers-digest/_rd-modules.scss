@@ -131,7 +131,7 @@ dl {
 html {
   height: 100%;
   margin: 0 !important;
-  overflow-y: scroll !important;
+  overflow-y: scroll;
   /* to prevent page jumping on ajax and when there is not enough content, also for background fixed image for boxed layout*/
 }
 

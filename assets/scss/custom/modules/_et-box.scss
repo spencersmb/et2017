@@ -9,7 +9,7 @@
 
   h2{
     font-size: 22px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     @include breakpoint(tablet){
       font-size: 26px;
     }
@@ -18,17 +18,17 @@
   p{
     font-size: 16px;
     word-wrap: break-word;
-    color: $darker-grey;
-
-    @include breakpoint(tablet){
-      font-size: 18px;
-    }
+    margin-top: 0;
   }
 
   &.bullet-list{
     text-align: left;
-    padding: 15px 2% 15px 0;
+    padding: 15px 0 15px 0;
     max-width: 600px;
+
+    @include breakpoint(tablet){
+      padding: 15px 2% 15px 0;
+    }
 
     @include breakpoint(laptop){
       flex: 1.5;
@@ -54,17 +54,21 @@
     }
     .sub-head{
       color: $darker-grey;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       display: inline-flex;
+      flex-direction: column;
     }
 
     &.feature{
       align-self: center;
     }
     &.bullet-list__right{
-      padding: 15px 0 15px 2%;
+      padding: 15px 0 15px 0;
+      @include breakpoint(tablet){
+        padding: 15% 0 15% 0;
+      }
       @include breakpoint(laptop){
-        padding: 15px 0 15px 6%;
+        padding: 15px 0 15px 0;
       }
     }
   }
@@ -77,7 +81,7 @@
     &.feature-image{
       padding-bottom: 0;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       // padding-left: 130px;
 
 
@@ -85,9 +89,17 @@
     &.feature-image-horizontal{
       padding-left: 0;
       padding-bottom: 0;
+      padding-right: 0;
       display: flex;
       align-items: center;
+      @include breakpoint(tablet){
+          padding-right: 3%;
+      }
     }
+  }
+
+  &.et-box__large{
+    flex:1;
   }
 
   ul{
@@ -130,6 +142,19 @@
 .et-box-item{
   padding: 30px 0;
 
+  @include breakpoint(tablet){
+    max-width: 285px;
+  }
+  @media only screen and (min-width: 769px) {
+    max-width: 369px;
+  }
+  @include breakpoint(laptop-rd){
+    max-width: 306.67px;
+  }
+  @include breakpoint(desktop){
+    max-width: 390px;
+  }
+
   @include e(inner){
     display: flex;
     margin: 0 auto;
@@ -146,17 +171,23 @@
     -moz-box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    @include transition(box-shadow .3s);
+    @include transform(translate3d(0, 0, 0));
+    @include transition(all .3s);
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
 
+    a{
+      cursor: pointer;
+    }
+
     &:hover{
       -webkit-box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
       -moz-box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
       box-shadow: 0px 20px 45px -6px rgba(0, 0, 0, 0.2);
+      @include transform(translate3d(0, -5px, 0));
     }
 
     h2{
@@ -222,7 +253,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    cursor: default;
+    cursor: pointer; //added pointer for courses page
   }
   
   //Start products module
@@ -554,250 +585,4 @@ $height: 53px;
       display: none;
     }
   }
-}
-
-/*****
-/* Product Modals
-/********************/
-
-#et_youtubeModal, #licenseModal{
-
-  &.modal.in .modal-dialog{
-    @include transform(translate3d(0, 100px, 0));
-  }
-
-  &.modal.fade .modal-dialog{
-    @include transform(translate3d(0, 100px, 0));
-  }
-
-  &.modal{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1050;
-    display: none;
-    overflow: hidden;
-    outline: 0;
-
-    .modal-body{
-      position: relative;
-    }
-
-    &.fade{
-      .modal-dialog{
-        @include transition(transform .3s ease-in-out);
-      }
-    }
-
-    &.in {
-      .modal-dialog{
-        @include transform(translate3d(0,0,0));
-      }
-    }
-
-    .nav{
-      margin-bottom: 0;
-      li{
-        position: relative;
-        a{
-          position: relative;
-          display: block;
-          padding: 10px 15px;
-          line-height: 1.428;
-        }
-      }
-    }
-
-    .nav-tabs{
-      &.nav-justified{
-        width: 100%;
-        border-bottom: 0;
-
-        &>li{
-          @include breakpoint(tablet){
-            display: table-cell;
-            width: 1%;
-          }
-
-          a{
-            text-align: center;
-          }
-        }
-      }
-      li{
-        &.active{
-          a{
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
-
-  .modal-dialog{
-    position: relative;
-    width: auto;
-    margin: 10px;
-
-    @include breakpoint(tablet){
-      width: 600px;
-      margin: 30px auto;
-    }
-  }
-
-  .modal-open{
-    .modal{
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-  }
-
-  .modal-content {
-    position: relative;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 6px;
-    outline: 0;
-
-    @include breakpoint(tablet){
-      box-shadow: 0 5px 15px rgba(0,0,0, .5);
-    }
-  }
-
-  .modal-header{
-    padding: 21px 15px 20px;
-    border:none;
-
-    .close{
-      margin-top: 6px;
-      padding: 0;
-      cursor: pointer;
-      background: 0 0;
-      border:0;
-      float: right;
-      font-size: 21px;
-      font-weight: 700;
-      line-height: 1%;
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      opacity: .2;
-    }
-  }
-}
-
-#licenseModal{
-  h3{
-    //font-family: "Playfair Display";
-  }
-  p{
-    margin-bottom: 18px;
-    line-height: 23px;
-    //font-family: Lato, sans-serif;
-    color:#424242;
-    font-size: 16px;
-  }
-  ul{
-    list-style: none;
-    line-height: 23px;
-    //font-family: Lato, sans-serif;
-    color:#424242;
-    font-size: 16px;
-
-    li{
-      list-style: square;
-      margin-bottom: 12px;
-
-    }
-  }
-  .tab-content{
-    padding:0 40px;
-    ul{
-      padding-left: 45px;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-  }
-  .tab-pane{
-    padding-top: 20px;
-  }
-  .modal-body{
-    padding:0;
-  }
-
-  .nav-tabs.nav-justified>li>a{
-    border-radius: 0;
-    background-color: #eee;
-    border:none;
-    color:#000;
-    &:hover{
-      background-color: #ddd;
-    }
-  }
-  .nav-tabs.nav-justified>.active>a{
-    border:none;
-    color:#fff;
-    background-color: #c69f73;
-    &:hover{
-      background-color: #c69f73;
-    }
-  }
-}
-
-#et_youtubeModal{
-
-  .modal-body{
-    padding: 15px;
-    @include breakpoint(laptop){
-      min-height: 350px;
-    }
-  }
-
-}
-
-.fade{
-  opacity: 0;
-  @include transition(opacity .3s ease-in-out);
-  &.in{
-    opacity: 1;
-  }
-}
-
-.tab-content{
-  .tab-pane{
-    display: none;
-
-    &.active{
-      display: block;
-    }
-  }
-
-}
-
-.eltdf-sticky-header{
-  &.modal-open{
-    @include transform(translateY(-100%) !important);
-  }
-}
-
-.et-product-overlay{
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  background-color: #000;
-  opacity: .5;
-
-  &.fade{
-    opacity: 0;
-  }
-
-  &.in{
-    opacity: .5;
-  }
-
 }

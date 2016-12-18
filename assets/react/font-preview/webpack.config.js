@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const LiveReloadPlugin = require('webpack-livereload-plugin');
-
+var autoprefixer = require('autoprefixer');
 const options = {
   port: 35729
 };
@@ -51,6 +51,9 @@ module.exports = {
         exclude: /(node_modules|bower_components)/
       }
     ]
+  },
+  postcss: function () {
+    return [autoprefixer];
   },
   sassLoader:{
     includePaths: [

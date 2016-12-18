@@ -6,7 +6,7 @@ import FontApp from 'FontApp';
 
 //can require main css file using style and css loader
 // App CSS
-require('style!css!sass!applicationStyles');
+require('style!css!postcss-loader!sass!applicationStyles');
 
 // Render App to DOM
 ReactDom.render(

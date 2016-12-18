@@ -1171,11 +1171,26 @@ interface JQueryStatic {
      */
     parseHTML(data: string, context?: Document, keepScripts?: boolean): any[];
 }
+interface ModalOptions {
+    backdrop?: boolean|string;
+    keyboard?: boolean;
+    show?: boolean;
+    remote?: string;
+}
 
+interface ModalOptionsBackdropString {
+    backdrop?: string; // for "static"
+    keyboard?: boolean;
+    show?: boolean;
+    remote?: string;
+}
 /**
  * The jQuery instance members
  */
 interface JQuery {
+    modal(options?: ModalOptions): JQuery;
+    modal(options?: ModalOptionsBackdropString): JQuery;
+    modal(command: string): JQuery;
     /**
      * Register a handler to be called when Ajax requests complete. This is an AjaxEvent.
      *

@@ -42,7 +42,7 @@
             <a id='eltdf-back-to-top'  href='#'>
                 <span class="eltdf-icon-stack">
                      <?php
-                        readanddigest_icon_collections()->getBackToTopIcon('linea-icons');
+                        readanddigest_icon_collections()->getBackToTopIcon('font-awesome');
                     ?>
                 </span>
             </a>

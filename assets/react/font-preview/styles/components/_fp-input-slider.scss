@@ -12,9 +12,9 @@
     margin-top: 0;
     border: none;
     padding-top: 50px;
-    -webkit-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0);
+    box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0);
 
     @include breakpoint(tablet){
       padding-top: 20px;
@@ -35,6 +35,9 @@
 
     &.active {
       @include transform(translateX(0)translateZ(0));
+      -webkit-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
+      -moz-box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0px 18px 44px -12px rgba(0, 0, 0, 0.6);
     }
 
     &.fp-logged-in{

@@ -4,3 +4,13 @@
  */
 .vendor { display: table-row; }
 
+
+/**
+ * Pinit juqery buttons
+ */
+a.pinit-button.default.jpibfi-size-normal.jpibfi-button-round, a.pinit-button.default.jpibfi-size-normal.jpibfi-button-rounded-square, a.pinit-button.default.jpibfi-size-normal.jpibfi-button-square{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
