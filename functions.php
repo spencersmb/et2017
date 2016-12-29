@@ -1,6 +1,17 @@
 <?php
 //define constants
 define('ET2017_ROOT', get_stylesheet_directory_uri());
+global $allowed_html;
+$allowed_html = array(
+	'a' => array(
+		'href' => array(),
+		'title' => array()
+	),
+	'br' => array(),
+	'p' => array(),
+	'em' => array(),
+	'strong' => array(),
+);
 
 /*** Child Theme Function  ***/
 function eltd_child_theme_enqueue_scripts() {
@@ -233,8 +244,8 @@ function de_que_parent_styles(){
 	
 	//jquery pinit - client css
 	wp_deregister_style('jpibfi-style');
-	wp_dequeue_script('jpibfi-script');
-	add_JPIBFI_scripts();
+//	wp_dequeue_script('jpibfi-script');
+//	add_JPIBFI_scripts();
 
 	//deque js from parent theme
 	wp_deregister_script('readanddigest_third_party');
@@ -843,7 +854,17 @@ if (!function_exists('et2017_modify_read_more_link')) {
 	add_filter( 'the_content_more_link', 'et2017_modify_read_more_link', 100);
 }
 
+//CPT UI
+if ( file_exists(get_stylesheet_directory() . '/inc/cpt-ui/cpt.php') ) {
+	require_once( get_stylesheet_directory() . '/inc/cpt-ui/cpt.php' );
+}
 
+//REST ENDPOINTS
+if ( file_exists(get_stylesheet_directory() . '/inc/rest/restapi.php') ) {
+	require_once( get_stylesheet_directory() . '/inc/rest/restapi.php' );
+}
+
+//VISUAL COMPOSER CHECK
 if( et_twenty_seventeen_visual_composer_installed() ){
 	include  get_stylesheet_directory() . '/vc-templates/vc-blog-feature.php';
 	include  get_stylesheet_directory() . '/vc-templates/vc-single-licence.php';
@@ -861,66 +882,6 @@ if( et_twenty_seventeen_visual_composer_installed() ){
 }
 
 
-
-class et_register_endpoints{
-
-	function __construct()
-	{
-		// this gets called automatically when a class gets created
-		add_action('rest_api_init', array($this, 'register_routes' ) );
-	}
-
-	function et_license_callback( WP_REST_Request $request ){
-
-		$url = get_site_url();
-		$postid = url_to_postid( $url . '/products' );
-		$standard_data = get_field('standard_content', $postid);
-		$extended_data = get_field('extended', $postid);
-
-		$standard_string = str_replace(array("\r\n", "\r", "\n"), "", $standard_data);
-		$extended_string = str_replace(array("\r\n", "\r", "\n"), "", $extended_data);
-
-		$test = array(
-			'standard' => wp_kses_post($standard_string),
-			'extended' => wp_kses_post($extended_string)
-		);
-
-		return $test;
-	}
-
-	public function register_routes(){
-		register_rest_route(
-			'product-licenses/v1',
-			'/license/',
-			array(
-				'methods' => 'GET',
-				'callback' => array($this, 'et_license_callback' )
-			)
-		);
-
-	}
-
-	function init(){
-
-	}
-
-}
-
-global $et_rest_endpoints;
-$et_rest_endpoints = new et_register_endpoints();
-
-global $allowed_html;
-$allowed_html = array(
-	'a' => array(
-		'href' => array(),
-		'title' => array()
-	),
-	'br' => array(),
-	'p' => array(),
-	'em' => array(),
-	'strong' => array(),
-);
-
 //put emojies in the footer
 function disable_emojis() {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -935,7 +896,7 @@ function disable_emojis() {
 }
 add_action( 'init', 'disable_emojis' );
 
-
+//JQUERY PINIT FUNCTION
 function add_JPIBFI_scripts(){
 
 	if(class_exists(JPIBFI_Client)){
@@ -947,6 +908,7 @@ function add_JPIBFI_scripts(){
 		$replace_characters = ['[', ']'];
 		$show_on_str = str_replace($replace_characters,'', $show_on_str);
 
+		//Break into comma separated array
 		$show_on_array = explode(',', $show_on_str);
 //		var_dump(in_array($current_page, $show_on_array));
 
@@ -956,4 +918,27 @@ function add_JPIBFI_scripts(){
 
 	}
 
+}
+
+//ADD Custom Excerpts to Pages
+add_action( 'init', 'my_add_excerpts_to_pages' );
+function my_add_excerpts_to_pages() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+
+//Set posts per page on Search page
+add_action( 'pre_get_posts',  'set_posts_per_page'  );
+function set_posts_per_page( $query ) {
+
+	global $wp_the_query;
+
+	if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
+		$query->set( 'posts_per_page', 12 );
+	}
+	elseif ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
+		$query->set( 'posts_per_page', 12 );
+	}
+	// Etc..
+
+	return $query;
 }

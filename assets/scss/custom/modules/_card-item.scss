@@ -60,7 +60,7 @@
   li{
     list-style: none;
     position: relative;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
     padding-left: 25px;
     text-align: left;
 
@@ -68,6 +68,8 @@
       padding-right: 10px;
       position: absolute;
       left: 0;
+      top: 50%;
+      @include transform(translateY(-50%));
       color: $primary-color;
     }
   }

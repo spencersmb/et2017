@@ -9,9 +9,11 @@ $sidebar = readanddigest_sidebar_layout(); ?>
 
 $blog_page_range = readanddigest_get_blog_page_range();
 $max_number_of_pages = readanddigest_get_max_number_of_pages();
+
 if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
 else { $paged = 1; }
+
 $current_page = max(1, get_query_var('paged'));
 
 ?>

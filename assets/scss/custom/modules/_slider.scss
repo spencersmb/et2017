@@ -20,6 +20,7 @@
 
   .eltdf-pt-one-item{
     text-align: center;
+    min-height: 282px;
   }
 
   .eltdf-pc-title{
@@ -33,6 +34,18 @@
   }
   .eltdf-pt-one-title-holder{
    margin:0 auto;
+    .eltdf-pt-one-title{
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 58px;
+      }
+    }
   }
 
   .eltdf-pt-one-image-holder{

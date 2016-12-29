@@ -55,9 +55,28 @@ function et_twenty_seventeen_grid_one_vc_func() {
                 "value" => ''
             ),
             array(
+
+                'param_name' => 'has_custom_link',
+                "heading" => esc_html__( "Custom Link", "et_twenty_seventeen" ),
+                'description' => '',
+                'type'        => 'dropdown',
+                'save_always' => true,
+                'value' => array(
+                    'Yes' => 'yes',
+                    'No' => 'no',
+                ),
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => esc_html__( "Custom Url", "et_twenty_seventeen" ),
+                'param_name' => 'custom_url',
+                'dependency' => array('element' => 'has_custom_link', 'value' => array('yes')),
+            ),
+            array(
                 'type' => 'dropdown',
                 'heading' => 'Choose Link',
                 'param_name' => 'page_link',
+                'dependency' => array('element' => 'has_custom_link', 'value' => array('no')),
                 'value' => et_getAllPages('page'),
                 'save_always' => true
             ),
@@ -90,7 +109,6 @@ function et_twenty_seventeen_grid_one_vc_func() {
             array(
                 "type" 			=> "icon",
                 "class" 		=> "hide_in_vc_editor",
-                "admin_label" 	=> true,
                 "heading" 		=> "Icon",
                 "param_name" 	=> "fa_icon",
                 "admin_label" 	=> false,
@@ -147,6 +165,8 @@ function et_twenty_seventeen_grid_one_item_func( $atts, $content = null ) { // N
         'fa_icon' => '',
         'item_headline_text' => '',
         'link_text' => '',
+        'has_custom_link' => '',
+        'custom_url' => '',
         'page_link' => '',
         'icon_bg_color' => '#727272',
         'icon_color' => '#fff',

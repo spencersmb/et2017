@@ -94,6 +94,24 @@
       border-color: $dark-blue;
       border-width: 3px;
       background-color: transparent;
+      -webkit-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      color: $dark-blue;
+      font-size: 16px;
+      font-weight: 600;
+      &::-webkit-input-placeholder{
+        color: $dark-blue;
+      }
+      &:-moz-placeholder{
+        color: $dark-blue;
+      }
+      &::-moz-placeholder{
+        color: $dark-blue;
+      }
+      &:-ms-input-placeholder{
+        color: $dark-blue;
+      }
     }
   }
 

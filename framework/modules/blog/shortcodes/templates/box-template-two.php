@@ -22,13 +22,18 @@
 
                 <div class="eltdf-pswt-content-inner">
 
+                    <?php
+                        $target = '';
+                        ($new_window == 'no'? $target = '_self' : $target = '_blank');
+                    ?>
+
                     <h1 class="eltdf-pswt-title">
-                        <a itemprop="url" href="<?php echo esc_url($button_url); ?>" target="_self"><?php echo wp_kses($headline, 'et_twenty_seventeen') ?></a>
+                        <a itemprop="url" href="<?php echo esc_url($button_url); ?>" target="<?php echo esc_attr($target); ?>"><?php echo wp_kses($headline, 'et_twenty_seventeen') ?></a>
                     </h1>
                     <div class="eltdf-pt-three-excerpt">
                         <?php echo $content; ?>
                     </div>
-                    <a itemprop="url" href="<?php echo esc_url($button_url); ?>" target="_self" class="et-btn-round"><?php echo wp_kses($button_text, 'et_twenty_seventeen') ?></a>
+                    <a itemprop="url" href="<?php echo esc_url($button_url); ?>" target="<?php echo esc_attr($target); ?>" class="et-btn-round"><?php echo wp_kses($button_text, 'et_twenty_seventeen') ?></a>
 
                 </div>
 

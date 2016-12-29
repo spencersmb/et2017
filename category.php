@@ -56,35 +56,39 @@ $blog_archive_pages_classes = readanddigest_blog_archive_pages_classes(readanddi
 
                             ?>
                         <div class="eltdf-pt-one-item eltdf-post-item eltdf-active-post-page">
-                            <div class="eltdf-pt-one-image-holder">
-                                <div class="eltdf-pt-one-image-inner-holder">
-                                    <a itemprop="url" class="eltdf-pt-link" href="<?php the_permalink(); ?>" target="_self">
-                                        <?php echo et_twenty_seventeen_generate_thumbnail($thumbnailId, $url, 384, 261, true); ?>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="eltdf-pt-one-content-holder">
-                                <div class="eltdf-pt-one-title-holder">
-                                    <h3 class="eltdf-pt-one-title">
-                                        <a itemprop="url" class="eltdf-pt-link" href="<?php the_permalink(); ?>" target="_self"><?php the_title(); ?></a>
-                                    </h3>
-                                </div>
-                                <div class="eltdf-pt-one-excerpt">
-                                    <?php echo et_twenty_seventeen_getExcerpt( 30 ); ?>
-                                </div>
-                            </div>
-                            <div class="eltdf-pt-info-section clearfix">
-                                <div class="eltdf-pt-info-section-left">
-                                    <div itemprop="dateCreated" class="eltdf-post-info-date entry-date updated">
-                                        <a itemprop="url" href="<?php echo get_day_link( $archive_year, $archive_month, $archive_day); ?>"><?php echo wp_kses($date, 'et_twenty_seventeen'); ?></a>
+
+                            <div class="et-post-item__inner">
+                                <div class="eltdf-pt-one-image-holder">
+                                    <div class="eltdf-pt-one-image-inner-holder">
+                                        <a itemprop="url" class="eltdf-pt-link" href="<?php the_permalink(); ?>" target="_self">
+                                            <?php echo et_twenty_seventeen_generate_thumbnail($thumbnailId, $url, 384, 261, true); ?>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="eltdf-pt-info-section-right">
-                                    <div class="eltdf-post-info-comments-holder">
-                                        <a class="eltdf-post-info-comments" href="<?php echo esc_url( get_comments_link() ); ?>" target="_self"><?php echo get_comments_number_text('0 ' . esc_html__('Comments','et_twenty_seventeen'), '1 '.esc_html__('Comment','et_twenty_seventeen'), '% '.esc_html__('Comments','et_twenty_seventeen') ) ?></a>
+                                <div class="eltdf-pt-one-content-holder">
+                                    <div class="eltdf-pt-one-title-holder">
+                                        <h3 class="eltdf-pt-one-title">
+                                            <a itemprop="url" class="eltdf-pt-link" href="<?php the_permalink(); ?>" target="_self"><?php the_title(); ?></a>
+                                        </h3>
+                                    </div>
+                                    <div class="eltdf-pt-one-excerpt">
+                                        <?php echo et_twenty_seventeen_getExcerpt( 30 ); ?>
+                                    </div>
+                                </div>
+                                <div class="eltdf-pt-info-section clearfix">
+                                    <div class="eltdf-pt-info-section-left">
+                                        <div itemprop="dateCreated" class="eltdf-post-info-date entry-date updated">
+                                            <a itemprop="url" href="<?php echo get_day_link( $archive_year, $archive_month, $archive_day); ?>"><?php echo wp_kses($date, 'et_twenty_seventeen'); ?></a>
+                                        </div>
+                                    </div>
+                                    <div class="eltdf-pt-info-section-right">
+                                        <div class="eltdf-post-info-comments-holder">
+                                            <a class="eltdf-post-info-comments" href="<?php echo esc_url( get_comments_link() ); ?>" target="_self"><?php echo get_comments_number_text('0 ' . esc_html__('Comments','et_twenty_seventeen'), '1 '.esc_html__('Comment','et_twenty_seventeen'), '% '.esc_html__('Comments','et_twenty_seventeen') ) ?></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <?php endwhile; ?>
                         <?php endif; ?>

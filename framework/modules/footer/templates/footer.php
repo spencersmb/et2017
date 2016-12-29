@@ -23,7 +23,7 @@
                     <div class="footer-col footer-col-2">
                         <?php if(has_nav_menu( 'footer-menu-1' )): ?>
                             <div class="footer-nav">
-                                <h6>PRODUCT</h6>
+                                <h6><?php echo esc_html__('PRODUCT','et-twenty-seventeen') ?></h6>
                                 <?php wp_nav_menu( array(
                                         'menu' => 'footer-menu-1',
                                         'theme_location' => 'footer-1',
@@ -37,7 +37,7 @@
                     <div class="footer-col footer-col-3">
                         <?php if(has_nav_menu( 'footer-menu-2' )): ?>
                             <div class="footer-nav">
-                                <h6>Contact</h6>
+                                <h6><?php echo esc_html__('Contact','et-twenty-seventeen') ?></h6>
                                 <?php wp_nav_menu( array(
                                         'menu' => 'footer-menu-2',
                                         'theme_location' => 'footer-2',
@@ -49,13 +49,13 @@
                         <?php endif; ?>
                     </div>
                     <div class="footer-col footer-col-4">
-                        <h6>FOLLOW US</h6>
+                        <h6><?php echo esc_html__('FOLLOW US','et-twenty-seventeen') ?></h6>
                         <?php if(is_active_sidebar('footer_column_3')) {
                             dynamic_sidebar( 'footer_column_3' );
                         } ?>
                     </div>
                     <div class="footer-col footer-col-5">
-                        <h6>LATEST COURSE</h6>
+                        <h6><?php echo esc_html__('LATEST COURSE','et-twenty-seventeen') ?></h6>
                         <?php if(is_active_sidebar('footer_column_4')) {
                             dynamic_sidebar( 'footer_column_4' );
                         } ?>

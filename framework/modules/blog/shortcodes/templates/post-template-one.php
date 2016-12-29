@@ -51,7 +51,8 @@
     </div>
         <?php if($display_excerpt == 'yes'){ ?>
             <div class="eltdf-pt-one-excerpt">
-                <?php readanddigest_excerpt($excerpt_length); ?>
+                <?php echo et_twenty_seventeen_getExcerpt($excerpt_length); ?>
+                <?php //readanddigest_excerpt($excerpt_length); ?>
             </div>
         <?php } ?>
         <div class="et2017-tabs-link">
