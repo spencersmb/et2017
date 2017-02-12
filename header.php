@@ -7,10 +7,12 @@
      * @see eltd_user_scalable - hooked with 10
      */
     ?>
+
 	<?php do_action('readanddigest_header_meta'); ?>
 
 	<?php wp_head(); ?>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,800,900" rel="stylesheet">
+    
     <?php if(is_front_page()): ?>
         <style>
             .nc_socialPanel{
@@ -19,7 +21,11 @@
         </style>
     <?php endif; ?>
 </head>
-<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+<?php
+
+?>
+<body <?php body_class(et2017_page_checker()); ?> itemscope itemtype="http://schema.org/WebPage">
+
 <?php readanddigest_get_side_area(); ?>
 
 <?php if(is_page_template('page-product-react.php') || is_page('products')): ?>

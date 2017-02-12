@@ -19,13 +19,43 @@ else { $paged = 1; }
 $blog_archive_pages_classes = readanddigest_blog_archive_pages_classes(readanddigest_get_category_blog_list());
 ?>
 <?php get_header(); ?>
-<?php readanddigest_get_title(); ?>
+<?php //readanddigest_get_title(); ?>
+
+    <!-- ET -title -->
+    <div class="vc_row wpb_row vc_row-fluid eltdf-section eltdf-content-aligment-left eltdf-grid-section" style="">
+        <div class="clearfix eltdf-section-inner">
+            <div class="eltdf-section-inner-margin clearfix">
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner "><div class="wpb_wrapper">
+                            <div class="vc_row wpb_row vc_inner vc_row-fluid eltdf-section eltdf-content-aligment-left" style="">
+                                <div class="eltdf-full-section-inner">
+                                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                                        <div class="vc_column-inner ">
+                                            <div class="wpb_wrapper">
+                                                <div class="vc_empty_space" style="height: 90px">
+                                                    <span class="vc_empty_space_inner"></span>
+                                                </div>
+
+                                                <h2 class="eltdf-custom-font-holder" style="font-size: 48px;line-height: 48px;font-style: normal;font-weight: 500;text-transform: None;text-align: center;color: #313a54" data-font-size="48px" data-line-height="48px">
+                                                    <?php readanddigest_title_text(); ?></h2>
+                                                <div class="vc_empty_space" style="height: 90px"><span class="vc_empty_space_inner"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="<?php echo esc_attr($blog_archive_pages_classes['holder']); ?>">
         <?php do_action('readanddigest_after_container_open'); ?>
         <div class="<?php echo esc_attr($blog_archive_pages_classes['inner']); ?>">
 
-            <div class="eltdf-bnl-holder eltdf-pl-one-holder  eltd-post-columns-3" data-base="eltdf_post_layout_one" data-number_of_posts="3" data-column_number="3" data-category_id="4" data-sort="latest" data-thumb_image_size="custom_size" data-thumb_image_width="384" data-thumb_image_height="261" data-display_excerpt="yes" data-excerpt_length="13" data-display_pagination="no" data-paged="1" data-max_pages="5">
+            <div class="eltdf-bnl-holder eltdf-pl-one-holder  eltd-post-columns-3 et2017-bnl-holder" data-base="eltdf_post_layout_one" data-number_of_posts="3" data-column_number="3" data-category_id="4" data-sort="latest" data-thumb_image_size="custom_size" data-thumb_image_width="384" data-thumb_image_height="261" data-display_excerpt="yes" data-excerpt_length="13" data-display_pagination="no" data-paged="1" data-max_pages="5">
                 <div class="eltdf-bnl-outer">
                     <div class="eltdf-bnl-inner">
 
@@ -35,7 +65,10 @@ $blog_archive_pages_classes = readanddigest_blog_archive_pages_classes(readanddi
                             'post_type' => 'post',
                             'posts_per_page' => '12',
                             'paged' => $paged,
-                            'post_status' => 'publish'
+                            'post_status' => 'publish',
+                            'category__in' => array(
+                                $current_cat_id
+                            )
                         );
 
                         $query = new WP_Query( $args );

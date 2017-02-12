@@ -1,0 +1,79 @@
+/*
+  _____                          _____                    _
+ | ____|_   _____ _ __ _   _    |_   _|   _  ___  ___  __| | __ _ _   _
+ |  _| \ \ / / _ \ '__| | | |_____| || | | |/ _ \/ __|/ _` |/ _` | | | |
+ | |___ \ V /  __/ |  | |_| |_____| || |_| |  __/\__ \ (_| | (_| | |_| |
+ |_____| \_/ \___|_|   \__, |     |_| \__,_|\___||___/\__,_|\__,_|\__, |
+                       |___/                                      |___/
+
+*/
+
+/*
+Theme Name: et2017
+Theme URI: http://readanddigest.elated-themes.com/
+Description: A child theme of Read and Digest Theme
+Author: Elated Themes
+Author URI: http://themeforest.net/user/elated-themes
+Version: 1.0.0
+Template: readanddigest
+*/
+//@import url("../readanddigest/style.css");
+
+/* ----------------------------------------------------------------------------
+ * Mixins & Variables
+ * ------------------------------------------------------------------------- */
+@import 'vendor/vendorpackages';
+@import 'vendor/vendorcss';
+@import 'core/functions';
+@import 'core/mixins';
+@import 'core/variables';
+@import 'core/helpers';
+
+/* ----------------------------------------------------------------------------
+ * Structure
+ * ------------------------------------------------------------------------- */
+@import 'core/structure';
+@import 'core/flex-grid';
+@import 'core/buttons';
+
+/* WPCore */
+//@import 'core/wpcore';
+
+/* ----------------------------------------------------------------------------
+ * Modules
+ * ------------------------------------------------------------------------- */
+@import 'modules/navigation';
+@import 'modules/et-large-search';
+@import 'modules/slider';
+@import 'modules/feature-blog';
+@import 'modules/latest-news';
+@import 'modules/footer';
+@import 'modules/card-item';
+@import 'modules/et-box';
+@import 'modules/et-box-intro';
+@import 'modules/et-grid-one';
+@import 'modules/et-link-card';
+@import 'modules/et-gallery';
+@import 'modules/et-bio-cards';
+@import 'modules/et-ck-forms';
+@import 'modules/et-flex-list';
+@import 'modules/modals';
+@import 'modules/contact-module';
+
+/* ----------------------------------------------------------------------------
+ * Pages
+ * ------------------------------------------------------------------------- */
+@import 'products/products-page';
+@import 'modules/404';
+
+/* ----------------------------------------------------------------------------
+ * Blog
+ * ------------------------------------------------------------------------- */
+@import 'blog/post-you-may-like';
+@import 'blog/home-page';
+@import 'blog/post-detail';
+
+/* ----------------------------------------------------------------------------
+ * Widgets
+ * ------------------------------------------------------------------------- */
+@import "widgets/about-widget";

@@ -32,6 +32,7 @@ class FontInput extends React.Component {
     this.props.sizeChange(size);
   }
 
+  // <a href="#" onClick={this.changeTextSize} className={("72" === font.size)? "active": ""} data-size="72"><span className="btn-72" data-size="72">A</span>72pt</a>
   render() {
     let { font } = this.props;
     return (
@@ -42,7 +43,6 @@ class FontInput extends React.Component {
           <a href="#" onClick={this.changeTextSize} className={("24" === font.size)? "active": ""} data-size="24"><span className="btn-24" data-size="24">A</span>24pt</a>
           <a href="#" onClick={this.changeTextSize} className={("36" === font.size)? "active": ""} data-size="36"><span className="btn-36" data-size="36">A</span>36pt</a>
           <a href="#" onClick={this.changeTextSize} className={("48" === font.size)? "active": ""} data-size="48"><span className="btn-48" data-size="48">A</span>48pt</a>
-          <a href="#" onClick={this.changeTextSize} className={("72" === font.size)? "active": ""} data-size="72"><span className="btn-72" data-size="72">A</span>72pt</a>
         </div>
       </div>
     )

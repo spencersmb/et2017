@@ -12,6 +12,7 @@ else { $paged = 1; }
 //if(readanddigest_options()->getOptionValue('enable_search_page_sidebar') === "no"){
 //    $enable_search_page_sidebar = false;
 //}
+
 ?>
 <?php readanddigest_get_title(); ?>
     <div class="eltdf-container">
@@ -22,13 +23,14 @@ else { $paged = 1; }
                 <div class="eltdf-container-inner">
                     <div class="eltdf-search-page-holder">
 
-                        <div class="eltdf-bnl-holder eltdf-pl-one-holder  eltd-post-columns-3" data-base="eltdf_post_layout_one" data-number_of_posts="3" data-column_number="3" data-category_id="4" data-sort="latest" data-thumb_image_size="custom_size" data-thumb_image_width="384" data-thumb_image_height="261" data-display_excerpt="yes" data-excerpt_length="13" data-display_pagination="no" data-paged="1" data-max_pages="5">
+                        <div class="eltdf-bnl-holder eltdf-pl-one-holder  eltd-post-columns-3 et2017-bnl-holder" data-base="eltdf_post_layout_one" data-number_of_posts="3" data-column_number="3" data-category_id="4" data-sort="latest" data-thumb_image_size="custom_size" data-thumb_image_width="384" data-thumb_image_height="261" data-display_excerpt="yes" data-excerpt_length="13" data-display_pagination="no" data-paged="1" data-max_pages="5">
                             <div class="eltdf-bnl-outer">
                                 <div class="eltdf-bnl-inner">
 
                                     <?php if(have_posts()) : while ( have_posts() ) : the_post(); ?>
 
                                         <?php
+                                        
                                         //setup
                                         $postId = get_the_ID();
                                         $thumbnailId = get_post_thumbnail_id( $postId );

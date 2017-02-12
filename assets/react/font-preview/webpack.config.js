@@ -1,4 +1,4 @@
-const localPath = '/Users/yosemetie/Dropbox/development/vhosts/www.everytuesday.dev/wp-content/themes/et2017/node_modules/';
+const localPath = '/Users/yosemetie/Dropbox/development/vhosts/www.everytuesday.dev/wp-content/themes/et2017_sage/node_modules/';
 const path = require('path');
 const webpack = require('webpack');
 
@@ -19,7 +19,12 @@ module.exports = {
       "$": "jquery",
       "jQuery": "jquery"
     }),
-    new LiveReloadPlugin(options)
+    new LiveReloadPlugin(options),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
+      }
+    })
   ],
   output: {
     path: __dirname, // font-preview is root of this file

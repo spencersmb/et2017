@@ -32,20 +32,26 @@ global $allowed_html;
                     <?php endif; ?>
 
                 <?php endif; ?>
-                <h2><?php echo wp_kses($headline , 'et-twenty-seventeen'); ?></h2>
+
+                <?php if(isset($headline)): ?>
+                    <h2><?php echo wp_kses($headline , 'et-twenty-seventeen'); ?></h2>
+                <?php endif; ?>
+
                 <div class="sub-head">
                     <p><?php echo wp_kses($content , $allowed_html ,'et-twenty-seventeen'); ?>
                 </div>
 
-                <?php if($add_button == 'yes'): ?>
-                    <div class="button-wrapper">
-                        <a
-                            class="et-btn-round et-btn-enroll et-outline et-outline__black beg-level-btn"
-                            <?php echo esc_attr(($new_window == 'yes') ? 'target=_blank' : ''); ?>
-                            href="<?php echo esc_url($button_url); ?>">
+                <?php if(isset($add_button)): ?>
+                    <?php if($add_button == 'yes'): ?>
+                        <div class="button-wrapper">
+                            <a
+                                class="et-btn-round et-btn-enroll et-outline et-outline__black beg-level-btn"
+                                <?php echo esc_attr(($new_window == 'yes') ? 'target=_blank' : ''); ?>
+                                href="<?php echo esc_url($button_url); ?>">
                                 <?php echo wp_kses( $button_text, 'et-twenty-seventeen'); ?>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
 
             </div>

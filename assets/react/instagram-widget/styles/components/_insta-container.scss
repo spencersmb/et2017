@@ -73,6 +73,9 @@
     color: $dark-blue;
     padding:0 0 20px;
     text-align: center;
+    &:hover{
+      color: #DE7157 !important;
+    }
   }
 }
 
@@ -450,6 +453,12 @@ $flexHeight-sm: 25vw;
 
       a{
         text-align: center;
+      }
+
+      .insta-modal-btn{
+        padding: 10px 20px;
+        font-size:14px;
+        border:none;
       }
     }
   }

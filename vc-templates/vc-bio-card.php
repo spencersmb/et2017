@@ -102,7 +102,7 @@ function et_twenty_seventeen_bio_cards_shortcode( $atts, $content = null ) { // 
     // Build Output
     $output = '
     <div class="et-rd-container '.esc_attr($class).'" style="">
-        <div class="flex-row flex-row-md">
+        <div class="flex-row flex-row-md flex-bio-card">
         
             '.$content;
 

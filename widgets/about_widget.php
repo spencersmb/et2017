@@ -31,7 +31,11 @@ class et_twenty_seventeen_about_widget extends WP_Widget {
 //		add_action( 'load-widgets.php', array(&$this, 'my_custom_load') );
 
 		/* Create the widget. */
-		parent::__construct( 'et_twenty_seventeen_about_widget', esc_html__('ET2017: About Me', 'et_twenty_seventeen_about_widget'), $widget_ops, $control_ops );
+		parent::__construct( 
+			'et_twenty_seventeen_about_widget', 
+			esc_html__('ET2017: About Me', 'et_twenty_seventeen_about_widget'), 
+			$widget_ops, $control_ops 
+		);
 	}
 
 	/**

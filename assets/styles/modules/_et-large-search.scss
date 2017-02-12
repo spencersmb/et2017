@@ -1,0 +1,130 @@
+/*------------------------------------*\
+    Feature Search Bar
+\*------------------------------------*/
+.et-large-search{
+  .widget_text {
+    margin: 0;
+    display: block;
+    position: relative;
+
+    @include breakpoint(laptop){
+      display: inline-block;
+    }
+
+    .textwidget {
+      font-size: 21px;
+      font-weight: 500;
+      color: $dark-blue;
+    }
+  }
+
+  .wpb_wrapper {
+    text-align: center;
+  }
+
+  .eltdf-search-menu-holder {
+    display: inline-block;
+    width: 90%;
+    //background-color: rgba(80, 80, 80, 0.08);
+    //border: 1px solid rgba(137, 141, 144, 0.24);
+    padding: 10px;
+    border-radius: 50px;
+    overflow: visible;
+    margin: 15px 0 0;
+
+    @include breakpoint(tablet){
+      width: 475px;
+      margin: 15px 25px 0;
+    }
+
+    @include breakpoint(laptop){
+      margin: 0 25px;
+    }
+
+    .eltdf-search-submit {
+      background-color: transparent;
+      width: 100%;
+      height: 54px;
+      padding: 0 30px;
+      border-radius: 50px;
+      border-color: transparent;
+
+      &:hover{
+        background-color: transparent;
+        border-color: transparent;
+
+        .ion-ios-search{
+          color: $cinn;
+        }
+      }
+
+    }
+  }
+
+  .eltdf-column-left{
+    display: block;
+  }
+
+  .eltdf-column-right {
+    display: block;
+    position: absolute;
+    top: 49%;
+    @include transform(translateY(-50%));
+    right: 9px;
+    width: auto;
+  }
+
+  .eltdf-search-field{
+    width: 100%;
+    height: auto;
+    background-color: $white;
+    border-radius: 50px;
+    border: 3px solid $white;
+    padding: 6px 20px 5px;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: inherit;
+    letter-spacing: 0;
+    -webkit-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0.6);
+    @include transition(all .3s);
+    border-top: #fff;
+
+    @include breakpoint(desktop){
+      border-top:3px solid #fff;
+    }
+
+    &:focus {
+      border: 3px solid $dark-blue;
+      background-color: transparent;
+      -webkit-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      box-shadow: 0px 18px 44px -17px rgba(0, 0, 0, 0);
+      color: $dark-blue;
+      font-size: 16px;
+      font-weight: 600;
+      &::-webkit-input-placeholder{
+        color: $dark-blue;
+      }
+      &:-moz-placeholder{
+        color: $dark-blue;
+      }
+      &::-moz-placeholder{
+        color: $dark-blue;
+      }
+      &:-ms-input-placeholder{
+        color: $dark-blue;
+      }
+    }
+  }
+
+  .ion-ios-search{
+    @include transition(color .15s ease-in-out);
+    color: $dark-blue;
+    &:before {
+      font-family: "FontAwesome";
+      content: "\f002";
+    }
+  }
+}

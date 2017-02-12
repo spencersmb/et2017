@@ -29,6 +29,10 @@ function eltd_child_theme_enqueue_scripts() {
 	wp_register_style( 'childstyle', get_stylesheet_directory_uri() . '/style.css'  );
 	wp_enqueue_style( 'childstyle' );
 
+	//Production asset
+	wp_register_style( 'et2017-styles', asset_path('styles/main.css')  );
+	wp_enqueue_style( 'et2017-styles' );
+
 }
 add_action('wp_enqueue_scripts', 'eltd_child_theme_enqueue_scripts', 100);
 
@@ -57,6 +61,7 @@ if(!function_exists('et2017_get_global_variables')) {
 
 	add_action('wp_enqueue_scripts', 'et2017_get_global_variables', 101);
 }
+
 if(!function_exists('et2017_per_page_js_variables')) {
 	function et2017_per_page_js_variables() {
 		$per_page_js_vars = apply_filters('readanddigest_per_page_js_vars', array());
@@ -84,15 +89,19 @@ function et_twenty_seventeen_load_scripts() {
 	wp_register_script('et2017-fontawesome', 'https://use.fontawesome.com/c1013b11d0.js', '', '', true);
 	wp_enqueue_script('et2017-fontawesome');
 
+	//GSAP
+	wp_register_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js', '', '1.2.3', true);
+//        wp_register_script('gsap', get_template_directory_uri() . '/node_modules/gsap/src/minified/TweenMax.min.js', '', '1.2.3', true);
+	wp_enqueue_script('gsap'); // Enqueue it!
+
 	// et-2016 theme Vendor-JS
 	wp_register_script('et2017_vendorsJs', ET2017_ROOT . '/assets/js/bundle-vendors.min.js', array('jquery'), '1.1', true); // Custom scripts
 	wp_enqueue_script('et2017_vendorsJs'); // Enqueue it!
 
-
-	// et-2016 theme JS
-	wp_register_script('et2017-js', ET2017_ROOT . '/assets/js/bundle.js', array('jquery'), '1.1', true); // Custom scripts
+	// Main JS file
+	wp_register_script('et2017-js', asset_path('scripts/main.js'), array('jquery'), '1.1', true); // Custom scripts
 	wp_enqueue_script('et2017-js'); // Enqueue it!
-	
+
 	//localize for products page
 	wp_localize_script(
 		'et2017-js',
@@ -106,7 +115,7 @@ function et_twenty_seventeen_load_scripts() {
 	wp_register_script('et2017-font-preview', ET2017_ROOT . '/assets/react/font-preview/assets/js/bundle.js', 'jquery', '', true);
 
 	//enqueue custom fonts
-	wp_register_style('et-fonts', get_stylesheet_directory_uri() . '/assets/css/fonts/et-custom-fonts.css');
+	wp_register_style('et-fonts', get_stylesheet_directory_uri() . '/assets/fonts/et-custom-fonts.css');
 //	wp_register_style('honeymoon', get_stylesheet_directory_uri() . '/assets/css/fonts/honeymoon.css');
 //	wp_register_style('hawthrone', get_stylesheet_directory_uri() . '/assets/css/fonts/hawthorne.css');
 //	wp_register_style('tuesday', get_stylesheet_directory_uri() . '/assets/css/fonts/tuesday.css');
@@ -118,35 +127,8 @@ function et_twenty_seventeen_load_scripts() {
 	 *
 	 *
 	 ***/
-	wp_register_script('products-js', get_stylesheet_directory_uri() . '/assets/js/products_2016/products.js', 'jquery', '', true);
-	wp_register_style('product-css', get_stylesheet_directory_uri() . '/products.min.css');
-
-
-
-	/***
-	 *
-	 * et-2016 old product page
-	 *
-	 *
-	 ***/
-
-	//	wp_register_style('product-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/products.css');
-	//	wp_register_style('sp_style', get_stylesheet_directory_uri() . '/assets/css/products_2016/style.min.css');
-
-	//	if ( is_page_template('page-product.php') ) {
-	//
-	//		wp_enqueue_script('products-js');
-	//		// wp_enqueue_style('sp_style');
-	//
-	//		// ET styles added
-	//		wp_enqueue_style('honeymoon');
-	//		wp_enqueue_style('hawthrone');
-	//		wp_enqueue_style('tuesday');
-	//		//	wp_enqueue_script('bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/products_2016/bootstrap.min.js', 'jquery', '', true);
-	//		wp_enqueue_script('gumroad-js', 'https://gumroad.com/js/gumroad.js', true);
-	//		 wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/bootstrap.min.css');
-	//		wp_enqueue_style('product-css');
-	//	}
+//	wp_register_script('products-js', get_stylesheet_directory_uri() . '/assets/js/products_2016/products.js', 'jquery', '', true);
+//	wp_register_style('product-css', get_stylesheet_directory_uri() . '/products.min.css');
 
 	/***
 	 *
@@ -170,24 +152,6 @@ function et_twenty_seventeen_load_scripts() {
 
 		//ET Custom Fonts
 		wp_enqueue_style('et-fonts');
-	}
-
-	/***
-	 *
-	 * et-2016 courses page
-	 *
-	 *
-	 ***/
-	if ( is_page_template('page-courses.php') ) {
-
-		// old courses page styling
-		// wp_enqueue_style('sp_style');
-		// wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', '', true);
-		// wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/assets/css/products_2016/bootstrap.min.css');
-
-		// et-2016 new styling
-//		wp_enqueue_style('product-css');
-
 	}
 
 	/***
@@ -252,6 +216,7 @@ function de_que_parent_styles(){
 	wp_deregister_script('readanddigest_modules');
 	wp_deregister_script('eltdf-like'); // add like var - find them in the parent theme
 	wp_deregister_script('wpb_composer_front_js');
+	wp_deregister_script('google_map_api');
 
 	//	wp_deregister_script('tp-tools');// remove revslider tools js
 }
@@ -293,11 +258,12 @@ function home_page_scripts(){
 
 /*** Admin Styles  ***/
 function enqueue_parent_styles_wp_admin_style() {
-	wp_register_style( 'et_twenty_seventeen_admin_styles', get_stylesheet_directory_uri() . '/assets/css/wp-core/et2017-admin.css');
+	wp_register_style( 'et_twenty_seventeen_admin_styles', get_stylesheet_directory_uri() . '/assets/admin/css/et2017-admin.css');
 	wp_enqueue_style( 'et_twenty_seventeen_admin_styles' );
 }
 add_action( 'admin_enqueue_scripts', 'enqueue_parent_styles_wp_admin_style' );
 
+//Check for Visual Composer Plugin
 if(!function_exists('et_twenty_seventeen_visual_composer_installed')) {
     /**
      * Function that checks if visual composer installed
@@ -313,6 +279,23 @@ if(!function_exists('et_twenty_seventeen_visual_composer_installed')) {
     }
 }
 
+//Check for Et plugin
+if(!function_exists('et_twenty_seventeen_master_plugin_installed')) {
+	/**
+	 * Function that checks if ET plugin is installed
+	 * @return bool
+	 */
+	function et_twenty_seventeen_master_plugin_installed() {
+
+		//Does Notify Class exists
+		if(class_exists('Notify')) {
+			return true;
+		}
+
+		return false;
+	}
+}
+
 // Register footer menus
 function et_twenty_seventeen_register_my_menu() {
 	register_nav_menu('footer-menu-1', esc_html__( 'Footer Menu 1', 'et_twenty_seventeen' ));
@@ -324,9 +307,12 @@ add_action( 'init', 'et_twenty_seventeen_register_my_menu' );
 include  get_stylesheet_directory() . '/widgets/link_widget.php';
 include  get_stylesheet_directory() . '/widgets/about_widget.php';
 include  get_stylesheet_directory() . '/widgets/instagram-widget.php';
+include  get_stylesheet_directory() . '/widgets/nav-search.php';
+include  get_stylesheet_directory().'/framework/modules/widgets/custom-nav/et2017_nav_custom.php';
 
 // Link Shortcodes init
 include  get_stylesheet_directory() . '/shortcodes/react-font-preview.php';
+include  get_stylesheet_directory() . '/framework/modules/blog/shortcodes/post-layout-one/post-layout-one.php';
 
 //custom functions
 function et_twenty_seventeen_generate_thumbnail($attach_id = null, $attach_url = null, $width = null, $height = null, $crop = true) {
@@ -854,14 +840,24 @@ if (!function_exists('et2017_modify_read_more_link')) {
 	add_filter( 'the_content_more_link', 'et2017_modify_read_more_link', 100);
 }
 
-//CPT UI
-if ( file_exists(get_stylesheet_directory() . '/inc/cpt-ui/cpt.php') ) {
-	require_once( get_stylesheet_directory() . '/inc/cpt-ui/cpt.php' );
+//HELPERS
+if ( file_exists(get_stylesheet_directory() . '/inc/utils/helpers.php') ) {
+	require_once( get_stylesheet_directory() . '/inc/utils/helpers.php' );
 }
+
+//CPT UI
+//if ( file_exists(get_stylesheet_directory() . '/inc/cpt-ui/cpt.php') ) {
+//	require_once( get_stylesheet_directory() . '/inc/cpt-ui/cpt.php' );
+//}
 
 //REST ENDPOINTS
 if ( file_exists(get_stylesheet_directory() . '/inc/rest/restapi.php') ) {
 	require_once( get_stylesheet_directory() . '/inc/rest/restapi.php' );
+}
+
+//SAGE ASSET CHECK
+if ( file_exists(get_stylesheet_directory() . '/inc/sage/assets.php') ) {
+	require_once( get_stylesheet_directory() . '/inc/sage/assets.php' );
 }
 
 //VISUAL COMPOSER CHECK
@@ -942,3 +938,32 @@ function set_posts_per_page( $query ) {
 
 	return $query;
 }
+
+//Exclude pages from search
+function SearchFilter($query) {
+	$frontpage_id = get_option( 'page_on_front' );
+	$blog_id = get_option( 'page_for_posts' );
+
+	$exclude = array(
+		$frontpage_id,
+		$blog_id
+	);
+
+	if ($query->is_search) {
+		$query->set('post__not_in', $exclude);
+}
+	return $query;
+}
+add_filter('pre_get_posts','SearchFilter');
+
+// 1. Add global ACF path for parent and child themes
+//add_filter('acf/settings/load_json', function($paths) {
+//
+//	$paths = array(get_stylesheet_directory() . '/acf-json');
+//
+//	return $paths;
+//});
+
+// 3. Hide ACF field group menu item
+//add_filter('acf/settings/show_admin', '__return_false');
+

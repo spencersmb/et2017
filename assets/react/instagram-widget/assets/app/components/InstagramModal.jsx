@@ -211,7 +211,7 @@ class InstagramModal extends React.Component {
                   </ul>
 
                   <div className="insta-follow">
-                    <a href="https://www.instagram.com/everytuesday/" className="eltdf-btn eltdf-btn-medium eltdf-btn-solid et-btn et-btn-blue" target="_blank">Follow Me</a>
+                    <a href="https://www.instagram.com/everytuesday/" className="et-btn-round insta-modal-btn" target="_blank">Follow Me</a>
                   </div>
 
                 </div>

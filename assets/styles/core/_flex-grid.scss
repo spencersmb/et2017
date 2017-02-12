@@ -1,0 +1,260 @@
+//When editing this make sure to check the products page that it doesnt get jacked up!
+.et-rd-container{
+
+  position: relative;
+  width:1200px;
+  margin: 0 auto;
+
+  @include breakpoint(rd-desktopXL){
+    width: 1200px;
+  }
+  @include breakpoint(rd-desktop-max){
+    width: 950px;
+  }
+  @include breakpoint(rd-laptop-max){
+    width: 768px;
+  }
+  @include breakpoint(rd-tablet-max){
+    width: 600px;
+  }
+  @include breakpoint(rd-mobile-h-max){
+    width: 420px;
+  }
+  @include breakpoint(rd-mobile-v-max){
+    width: 300px;
+  }
+
+}
+
+.et-container-full-width{
+  position: relative;
+  max-width:1200px;
+  margin: 0 auto;
+}
+
+.et-container-inner{
+  position: relative;
+  margin: 0 auto;
+  @include breakpoint(tablet){
+      width: 750px;
+  }
+  @include breakpoint(laptop){
+      width: 768px;
+  }
+  @include breakpoint(desktop){
+    width: 1170px;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5%;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    margin: 0 2%;
+  };
+
+  &.list{
+
+
+
+    @include breakpoint(tablet) {
+      margin: 0 2%;
+      flex-direction: column;
+    };
+
+    @include breakpoint(laptop) {
+      flex-direction: row;
+      min-height: 555px;
+    };
+  }
+
+  &.bg-image-container{
+    @include breakpoint(laptop) {
+      min-height: 700px;
+    };
+  }
+
+  &.reverse{
+    @include breakpoint(tablet) {
+      flex-direction: row-reverse;;
+    };
+  }
+
+  &.bonus-container{
+    flex-wrap: wrap;
+  }
+
+}
+
+.flex-row {
+  display: flex;
+  //display: -webkit-flex;
+  flex-direction: column;
+}
+
+.flex-row-md {
+  @include breakpoint(tablet){
+    flex-direction: row;
+    flex-wrap: wrap;
+    //-webkit-flex-wrap: wrap;
+  }
+}
+
+.flex-xs {
+  position: relative;
+  flex: 1 0;
+  max-width: 100%;
+  min-height: 1px;
+  display: flex;
+}
+
+.flex-sm-4{
+  @include breakpoint(tablet){
+    flex: 1 0 50%;
+    max-width: 50%;
+    //-webkit-flex: 1 0 50%;
+  }
+}
+
+.flex-md-6{
+  @include breakpoint(laptop-rd){
+    flex: 1 0 33.333333%;
+    //-webkit-flex: 1 0 33.333333%;
+  }
+}
+
+
+//New correct numbering
+.et-flex-sm-4{
+  flex: 1 0 33.333333%;
+}
+
+.et-flex-sm-6{
+  flex: 1 0 50%;
+}
+
+.et-flex-md-3{
+  @include breakpoint(laptop-rd){
+    flex: 1 0 25%;
+  }
+}
+.et-flex-md-4{
+  @include breakpoint(laptop-rd){
+    flex: 1 0 33.333333%;
+  }
+}
+.et-flex-md-7{
+  @include breakpoint(laptop-rd){
+    flex: 1 0 58.333333%;
+  }
+}
+.et-flex-md-8{
+  @include breakpoint(laptop){
+    flex: 1 0 66.666667%;
+  }
+}
+
+.equal-col-height{
+  .eltdf-section-inner-margin{
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(laptop){
+        flex-direction: row;
+    }
+  }
+
+  .vc_column_container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .vc_column-inner{
+      flex: 1;
+    }
+  }
+}
+
+.et-flex-vc{
+
+  .eltdf-full-section-inner,
+  .eltdf-section-inner-margin{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    @include breakpoint(laptop){
+      flex-direction: row;
+    }
+  }
+
+  .vc_col-md-8,
+  .vc_col-md-7{
+    flex: 1 0 100%;
+    @include breakpoint(laptop){
+        flex: 1 0 66.66666667%;
+    }
+    .vc_column-inner{
+      height:100%;
+      min-height: 400px;
+    }
+  }
+
+  .vc_col-md-4,
+  .vc_col-md-5{
+    flex: 1 0 100%;
+
+    .vc_column-inner{
+      padding: 15%;
+
+      @include breakpoint(tablet){
+          padding: 10% 15%;
+      }
+
+      @include breakpoint(laptop){
+          padding: 15%;
+      }
+    }
+
+    @include breakpoint(laptop){
+        flex: 1 0 33.33333333%;
+    }
+  }
+
+  .vc_col-md-6{
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include breakpoint(laptop){
+      flex: 1 0 50%;
+    }
+
+    @include first(1){
+      .vc_column-inner{
+        flex:1;
+        height:100%;
+        min-height: 400px;
+      }
+    }
+
+    @include last(1){
+      .vc_column-inner{
+        padding: 15%;
+
+        @include breakpoint(tablet){
+          padding: 10% 15%;
+        }
+
+        @include breakpoint(laptop){
+          padding: 15%;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "main": [
+      "./scripts/main.ts",
+      "./styles/style.scss"
+    ]
+
+  },
+  "watch": [
+    "**/*.php"
+  ],
+  "publicPath": "/wp-content/themes/et2017_sage",
+  "devUrl": "http://www.everytuesday.dev",
+  "proxyUrl": "http://localhost:3000",
+  "cacheBusting": "[name]_[hash:8]"
+}

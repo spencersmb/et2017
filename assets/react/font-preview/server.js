@@ -1,4 +1,4 @@
-var path = '/Users/yosemetie/Dropbox/development/vhosts/www.everytuesday.dev/wp-content/themes/et2017/node_modules/';
+var path = '/Volumes/ScratchMac/Dropbox/development/vhosts/www.everytuesday.dev/wp-content/themes/et2017/node_modules/';
 var express = require(path + 'express');
 var proxy = require(path + 'express-http-proxy');
 

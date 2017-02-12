@@ -68,11 +68,11 @@
 
                     <h2><?php the_title(); ?></h2>
 
-                    <span class="product-price"><?php echo $price; ?></span>
+                    <span class="product-price"><?php echo wp_kses($price, 'et-twenty-seventeen'); ?></span>
 
                     <div class="products-cta">
                         <div class="license-title">
-                            License Type:
+                            <?php echo esc_html__('License Type:'); ?>
                         </div>
                         <?php if( $has_extended_price == 1 ): ?>
                         <div class="select selected-1" data-type="select">

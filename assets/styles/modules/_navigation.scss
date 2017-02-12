@@ -1,0 +1,706 @@
+@include keyframes(etp-fade-in) {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/*------------------------------------*\
+    Mobile header
+\*------------------------------------*/
+.eltdf-mobile-header{
+  z-index: 1000;
+}
+.eltdf-mobile-header .eltdf-mobile-nav ul{
+  padding: 20px;
+}
+.eltdf-mobile-header .eltdf-mobile-nav a{
+  padding: 15px 0;
+}
+
+/*------------------------------------*\
+    Icon Nav
+\*------------------------------------*/
+.et-icon-nav{
+  img{
+    width: 175px;
+  }
+}
+.blue-background {
+  background-color: $blue;
+}
+
+/*------------------------------------*\
+    Search
+\*------------------------------------*/
+.et2017_nav_search_widget{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  padding: 0;
+  border-left: 1px solid $grey;
+}
+
+.et2017-navsearch{
+  position: relative;
+
+  @include e(btn){
+    padding: 0 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    i{
+      color: $black;
+    }
+
+    .fa-times{
+      color: $cinn;
+      position: absolute;
+      top:-20px;
+      left:50%;
+      @include transform(translateY(0)translateX(-50%));
+      @include transition(all .3s);
+    }
+    .fa-search{
+      position: relative;
+      top: 0;
+      @include transition(all .3s);
+    }
+
+    &.active{
+      .fa-times{
+        top:50%;
+        left:50%;
+        @include transform(translateY(-50%)translateX(-50%));
+      }
+      .fa-search{
+        top: 25px;
+      }
+    }
+  }
+
+  @include e(bar){
+    position: absolute;
+    @include transform(translate3d(0,-32px,0) scale(0) );
+    right: 8px;
+    display: none;
+    background-color: $white;
+    border: 2px solid $blue;
+    width: 35px;
+    height: 35px;
+    border-radius: 25px;
+    @include transform-origin(center);
+
+    form, div{
+      display: block;
+      width: 200px;
+      height: 35px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  input[type=text]{
+    height: 35px;
+    width: 185px;
+    border: none;
+    background-color: $white;
+    color: $dark-blue;
+    font-size: 14px;
+    opacity: 0;
+    margin: 0;
+    padding: 0 15px;
+    @include transition(box-shadow .3s);
+    border-radius: 25px; /* top left, top right, bottom right, bottom left */
+    &:focus{
+      outline: none;
+    }
+  }
+
+
+
+  .eltdf-search-widget-icon{
+    display: none;
+  }
+}
+
+//weird bug - when we echo the get_search_form it appears in two plcaes - so we are hiding the first one
+.header-search{
+  //display: none;
+}
+
+/*------------------------------------*\
+    Online Courses update btn
+\*------------------------------------*/
+.eltdf-page-header .eltdf-logo-area{
+  z-index: 1000;
+  overflow: visible; //can toggle if needed on click
+}
+#et2017-notify{
+
+  ul{
+    position: absolute;
+    width: 90%;
+    max-width: 245px;
+    right: 5px;
+    top: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 0px rgba($dark-grey, 0);
+    background: $white;
+    z-index: 1;
+    will-change: transform;
+
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    @include transform(scale(0));
+    @include transition(transform .3s, visibility 0s, box-shadow 0s, border-radius .3s);
+    @include transform-origin(100% 0%);
+
+    li {
+      /* Force Hardware Acceleration in WebKit */
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      list-style: none;
+      border-bottom: 1px solid $grey;
+      padding: 0;
+      display: flex;
+      opacity: 0;
+      @include transform(translateX(100px));
+      @include transition(background .3s);
+
+      a, span{
+        padding: 15px;
+        width: 100%;
+      }
+
+      &:hover{
+
+        background: $grey;
+
+        a{
+          color: $dark-blue;
+        }
+      }
+
+      &:nth-child(1) { /* list items animation */
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px 25px 5px 5px;
+        width: 80%;
+      }
+
+      @for $i from 1 through 9 {
+        &:nth-child(#{$i}) {
+          @include transition(opacity .1s, transform 0.3s 0.035s * $i, background .3s);
+
+        }
+      }
+
+    }
+
+    .notify-title{
+      a, span{
+        padding: 10px 15px;
+      }
+      font-size: 13px;
+      line-height: 13px;
+      color: $dark-blue;
+      &:hover{
+        background-color: transparent;
+      }
+    }
+    .notify-link,
+    .notify-link-lg{
+      position: relative;
+
+
+      a{
+        position: relative;
+
+        .fa-chevron-right{
+          font-size: 12px;
+          font-weight: 300;
+          color: lighten($dark-blue, 30) !important;
+          position: absolute;
+          @include transform(translateY(-50%));
+          top: 50%;
+          right: 17px;
+          @include transition(color .3s);
+        }
+
+      }
+
+      &:hover{
+
+        background: $grey;
+
+        a{
+          color: $dark-blue;
+        }
+      }
+    }
+
+    .notify-login{
+      //background-color: $blue;
+
+      &:hover{
+        //color: $white;
+        //background-color: #639CBF;
+        .fa-chevron-right{
+          color: $dark-blue !important;
+        }
+      }
+    }
+
+    .notify-item-lg{
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 18px;
+      min-height: 67px;
+
+      a{
+        padding-left: 50px;
+        padding-right: 42px;
+        align-self: center;
+      }
+
+      i:not(.fa-chevron-right){
+        position: absolute;
+        font-size: 24px;
+        color: $dark-blue;
+        left: 16px;
+        top: 49%;
+        @include transform(translateY(-50%));
+      }
+
+      &.nav-item-orange{
+        i{
+          color: #f90;
+        }
+      }
+      &.nav-item-purple{
+        i{
+          color: #9e3f93;
+        }
+      }
+    }
+
+    &.is-visible{
+      @include transform(scale(1));
+      visibility: visible;
+      border-radius: 5px 25px 5px 5px;
+      box-shadow: 0 0 10px rgba($black, .4);
+      li{
+        @include transform(translateX(0));
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.et2017-notify{
+
+  @include e(container){
+
+    transition-timing-function: ease-in;
+    animation-fill-mode: backwards;
+    animation-duration: .5s;
+    animation-delay: 1.3s;
+    animation-name: etp-fade-in;
+
+
+    &:before{
+      content: '';
+      position: fixed;
+      z-index: 1;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      -webkit-transition: opacity .2s, visibility .2s;
+      transition: opacity .2s, visibility .2s;
+    }
+    &.et2017-notify--open{
+
+      &:before{
+        opacity: 1;
+        visibility: visible;
+      }
+
+    }
+  }
+
+  @include e(trigger){
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    width: 44px;
+    height: 44px;
+    background-color: $blue;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include transition(background .2s, box-shadow .3s);
+
+
+    /* image replacement */
+    white-space: nowrap;
+    z-index: 2;
+
+    &:hover{
+      //box-shadow: 0 6px 40px rgba(0, 0, 0, 0.3);
+      .title{
+        color: $dark-blue;
+      }
+      .et2017-notify--open & {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0) ;
+      }
+      i{
+        color: $dark-blue;
+      }
+    }
+
+    .title{
+      position: absolute;
+      left: -100px;
+      font-size: 13px;
+      opacity: 1;
+      @include transform(rotate(0deg));
+      @include transition( opacity .2s, transform .3s .05s, visibility 0s );
+      will-change: transform;
+      @include transform-origin(center right);
+      width: 123px;
+      visibility: visible;
+      z-index: 1;
+    }
+
+    .et2017-notify--open & {
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0) ;
+      background-color: $white;
+      height: 43px;
+
+      .title{
+        opacity: 0;
+        @include transform(rotate(-45deg));
+        visibility: hidden;
+      }
+
+      .fa-times{
+        opacity: 1;
+        @include transform(translateY(-50%) translateX(-50%) rotate(-180deg));
+      }
+
+      .fa-play,
+      .fa-graduation-cap{
+        @include transform(rotate(-180deg));
+        @include transition(transform .3s, opacity .1s);
+        opacity: 0;
+      }
+    }
+
+    i{
+      position: relative;
+      font-size: 18px;
+      color: $white;
+    }
+
+    .fa-play,
+    .fa-graduation-cap{
+      @include transform(rotate(0deg));
+      @include transition(color .3s, transform .3s, opacity .1s);
+      opacity: 1;
+    }
+
+    .fa-times{
+      position: absolute;
+      color: $dark-blue;
+      left: 50%;
+      top: 50%;
+      @include transform(translateY(-50%) translateX(-50%) rotate(0deg));
+      @include transition(transform .3s, opacity .1s);
+      opacity: 0;
+    }
+
+  }
+
+  @include e(count){
+    background-color: $cinn;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    position: absolute;
+    top: -7px;
+    right: -3px;
+    color: $white;
+    font-size: 13px;
+    text-align: center;
+    line-height: 16px;
+    padding: 2px;
+    font-weight: 800;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    @include transform(scale(1));
+    @include transition(transform .3s);
+    @include transform-origin(center left);
+
+    .et2017-notify--open & {
+      @include transform(scale(0));
+    }
+
+    span{
+      position: absolute;
+      top:50%;
+      left:53%;
+      @include transform(translateY(-50%)translateX(-50%));
+    }
+  }
+}
+
+@include keyframes(cd-slide-in) {
+  0% {
+    @include transform(translateX(100px));
+  }
+
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+
+
+/*------------------------------------*\
+    Navigation
+\*------------------------------------*/
+.eltdf-grid {
+  position: relative;
+}
+
+//nav arrows with fontawesome
+.eltdf-plw-tabs .eltdf-plw-tabs-tabs-holder .eltdf-plw-tabs-tab a .item_text:after{
+  top: 41%;
+  font-family: FontAwesome;
+  content:'\f105';
+  font-size: 16px;
+}
+//nav arrows hover with fontawesome
+.eltdf-plw-tabs .eltdf-plw-tabs-tabs-holder .eltdf-plw-tabs-tab a:hover .item_text:after{
+  left: 3px;
+}
+
+//nav arrows hover with fontawesome on single menu items
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul li>a .item_text:after{
+  top: 41%;
+  font-family: FontAwesome;
+  content:'\f105';
+  font-size: 16px;
+}
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul li>a:hover .item_text:after{
+  left: 4px;
+}
+
+//logo master container
+.eltdf-page-header .eltdf-grid .logo-primary-container{
+  padding-top: 20px;
+}
+
+// logo container height
+.eltdf-page-header .eltdf-logo-area {
+  height: 122px;
+}
+
+// logo height
+.eltdf-page-header .eltdf-logo-area .eltdf-logo-wrapper a{
+  height: 85px;
+}
+
+//nav dropdown default background
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul, li.eltdf-menu-narrow .eltdf-menu-second .eltdf-menu-inner ul{
+  background-color: $dark-blue;
+}
+
+//nav dropdown default
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner ul li>a:hover{
+  color: $blue-alt !important;
+}
+
+//meta info color on dropdown tabs
+.eltdf-plw-tabs {
+  .eltdf-post-item .eltdf-pt-info-section>div>div{
+    color: $white;
+  }
+}
+
+.site-description {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 18px;
+  position: absolute;
+  margin-left: 32px;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+//border
+.eltdf-header-type3 .eltdf-menu-area .eltdf-vertical-align-containers {
+  border: none;
+  border-right: 0;
+  border-left: 0;
+  // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
+  border-style: dotted;
+  border-color: rgba(213, 126, 0, 1);
+  border-image-source: url('./assets/images/dots.svg');
+  border-image-slice: 20% 20%;
+  border-image-repeat: space;
+  border-width: 3px 0 0 0;
+}
+
+//Store front
+.store-front-wrapper{
+  display: none;
+  position: fixed;
+  top:0;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  z-index: 80;
+  right: 90px;
+  
+  @include breakpoint(laptop){
+      display: table;
+  }
+
+  .store-front{
+    text-align: right;
+    display: block;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+
+    &.store-hidden{
+      -moz-transform: translateY(-100px);
+      -webkit-transform: translateY(-100px);
+      -o-transform: translateY(-100px);
+      -ms-transform: translateY(-100px);
+      transform: translateY(-100px);
+    }
+  }
+
+  img{
+    margin: 0 auto;
+    display: inline-block;
+  }
+
+  a{
+    width:100%;
+    height: 100%;
+    display: inline-block;
+  }
+}
+
+.eltdf-page-header{
+  z-index:1000;
+}
+
+//Class and products boxed nav fix
+.eltdf-menu-second{
+  h6{
+    margin-bottom: 20px;
+  }
+
+  .eltdf-pt-one-item.eltdf-post-item.eltdf-active-post-page{
+    cursor: pointer;
+  }
+}
+
+//empty box nav dropdown
+.et2107-viewall-arrow{
+  width: 45px;
+  height: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: $white;
+  @include transform(translateY(-50%)translateX(-50%));
+  @include transition(all .3s);
+
+  &::before, &::after {
+    content: '';
+    height: 3px;
+    width: 20px;
+    position: absolute;
+    background-color: $white;
+    right: -4px;
+    @include transition(all .3s);
+  }
+
+  &::before{
+    top:-6px;
+    @include transform(rotate(45deg));
+  }
+
+  &::after{
+    bottom:-6px;
+    @include transform(rotate(-45deg));
+  }
+
+}
+
+.eltdf-bnl-holder .eltdf-bnl-outer .eltdf-bnl-inner .eltdf-post-item.eltdf-active-post-page.et2017-post-item-outline{
+
+  .eltdf-pt-one-image-holder{
+    position: relative;
+    width: 265px;
+    border: solid $white 3px;
+    height: 164px;
+    @include transition(border .3s);
+  }
+  &:hover{
+    .eltdf-pt-one-image-holder{
+      border: solid $gold 3px;
+    }
+
+    .et2107-viewall-arrow{
+      background-color: $gold;
+      &::before, &::after {
+        background-color: $gold;
+      }
+    }
+
+  }
+}
+
+.et2017-post-item-outline .eltdf-pt-one-image-holder .eltdf-pt-one-image-inner-holder{
+  height: 100%;
+}
+
+.eltdf-bnl-holder .eltdf-bnl-outer .et2017-post-item-outline {
+  .eltdf-image-link {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
+
+

@@ -1,21 +1,47 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "noImplicitAny": true,
+    "target": "es2015",
     "sourceMap": true,
-    "resolveAmbientRefs": true,
+    "suppressImplicitAnyIndexErrors": false,
     "noUnusedParameters": true,
     "strictNullChecks": true,
-    "lib": ["es5", "es2015.promise"],
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "outDir": "./dist",
+    "typeRoots": [ "node_modules/@types/" ],
+    "types": [ "jquery", "greensock" ]
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./node_modules/@types/jquery/index.d.ts",
-    "./node_modules/@types/es6-promise/index.d.ts"
+    "./assets/scripts/main.ts",
+    "./assets/scripts/partials/utils.ts",
+    "./assets/scripts/partials/search.ts",
+    "./assets/scripts/partials/et-ck-forms.ts",
+
+    "./assets/scripts/navigation/navigation.ts",
+    "./assets/scripts/navigation/nav-search-pop-up.ts",
+    "./assets/scripts/navigation/courses-notifications.ts",
+
+    "./assets/scripts/products/products-main.ts",
+    "./assets/scripts/products/font-preview.ts",
+    "./assets/scripts/products/products-license.ts",
+    "./assets/scripts/products/products-modals.ts",
+
+    "./assets/scripts/products/product-select.ts",
+    "./assets/scripts/products/productStore.ts",
+
+    "./assets/scripts/interfaces/bps.interface.ts",
+
+    "./assets/scripts/utils/router.ts",
+    "./assets/scripts/utils/camelCase.ts",
+    "./assets/scripts/utils/browserCheck.ts",
+    "./assets/scripts/utils/utilities.ts",
+
+    "./assets/scripts/routes/Common.ts",
+    "./assets/scripts/routes/Home.ts",
+    "./assets/scripts/routes/Products.ts"
+
   ]
 }

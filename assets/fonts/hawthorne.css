@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'hawthorne';
+    src: url('../fonts/hawthorne/HawthorneScript-Regular.eot'),
+    url('../fonts/hawthorne/HawthorneScript-Regular.woff2') format('woff2'),
+    url('../fonts/hawthorne/HawthorneScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hawthorne{
+    font-family: 'hawthorne';
+}

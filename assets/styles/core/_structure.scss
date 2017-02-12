@@ -1,0 +1,197 @@
+/* ----------------------------------------------------------------------------
+ * Structure
+ * ------------------------------------------------------------------------- */
+$line-height-mobile: 2.4rem;
+$line-height-desktop: 2rem;
+$half-line-height: #{$line-height-mobile / 2rem}rem;
+html{
+  position: relative;
+}
+body{
+  position: inherit;
+  display: block;
+  z-index: 544;
+  font-size: 16px;
+
+  @include breakpoint(tablet){
+    z-index: 768;
+  }
+  @include breakpoint(laptop){
+    z-index: 992;
+  }
+  @include breakpoint(desktop){
+    z-index: 1200;
+  }
+  @include breakpoint(desktopXL){
+    z-index: 1600;
+  }
+}
+
+// Added zindex control to help with CK pop-ups
+.eltdf-wrapper,
+.eltdf-content,
+.eltdf-container,
+.eltdf-grid-section .eltdf-section-inner,
+.eltdf-full-width,
+.eltdf-section{
+  position: initial;
+}
+.eltdf-grid-section .eltdf-section-inner{
+}
+.insta-modal__open{
+  position: fixed;
+  bottom:0;
+}
+
+.insta-modal__nav-active{
+  -webkit-transform: translateY(0) !important;
+  transform: translateY(0) !important;
+}
+
+// fix for nav on safari
+.eltdf-page-header .eltdf-sticky-header.header-appear{
+  @include transform(translateY(0));
+}
+
+p{
+  color: $text-color;
+
+  a{
+    color: $cinn;
+    font-weight: 500;
+  }
+}
+
+//Category page list
+.category,
+.search{
+
+  .et2017-bnl-holder{
+    .eltdf-bnl-inner{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex:1 0 100%;
+
+    }
+    .et-post-item__inner{
+      padding: 0 !important;
+      margin: 0 12px;
+      position: relative;
+      flex: 1;
+    }
+    .eltdf-pt-one-item{
+
+      & > div{
+        padding-left: 12px;
+        padding-right: 12px;
+        display: block;
+      }
+      .eltdf-pt-one-image-holder{
+      }
+      .eltdf-pt-one-content-holder{
+        display: flex;
+        padding-bottom: 39px;
+        flex-direction: column;
+        width: auto;
+      }
+      .eltdf-pt-info-section{
+        position: absolute;
+        bottom:0;
+      }
+
+      &:hover{
+        .eltdf-pt-one-title-holder .eltdf-pt-one-title{
+          a{
+            color:$light-brown;
+          }
+        }
+      }
+    }
+  }
+
+  .et2017-bnl-holder .eltdf-bnl-outer .eltdf-bnl-inner>.eltdf-post-item{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 33%;
+    float: none;
+    box-sizing: inherit;
+    padding: 0;
+    max-width: 408px;
+
+    @include breakpoint(rd-laptop-max){
+      flex: 1 0 50%;
+    }
+
+    @include breakpoint(rd-tablet-max){
+      flex: 1 0 50%;
+    }
+
+    @include breakpoint(rd-mobile-h-max){
+      flex: 1 0 100%;
+    }
+
+  }
+
+}
+
+//Related Posts
+.eltdf-related-posts-holder .eltdf-related-posts-inner{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.eltdf-content-left-from-sidebar .eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-post{
+  float: none;
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 50%;
+
+  @include breakpoint(rd-mobile-h-max){
+    flex: 1 0 100%;
+  }
+}
+
+//Added opactiy transition for pinit animation
+a{
+  img{
+    @include transition(opacity .3s);
+  }
+}
+
+//back to top
+#eltdf-back-to-top>span i{
+  position: absolute;
+  top: 40%;
+  @include transform(translateY(-50%));
+}
+
+//Related blog posts
+.eltdf-related-posts-holder .eltdf-related-content .eltdf-related-title{
+  min-height: 58px;
+}
+
+a:hover,
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+p a:hover,
+.eltdf-pt-six-item.eltdf-item-hovered .eltdf-pt-six-title a,
+.eltdf-pt-three-item.eltdf-item-hovered .eltdf-pt-three-title,
+.eltdf-related-posts-holder .eltdf-related-posts-inner .eltdf-related-info-section>div>div a:hover,
+.eltdf-related-post:hover .eltdf-related-content .eltdf-related-title a,
+.eltdf-pt-three-item.eltdf-item-hovered .eltdf-pt-three-title a{
+  color: $gold;
+}
+
+button{
+  &:active, &:focus{
+    outline: none;
+  }
+}

@@ -47,22 +47,23 @@ if(!function_exists('et_twenty_seventeen_get_logo')) {
         <div class="eltdf-logo-area">
             <div class="eltdf-grid">
 
-                <div class="store-front-wrapper">
-                    <div class="store-front store-hidden">
-                        <a class="store-front-link" href="/product-react"><img class="img-responsive" src="<?php echo ET2017_ROOT ?>/assets/images/shop.png" alt="Every-Tuesday Shop"></a>
-                    </div>
-                </div>
+                <?php
+
+                    if(et_twenty_seventeen_master_plugin_installed()){
+                        //render Notifications
+                        echo Notify::init();
+                    }
+
+                ?>
 
                 <div class="eltdf-vertical-align-containers logo-primary-container">
                     <?php et_twenty_seventeen_get_logo(); ?>
                     <div class="site-description">
-                        <p><?php echo esc_html__('PROFESSIONAL GRAPHIC', 'et_twenty_seventeen') ?></br><?php echo esc_html__('DESIGN LEARNING', 'et_twenty_seventeen') ?></p>
+                        <p><?php echo esc_html__('LETTERING + GRAPHIC', 'et_twenty_seventeen') ?></br><?php echo esc_html__('DESIGN LEARNING', 'et_twenty_seventeen') ?></p>
                     </div>
 
-                    <div class="header-search">
-                        <?php get_search_form(); ?>
-                    </div>
                 </div>
+
             </div>
         </div>
         <div class="eltdf-menu-area">

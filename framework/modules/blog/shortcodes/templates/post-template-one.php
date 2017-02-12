@@ -49,6 +49,7 @@
             <a itemprop="url" class="eltdf-pt-link" href="<?php echo esc_url(get_permalink()); ?>" target="_self"><?php echo readanddigest_get_title_substring(get_the_title(), $title_length) ?></a>
         </<?php echo esc_html($title_tag) ?>>
     </div>
+    
         <?php if($display_excerpt == 'yes'){ ?>
             <div class="eltdf-pt-one-excerpt">
                 <?php echo et_twenty_seventeen_getExcerpt($excerpt_length); ?>

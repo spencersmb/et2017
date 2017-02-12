@@ -9,7 +9,7 @@
 
 // enqueue css onto page
 function et_twenty_seventeen_load_font($name){
-    wp_register_style( $name .'-css' , ET2017_ROOT . '/assets/css/fonts/'. $name .'.css', '', 'all' );
+    wp_register_style( $name .'-css' , ET2017_ROOT . '/assets/fonts/'. $name .'.css', '', 'all' );
     wp_enqueue_style($name .'-css');
 }
 

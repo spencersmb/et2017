@@ -1,0 +1,22 @@
+body{
+  &.lic-open{
+    width: 100%;
+    position: fixed;
+  }
+}
+
+.products-zindex{
+  z-index: 1050;
+}
+
+#app{
+  display: none;
+  &.loaded{
+    display: block;
+  }
+}
+
+
+.fp-item .text{
+  word-wrap: break-word;
+}

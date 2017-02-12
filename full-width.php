@@ -57,7 +57,7 @@ $sidebar = readanddigest_sidebar_layout(); ?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button id="et_youtube_close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button id="et_youtube_close_modal" type="button" class="et-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="embed-responsive embed-responsive-16by9">

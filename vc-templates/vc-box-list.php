@@ -87,13 +87,19 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
         $sort = 'post__in';
     }
 
+    global $featured_post;
+    $not_in = '';
+    if(isset($featured_post)){
+        $not_in = $featured_post->get_id();
+    }
 
     //Create wp_Query
     $args = array(
         'post_type' => $query_type,
         'posts_per_page' => $number_of_posts,
         'orderby'        => $sort,
-        'post__in' => $post_in
+        'post__in' => $post_in,
+        'post__not_in' => [$not_in]
     );
 
     $output = '

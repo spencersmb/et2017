@@ -1,0 +1,110 @@
+/* ----------------------------------------------------------------------------
+ * Variables
+ * ------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------
+ * Modular TypeScale
+ *
+ *
+ * ------------------------------------------------------------------------- */
+$base--spacing: 1.8rem; //was 2.2rem
+$base--fontsize: 16px; //was 16
+$base--line: 24px; //was 24
+
+/* ----------------------------------------------------------------------------
+ * Colors
+ * ------------------------------------------------------------------------- */
+
+$c1: #dedede;
+$c2: #292929;
+
+$w: #fff;
+$b: #000;
+$gb: #686868;
+$g: #35ad68;
+$y: #fffdd2;
+
+// ==========================================================================
+// Global Config
+// ==========================================================================
+
+// Font Stacks
+$font-url--ubuntu: 'http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,400italic';
+$ubuntu: 'Ubuntu', sans-serif;
+$courier: Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$courier-new: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$heading-font: $ubuntu;
+
+
+// Font Weights
+$font-weight--thin: 100;
+$font-weight--light: 300;
+$font-weight--medium: 400;
+$font-weight--bold: 700;
+$letter-space: 1px;
+
+// Descriptive Base Colors
+$white: #fff;
+$black: #222;
+$light-grey: #e7e7e7;
+$lighter-grey: #f3f3f3;
+$grey: #e8e8e8;
+$dark-grey: #d0d0d0;
+$darker-grey: #959595;
+$subtext-dk-grey: #6b6b6b;
+
+$shadow-m: rgba(0, 0, 0, .6);
+
+//Hover base colors
+$lighter-grey-hover: #d4d4d4;
+$dark-grey-hover: #474747;
+
+// BRAND COLOR
+$pink: #FF9981;
+$blue: #aae2e4;
+$blue-alt: #8ce8ec;
+$dark-blue: #313A54;
+$gold: #BFA66D;
+$yellow-bright:#f9d273;
+$yellow: #F4DBA4;
+$gold-light: #ffd883;
+$purple: #B494EF;
+$cinn: #DE7157;
+$cinn-dark: #9B5D4F;
+$dark-red: #65362C;
+$brown-grey: #7C7C7C;
+$light-brown:#928C85;
+$green: #6ED69A;
+
+$primary-color: $pink;
+$secondary-color: $dark-blue;
+$shadow-color: rgba($black, .2);
+
+//** Global text color on `<body>`.
+$text-color: #555 !default;
+
+//** Global textual link color.
+$link-color: $primary-color !default;
+
+//** Link hover color set via `darken()` function.
+$link-hover-color: darken($link-color, 15%) !default;
+
+//SCREEN SIZES
+$desktop:                 1201px !default; //1200px
+$laptop:                  992px !default; //992px
+$tablet:                  48em !default; //768px
+$mobile:                  34em !default; //544px
+
+// So media queries don't overlap when required, provide a maximum
+$mobile-max:              ($tablet - 1) !default;
+$tablet-max:              ($laptop - 1) !default;
+$laptop-max:              ($desktop - 1) !default;
+
+//Z-Index categories
+$below-content: 1;
+$content: 2;
+$above-content: 3;
+
+//Header Sizes
+$header-s: 60px;
+$header-l: 130px;

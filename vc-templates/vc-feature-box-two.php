@@ -147,6 +147,12 @@ function et_feature_box_two_shortcode( $atts, $content = null ) { // New functio
 
     //look at using get_post and see if it returns ACF data in output
     if( is_numeric($product) ){
+        
+        //Set Global ID for use in other templates
+        global $featured_post; 
+        $featured_post = new Featured_product($product);
+        
+        
         $product_id = $product;
         $post = get_post($product_id);
 

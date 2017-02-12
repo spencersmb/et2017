@@ -1,0 +1,54 @@
+/* ----------------------------------------------------------------------------
+ * EveryTuesday List
+ * ------------------------------------------------------------------------- */
+.et-flex-list{
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+
+  ul {
+    padding: 0 0 40px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.list-wrap{
+    ul{
+      margin: 0 auto;
+      padding: 0 0 40px;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      @include breakpoint(tablet){
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 40px;
+      }
+
+    }
+
+    li{
+      color: $text-color;
+      position: relative;
+      flex: 1;
+      text-align: left;
+      display: flex;
+
+      span{
+        padding: 0 20px 10px;
+      }
+
+      i{
+        position: absolute;
+        top: 4px;
+      }
+
+      @include breakpoint(tablet){
+        flex: 0 0 50%;
+      }
+
+    }
+
+  }
+}
