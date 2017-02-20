@@ -25,8 +25,6 @@
 
   .eltdf-pt-one-item {
     margin-bottom: 0;
-
-
   }
 
   .et2017-tabs-date{
@@ -159,13 +157,7 @@
         }
       }
     }
-    .et2016-tabs-border-bot{
-      border-style: dotted;
-      border-image-source: url('./assets/images/dots.svg');
-      border-image-slice: 20% 20%;
-      border-image-repeat: space;
-      border-width: 0 0 3px 0;
-    }
+    
   }
 
   .eltdf-pt-one-item.eltdf-item-hovered .eltdf-pt-one-title a{
@@ -272,14 +264,6 @@
 
     @include breakpoint(tablet){
       margin-bottom: 0;
-    }
-
-    .eltdf-pt-info-section{
-      border-style: dotted;
-      border-image-source: url('./assets/images/dots.svg');
-      border-image-slice: 20% 20%;
-      border-image-repeat: space;
-      border-width: 3px 0 0;
     }
 
   }

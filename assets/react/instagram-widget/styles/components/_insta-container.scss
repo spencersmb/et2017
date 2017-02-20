@@ -58,7 +58,9 @@
 
   .insta-container__header{
     text-align: center;
-    padding-bottom:20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   h4{
@@ -69,12 +71,19 @@
     width:100%;
   }
   .insta-follow-btn{
-    width: 100%;
-    color: $dark-blue;
-    padding:0 0 20px;
+    background-color: $pink;
+    border-radius: 25px;
+    color: #fff;
+    padding: 5px 15px;
+    margin: 0 auto 25px;
     text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    display: table;
+    transition: background .3s;
+
     &:hover{
-      color: #DE7157 !important;
+      background-color: $dark-blue;
     }
   }
 }
@@ -239,7 +248,7 @@ $flexHeight-sm: 25vw;
     position: relative;
   }
 
-  z-index: 113;
+  z-index: 1130;
   top: 0;
   right: 0;
   position: fixed;
@@ -259,6 +268,7 @@ $flexHeight-sm: 25vw;
     min-height: 100%;
     display: -webkit-flex;
     display: flex;
+    justify-content: center;
 
     @include breakpoint(tablet){
       padding: 0 40px;

@@ -8,11 +8,6 @@ if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
 else { $paged = 1; }
 
-//$enable_search_page_sidebar = true;
-//if(readanddigest_options()->getOptionValue('enable_search_page_sidebar') === "no"){
-//    $enable_search_page_sidebar = false;
-//}
-
 ?>
 <?php readanddigest_get_title(); ?>
     <div class="eltdf-container">

@@ -150,8 +150,12 @@ footer .widget:not(:last-child){
     color: #95989A;
     text-transform: uppercase;
     @include transition(all .3s);
-    display: block;
+    display: table;
     margin-bottom: 10px;
+    &:hover{
+      color: $pink;
+    }
+
   }
   a.eltdf-social-icon-widget-holder {
     background-color: $blue;

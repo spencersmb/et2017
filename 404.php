@@ -54,7 +54,7 @@ $params .= ' display_excerpt="'.$display_excerpt.'"';
                     <div class="vc_column-inner ">
                         <div class="wpb_wrapper">
                             <a href="/blog" target="_self" class="eltdf-btn eltdf-btn-medium eltdf-btn-outline et-btn-round-vc">
-                                <span class="eltdf-btn-text">Back To Home Page</span>
+                                <span class="eltdf-btn-text"><?php echo esc_html__('Back To Home Page', 'et-twenty-seventeen') ?></span>
                             </a>
                         </div>
                     </div>

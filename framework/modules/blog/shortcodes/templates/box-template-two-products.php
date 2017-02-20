@@ -55,7 +55,7 @@ if(isset($acf)){
 
         <div class="box-two-inner">
             <div class="eltdf-pswt-image"
-                 style="background-image: url( <?php echo et_twenty_seventeen_generate_background_img($main_image, $url, 933, 660, true); ?>)">
+                 style="background-image: url( <?php echo esc_url(et_twenty_seventeen_generate_background_img($main_image, $url, 933, 660, true)); ?>)">
                 <span class="et-cat cat-red"><?php echo esc_html__('New', 'et_twenty_seventeen') ?></span>
             </div> <!-- end image -->
 
@@ -109,7 +109,7 @@ if(isset($acf)){
                         </div>
                         <div class="add-to-cart">
                             <a href="https://gumroad.com/l/watercolor3?wanted=true&amp;locale=false" target="_blank">
-                                <span>Buy Now</span>
+                                <span><?php echo esc_html__('Buy Now', 'et-twenty-seventeen')?></span>
                             </a>
                             <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
                                 <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11" style="stroke-dashoffset: 19.79px;"></path>

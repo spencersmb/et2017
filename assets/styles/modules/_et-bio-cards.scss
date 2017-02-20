@@ -2,14 +2,14 @@
  * Bio card
  * ------------------------------------------------------------------------- */
 .flex-bio-card{
-  align-items: center;
+  align-items: stretch;
 }
 
 .et-biocard{
   border-top: 15px solid $yellow;
   background:$white;
   margin:0 auto 30px;
-  padding: 25px 30px 15px;
+  padding: 45px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,6 @@
   width: 100%;
   min-height: 300px;
   max-width: 300px;
-  align-self: center;
 
   @include transition(all .3s);
   @include transform(translate3d(0, 0, 0));
@@ -26,17 +25,16 @@
   @include breakpoint(laptop){
     margin:0 15px 30px;
     max-width: none;
-    height: 380px;
   }
 
   @include e(image){
     @include transition(all .3s);
     @include transform(scale(1) translate3d(0, 0, 0));
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background-color: $light-grey;
     border-radius: 50%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   @include e(content){
@@ -64,91 +62,13 @@
     @include transition(transform .3s);
     width: 150px;
     height: 10px;
-    padding: 30px 0 10px;
+    padding: 20px 0;
   }
 
-  @include e(signature){
-    position: relative;
-    height: 111px;
-    width: 100%;
-
-    img{
-      margin: 0 auto;
-    }
-
-    &--img{
-      display: none;
-
-      @include breakpoint(laptop){
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: auto;
-        left: 0;
-        top: 0;
-        @include transition(all .3s ease-in-out);
-        opacity: 1;
-        @include transform(scale(1) translate3d(0, 0, 0));
-      }
-    }
-
-    &--desc{
-      text-align: center;
-      font-size: 14px;
-      color: $text-color;
-
-      @include breakpoint(laptop){
-        @include transition(all .3s .1s ease-in-out);
-        @include transform(translate3d(0, 200%, 0));
-
-        position: absolute;
-        top: 0;
-        opacity: 0;
-      }
-    }
-
+  @include e(desc){
+    text-align: center;
+    padding: 15px 0;
   }
 
-}
-
-.flex-et-biocard {
-  align-self: stretch;
-
-  &:hover{
-
-    @include breakpoint(laptop){
-      .et-biocard{
-        height: 300px;
-        @include transform(translate3d(0, -8px, 0));
-
-        .et-biocard__image {
-          @include transform(scale(1) translate3d(0, 0, 0));
-          width: 50px;
-          height: 50px;
-        }
-        .et-biocard__content,
-        .et-biocard__divider {
-          @include transform(translate3d(0, 0, 0));
-        }
-        .et-biocard__signature {
-          height: auto;
-
-        }
-        .et-biocard__signature--img {
-          position: absolute;
-          top: 0;
-          opacity: 0;
-          @include transform(scale(0) translate3d(0, 0, 0));
-        }
-        .et-biocard__signature--desc {
-          opacity: 1;
-          position: relative;
-          @include transform(translate3d(0, 0, 0));
-        }
-
-      }
-    }
-
-  }
 
 }

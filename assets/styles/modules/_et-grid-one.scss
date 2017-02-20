@@ -34,6 +34,11 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
+      color: $darker-grey;
+
+      &:hover{
+        color: $dark-grey-hover;
+      }
 
       @include breakpoint(tablet){
         position: absolute;

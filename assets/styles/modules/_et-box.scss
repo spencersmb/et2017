@@ -256,6 +256,10 @@
       }
       .et-box-item__description{
         padding: 70px 8% 30px;
+
+        &.box-no-item{
+          padding-top: 30px;
+        }
       }
 
     }
@@ -581,15 +585,20 @@ $height: 53px;
   .add-to-cart{
     flex: 1;
     margin-left: 10px;
-    background: $yellow-bright;
+    background: $yellow;
     @include transition(background .3s);
     cursor: pointer;
+
     &:hover{
-      background: #F4C450;
+      background: $yellow-hover;
+
+      a{
+        color: $yellow-hover-text;
+      }
     }
 
     a{
-      color: $white;
+      color: $dark-gold;
       font-size: 16px;
       font-weight: bold;
       display: flex;

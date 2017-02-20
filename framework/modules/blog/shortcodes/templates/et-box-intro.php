@@ -17,15 +17,15 @@ global $allowed_html;
             ?>
 
             <div class="top-images">
-                <img class="img-responsive palette-round" src="<?php echo $image_url; ?>/assets/images/about/round-tray.jpg" alt="Beautiful Watercolor Greeting Card">
-                <img class="img-responsive eyedroppers" src="<?php echo $image_url; ?>/assets/images/about/eye-droppers.jpg" alt="Beautiful Watercolor Greeting Card">
+                <img class="img-responsive palette-round" src="<?php echo esc_url($image_url); ?>/assets/images/about/round-tray.jpg" alt="Every-Tuesday Watercolor Tools">
+                <img class="img-responsive eyedroppers" src="<?php echo esc_url($image_url); ?>/assets/images/about/eye-droppers.jpg" alt="Every-Tuesday Color Inspiration">
             </div>
             <div class="left">
                 <!--            <div class="eyedroppers">-->
                 <!---->
                 <!--            </div>-->
                 <div class="design-card">
-                    <img class="img-responsive" src="<?php echo $image_url; ?>/assets/images/about/card.jpg" alt="Beautiful Watercolor Greeting Card">
+<!--                    <img class="img-responsive" src="--><?php //echo esc_url($image_url); ?><!--/assets/images/about/card.jpg" alt="Beautiful Watercolor Greeting Card">-->
                 </div>
             </div>
             <!--        <div class="right">-->

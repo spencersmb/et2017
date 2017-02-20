@@ -33,7 +33,7 @@
                 </div>
             <?php } ?>
             <?php if ($display_date == "yes" || $display_author == "yes" || $display_comments == "yes") { ?>
-                <div class="eltdf-pt-info-section clearfix">
+                <div class="eltdf-pt-info-section clearfix et-dotted-divider">
                     <div class="eltdf-pt-info-section-left">
                         <?php readanddigest_post_info_date(array(
                             'date' => $display_date,

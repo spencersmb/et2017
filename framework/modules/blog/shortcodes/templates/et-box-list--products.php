@@ -16,10 +16,23 @@
     $font_name = get_field('font_name');
     $font_styles = get_field('font_styles');
     $styles_string = "";
+    $has_items = false;
 
     if($font_styles){
         $styles_string = et_array_to_string($font_styles);
     }
+
+    //check for icons
+    if(!$has_font_preview &&  strlen($youtube_link) == 0){
+
+        $has_items = false;
+
+    }else{
+
+        $has_items = true;
+
+    }
+
 
 ?>
 
@@ -41,7 +54,7 @@
 
                 </div><!-- ./image -->
 
-                <div class="et-box-item__description">
+                <div class="et-box-item__description <?php echo esc_attr( (!$has_items) ? "box-no-item" : '' ) ?>" >
 
                     <?php if( strlen($youtube_link) > 0 ) : ?>
 

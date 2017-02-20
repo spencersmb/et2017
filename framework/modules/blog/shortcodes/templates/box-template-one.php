@@ -2,7 +2,7 @@
 global $allowed_html;
 ?>
 
-<div class="<?php echo et_check_border($border); ?>">
+<div class="<?php echo esc_attr(et_check_border($border)); ?>">
     <div class="et-rd-container">
         <div class="flex-container list <?php echo esc_attr(($reverse_layout == 'reverse') ? 'reverse' : ''); ?>">
 

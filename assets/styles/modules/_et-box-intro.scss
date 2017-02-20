@@ -17,8 +17,10 @@
   }
 
   &.flex-container.list{
+    padding-top: 60px;
     @include breakpoint(tablet){
       flex-direction: row;
+      min-height: 100%;
     }
   }
 
@@ -57,7 +59,7 @@
   @media only screen and (min-width: 1025px){
     display: block;
     right: -34%;
-    top: -45px;
+    top: 0;
     @include transform(rotate(-12deg) translateX(-70px));
   }
 

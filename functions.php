@@ -455,7 +455,7 @@ function et_twenty_seventeen_build_blog_feature(){
             </div>
             <!-- ./eltdf-pt-six-content-holder -->
             
-            <div class="eltdf-pt-info-section clearfix">
+            <div class="eltdf-pt-info-section clearfix ">
                 
                 <div class="eltdf-pt-info-section-left">
                     <div itemprop="dateCreated" class="eltdf-post-info-date entry-date updated">
@@ -501,14 +501,14 @@ function et_twenty_seventeen_build_blog_list(){
 
 	$output = '
 
-<div class="eltdf-bnl-holder eltdf-pl-three-holder eltd-post-columns-1" >
-    <div class="eltdf-bnl-outer">
-        <div class="eltdf-bnl-inner">
-';
+	<div class="eltdf-bnl-holder eltdf-pl-three-holder eltd-post-columns-1" >
+	    <div class="eltdf-bnl-outer">
+	        <div class="eltdf-bnl-inner">
+	';
 
 	$output .= '
     <div class="eltdf-pt-three-item eltdf-post-item eltdf-active-post-page">
-        <div class="eltdf-pt-three-item-inner">
+        <div class="eltdf-pt-three-item-inner et-dotted-divider">
             <div class="eltdf-pt-three-item-inner2">
             
                 <div class="eltdf-pt-three-image-holder">

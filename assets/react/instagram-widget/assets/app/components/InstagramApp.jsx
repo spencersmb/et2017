@@ -16,15 +16,28 @@ class InstagramApp extends React.Component {
     this.getComments = this.getComments.bind(this);
     this.modalOpen = this.modalOpen.bind(this);
     this.modalClose = this.modalClose.bind(this);
+    this.onResize = this.onResize.bind(this);
 
     this.state = {
       loaded: false,
       modalOpen: false,
       photos: [],
+      scrollPosition: '',
       selectedPhoto: {
         item: {}
       }
     };
+
+    //on window resize close modal for Safari BS
+    window.addEventListener('resize', this.onResize.bind(this));
+
+  }
+
+  onResize(){
+    // do stuff here
+    if(this.state.modalOpen){
+      this.handleClose();
+    }
   }
 
   /*
@@ -126,6 +139,10 @@ class InstagramApp extends React.Component {
   modalOpen(){
     let scrollPosition = $(window).scrollTop();
     let body = {};
+    let html = {};
+    this.setState({
+      scrollPosition: $(window).scrollTop()
+    });
 
 
     /*
@@ -133,24 +150,40 @@ class InstagramApp extends React.Component {
      */
     if( InstagramHelpers.getDeviceWidth() < 767 ){
       body = {
-        top: "-" + scrollPosition + "px",
+        // top: "0",
         position: "fixed",
         width: '100%',
-        height: '100%'
+        // height: $(window).height()
       }
+
+      // $("body").css(body);
+
+      $("footer").css({
+        height: '100vh'
+      });
+      $(".eltdf-sticky-header").addClass("insta-modal__nav-active");
+      window.scrollTo(0,this.state.scrollPosition);
+      $("html").css('overflow-y', 'hidden');
+
     }else {
       body = {
         top: "-" + scrollPosition + "px",
         position: "fixed",
         width: '100%'
-      }
+      };
+
+      $("html").css('overflow-y', 'hidden');
+
+      $("body").css(body);
+
+      $("footer").css({
+        height: '100vh'
+      });
+      $(".eltdf-sticky-header").addClass("insta-modal__nav-active");
+
     }
-    
-    $("body").css(body);
-    $("footer").css({
-      height: '100vh'
-    });
-    $(".eltdf-sticky-header").addClass("insta-modal__nav-active");
+
+
   }
 
 
@@ -158,20 +191,36 @@ class InstagramApp extends React.Component {
    Close modal
    */
   modalClose(){
-    $("body").css({
-      top: 0,
-      position: "relative",
-      width: 'auto'
-    });
+    let scrollPosition = $(window).scrollTop();
+
+    if( InstagramHelpers.getDeviceWidth() < 767 ){
+      $("body").css({
+        position: "relative",
+        width: 'auto',
+        height: 'auto'
+      });
+    }else{
+      $("body").css({
+        top: 0,
+        position: "relative",
+        width: 'auto',
+        height: 'auto'
+      });
+    }
+
+
     $("footer").css({
       height: 'auto'
     });
     $(".eltdf-sticky-header").removeClass("insta-modal__nav-active");
 
+    $("html").css('overflow-y', 'scroll');
     /*
      On close remove styles and scroll window back to bottom cus the theme is retarded.
      */
-    window.scrollTo(0,document.body.scrollHeight);
+    // window.scrollTo(0,document.body.scrollHeight);
+    // console.log("scroll position on close ", this.state.scrollPosition);
+    window.scrollTo(0,this.state.scrollPosition);
   }
 
 
@@ -241,7 +290,7 @@ class InstagramApp extends React.Component {
       <div className="insta-container">
         <div className="insta-container__header">
           <h4>Latest Instagram shots</h4>
-          <a href="https://www.instagram.com/everytuesday/" className="insta-follow-btn" target="_blank">Click to follow!</a>
+          <a href="https://www.instagram.com/everytuesday/" className="insta-follow-btn" target="_blank">FOLLOW</a>
         </div>
         {/*
          - Send photos to the list to loop through

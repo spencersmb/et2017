@@ -11,10 +11,9 @@
 
 <div class="feature-box-two__outer">
     <div class="et-feature-slide box-two shadow-medium">
-
         <div class="box-two-inner">
             <div class="eltdf-pswt-image"
-                 style="background-image: url( <?php echo et_twenty_seventeen_generate_background_img($main_image, $url, 933, 660, true); ?>)">
+                 style="background-image: url( <?php echo esc_url(et_twenty_seventeen_generate_background_img($main_image, $url, 933, 660, true)); ?>)">
                 <span class="et-cat cat-red"><?php echo esc_html__('New', 'et_twenty_seventeen') ?></span>
             </div> <!-- end image -->
 

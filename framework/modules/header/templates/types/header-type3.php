@@ -68,7 +68,7 @@ if(!function_exists('et_twenty_seventeen_get_logo')) {
         </div>
         <div class="eltdf-menu-area">
             <div class="eltdf-grid">
-                <div class="eltdf-vertical-align-containers">
+                <div class="eltdf-vertical-align-containers et-dotted-divider">
                     <div class="eltdf-position-left">
                         <div class="eltdf-position-left-inner">
                             <?php readanddigest_get_main_menu(); ?>

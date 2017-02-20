@@ -31,25 +31,25 @@ module.exports = {
     filename: './assets/js/bundle.js'
   },
   resolve: {
-    root: __dirname,
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: [
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.join(__dirname, "src"),
       'node_modules',
       './assets/app/components'
     ],
     alias: {
-      applicationStyles: 'styles/app.scss',
-      FontApp: 'assets/app/components/FontApp.jsx',
-      FontInput: 'assets/app/components/FontInput.jsx',
-      FontList: 'assets/app/components/FontList.jsx',
-      FontListItem: 'assets/app/components/FontListItem.jsx'
+      applicationStyles$: path.resolve(__dirname, 'styles/app.scss'),
+      FontApp$:  path.resolve(__dirname, 'assets/app/components/FontApp.jsx'),
+      FontInput$: path.resolve(__dirname, 'assets/app/components/FontInput.jsx'),
+      FontList$: path.resolve(__dirname, 'assets/app/components/FontList.jsx'),
+      FontListItem$: path.resolve(__dirname, 'assets/app/components/FontListItem.jsx')
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         loader: 'babel-loader',
-        query: {
+        options: {
           presets: ['react', 'es2015']
         },
         test: [/\.jsx?$/],
@@ -57,12 +57,23 @@ module.exports = {
       }
     ]
   },
-  postcss: function () {
-    return [autoprefixer];
-  },
-  sassLoader:{
-    includePaths: [
-      // path.resolve( __dirname, './node_modules/foundation-sites/scss')
-    ]
-  }
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({
+            safe: true, // crucial in order not to break anything
+            add: true,
+            remove: false,
+            browsers: ['last 4 versions', '> 2%', 'android 4', 'opera 12']
+          }),
+        ]
+      }
+    })
+  ]
+  // sassLoader:{
+  //   includePaths: [
+  //     // path.resolve( __dirname, './node_modules/foundation-sites/scss')
+  //   ]
+  // }
 };

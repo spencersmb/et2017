@@ -53,7 +53,6 @@
         <?php if($display_excerpt == 'yes'){ ?>
             <div class="eltdf-pt-one-excerpt">
                 <?php echo et_twenty_seventeen_getExcerpt($excerpt_length); ?>
-                <?php //readanddigest_excerpt($excerpt_length); ?>
             </div>
         <?php } ?>
         <div class="et2017-tabs-link">
@@ -63,6 +62,6 @@
             </a>
         </div>
     </div>
-    <div class="et2016-tabs-border-bot"></div>
+    <div class="et-dotted-divider"></div>
 
 </div>

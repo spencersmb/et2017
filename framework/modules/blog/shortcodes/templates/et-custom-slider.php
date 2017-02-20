@@ -1,7 +1,7 @@
 <li class="eltdf-carousel-item">
     <div class="eltdf-pt-one-item eltdf-post-item eltdf-active-post-page">
         <div class="eltdf-pt-one-image-holder">
-            <span class="et-slider-cat cat-<?php echo strtolower(et_getBlogCategory_text()); ?>"><?php echo et_getBlogCategories(); ?></span>
+            <span class="et-slider-cat cat-<?php echo esc_attr( strtolower( et_getBlogCategory_text() ) ); ?>"><?php echo et_getBlogCategories(); ?></span>
             <div class="eltdf-pt-one-image-inner-holder">
                 <a itemprop="url" class="eltdf-pt-one-slide-link eltdf-image-link" href="<?php echo esc_url(get_permalink()); ?>" target="_self">
                     <?php

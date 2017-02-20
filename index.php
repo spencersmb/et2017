@@ -54,7 +54,7 @@ $current_page = max(1, get_query_var('paged'));
                     $archive_day   = get_the_time('d');
                     ?>
 
-                <div class="et2017-blog-feature-item">
+                <div class="et2017-blog-feature-item et-dotted-divider">
                     <div class="et2017-blog eltdf-bnl-holder eltdf-pl-six-holder eltd-post-columns-1">
                         <div class="eltdf-bnl-outer">
                             <div class="eltdf-bnl-inner">

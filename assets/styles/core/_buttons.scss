@@ -243,3 +243,26 @@
     @include transform(translateX(-50%)translateY(-50%)rotate(45deg))
   }
 }
+
+.eltdf-btn.eltdf-btn-solid:not(.eltdf-btn-custom-hover-bg).et-btn-dk-red:hover{
+  color:$white !important;
+  background-color: $dark-red !important;
+}
+
+.pill-btn{
+  padding: 7px 10px;
+  background: $pink;
+  border-radius: 25px;
+  margin-left: 5px;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  @include transition(all .3s);
+  cursor: pointer;
+
+  &:hover{
+    color: $white;
+    background-color: $cinn-dark;
+  }
+}

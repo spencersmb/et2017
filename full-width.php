@@ -81,19 +81,18 @@ $sidebar = readanddigest_sidebar_layout(); ?>
                 <div class="modal-body">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#standard" aria-controls="standard" role="tab" data-toggle="tab">Standard</a></li>
-                        <li role="presentation"><a href="#extended" aria-controls="extended" role="tab" data-toggle="tab">Extended</a></li>
-
+                        <li role="presentation" class="active"><a href="#standard" aria-controls="standard" role="tab" data-toggle="tab"><?php echo esc_html__('Standard', 'et-twenty-seventeen'); ?></a></li>
+                        <li role="presentation"><a href="#extended" aria-controls="extended" role="tab" data-toggle="tab"><?php echo esc_html__('Extended', 'et-twenty-seventeen'); ?></a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="standard">
                             <!-- Standard Content -->
-                            standard
+                            <?php echo esc_html__('standard', 'et-twenty-seventeen'); ?>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="extended">
                             <!-- Ext Content -->
-                            ext
+                            <?php echo esc_html__('ext', 'et-twenty-seventeen'); ?>
                         </div>
 
                     </div>

@@ -43,12 +43,6 @@ $image_size: 350px;
 
   .et2017-blog-feature-item{
     margin-bottom: 30px;
-    //border-bottom: 1px solid #e5e5e5;
-    border-style: dotted;
-    border-image-source: url('./assets/images/dots.svg');
-    border-image-slice: 20% 20%;
-    border-image-repeat: space;
-    border-width: 0 0 3px 0;
   }
 
   .eltdf-pt-three-item{
@@ -68,12 +62,6 @@ $image_size: 350px;
   .eltdf-pt-three-item-inner {
     padding-bottom: 30px;
     margin-bottom: 10px;
-    // Safari & Chrome need border-style and border-color ¯\_(ツ)_/¯
-    border-style: dotted;
-    border-image-source: url('./assets/images/dots.svg');
-    border-image-slice: 20% 20%;
-    border-image-repeat: space;
-    border-width: 0 0 3px 0;
   }
 
   .eltdf-post-item .eltdf-pt-info-section{
@@ -145,19 +133,19 @@ $image_size: 350px;
     @include transition( color .15s ease-in-out);
   }
   &:hover {
-    color: $blue-alt !important;
+    color: $blue !important;
   }
 
 }
 //sub item dropdown image holder
 .eltdf-plw-tabs-content-holder{
   .eltdf-pt-six-item.eltdf-item-hovered .eltdf-pt-six-title a{
-    color: $blue-alt !important;
+    color: $blue !important;
   }
 }
 // normal dropdown
 .eltdf-drop-down .eltdf-menu-wide .eltdf-menu-second .eltdf-menu-inner>ul>li>a{
-  color: $blue-alt;
+  color: $blue;
 }
 
 h6{

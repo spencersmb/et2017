@@ -6,7 +6,7 @@ import InstagramApp from 'InstagramApp';
 
 //can require main css file using style and css loader
 // App CSS
-require('style!css!sass!applicationStyles');
+require('style-loader!css-loader?-autoprefixer!postcss-loader!sass-loader!applicationStyles');
 
 // Render App to DOM
 ReactDom.render(
