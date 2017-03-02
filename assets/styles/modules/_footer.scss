@@ -71,36 +71,21 @@ footer .widget:not(:last-child){
 {
   display: block;
   text-align: center;
+  margin-bottom: 35px;
 
-  @include breakpoint(tablet){
-    display: inline-block;
-    float: left;
-    width: 50%;
-    text-align: left;
-  }
   @include breakpoint(laptop){
+    float: left;
+    display: inline-block;
     text-align: left;
     width: 15%;
   }
 }
 
-.footer-col-2{
-  text-align: center;
-  margin-bottom: 40px;
-  @include breakpoint(tablet){
-      text-align: right;
-  }
-  @include breakpoint(laptop){
-      text-align: left;
-  }
-}
-
-
 .footer-col-4
 {
   width: 100%;
   clear: both;
-  margin: 35px auto;
+  margin: 0 auto 35px;
   text-align: center;
   @include breakpoint(laptop){
     text-align: left;
@@ -140,6 +125,8 @@ footer .widget:not(:last-child){
   li{
     list-style: none;
     line-height: 12px;
+    //display: block;
+    //margin: 0 auto;
   }
   h6{
     font-size: 14px;
@@ -150,7 +137,7 @@ footer .widget:not(:last-child){
     color: #95989A;
     text-transform: uppercase;
     @include transition(all .3s);
-    display: table;
+    display: inline-block;
     margin-bottom: 10px;
     &:hover{
       color: $pink;

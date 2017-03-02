@@ -1,0 +1,207 @@
+.et-resource-library{
+
+  padding: 7% 0;
+
+  // Main Container
+  @include e(section-inner){
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @media only screen and (min-width: 1025px){
+      flex-direction: row;
+    }
+
+  }
+
+  // Box container
+  @include e(container){
+    //display: flex;
+    //flex-direction: column;
+
+    .vc_column_inner{
+      //flex:1;
+      height: 100%;
+    }
+
+  }
+
+  // Box widths
+  @media only screen and (min-width: 1025px){
+    .vc_col-lg-4{
+      width: 35%;
+    }
+    .vc_col-lg-8{
+      width: 65%;
+    }
+  }
+
+  @include breakpoint(desktop){
+    .vc_col-lg-4{
+      width: 35%;
+    }
+    .vc_col-lg-8{
+      width: 65%;
+    }
+  }
+
+
+  @include e(login){
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#929aec+0,fbd4cd+100 */
+    background: #929aec; /* Old browsers */
+    background: -moz-linear-gradient(top, #929aec 0%, #fbd4cd 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #929aec 0%,#fbd4cd 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #929aec 0%,#fbd4cd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#929aec', endColorstr='#fbd4cd',GradientType=0 ); /* IE6-9 */
+
+    .vc_column_inner{
+      @media only screen and (min-width: 1025px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      color: $white;
+      padding: 15%;
+
+      h3{
+        color: $white;
+        max-width: 120px;
+        font-size: 24px;
+        margin: 0 auto 120px;
+        font-weight: 600;
+      }
+
+      label{
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      input[type="submit"]{
+        border-color: $white !important;
+        color: $white !important;
+        padding: 10px 25px !important;
+        font-size: 14px;
+        border-radius: 30px !important;
+        margin-top: 40px !important;
+        width: 157px;
+      }
+
+      input[type="password"]{
+        outline: none;
+        border: none;
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 2px;
+        max-width: 200px;
+        margin: 0 auto;
+        background-color: transparent;
+        border-top: 1px solid $white;
+        color: $white;
+        padding: 10px;
+        font-weight: 600;
+
+
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: $white;
+          @include transition(all .3s);
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: $white;
+          @include transition(all .3s);
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: $white;
+          @include transition(all .3s);
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: $white;
+          @include transition(all .3s);
+        }
+
+        &:focus{
+          &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: rgba(255, 255, 255, 0.4);
+          }
+          &::-moz-placeholder { /* Firefox 19+ */
+            color: rgba(255, 255, 255, 0.4);
+          }
+          &:-ms-input-placeholder { /* IE 10+ */
+            color: rgba(255, 255, 255, 0.4);
+          }
+          &:-moz-placeholder { /* Firefox 18- */
+            color: rgba(255, 255, 255, 0.4);
+          }
+        }
+      }
+    }
+  }
+
+  // Input container
+  @include e(input-container){
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+  }
+
+  @include e(signup){
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+
+    h3{
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: $dark-blue;
+    }
+
+    &>h4{
+      font-weight: 300;
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    h5{
+      font-weight: 600;
+      color: $dark-blue;
+    }
+
+    p{
+      margin: 40px 0 0;
+      align-self: center;
+
+    }
+
+    .et-flex-list.list-wrap{
+      padding-top: 20px;
+
+      ul{
+        padding: 0;
+        margin: 0;
+      }
+
+      li{
+        font-size: 14px;
+        line-height: 18px;
+        i{
+          top: 2px;
+        }
+      }
+    }
+
+    a{
+      font-size: 14px;
+      padding: 10px 25px !important;
+    }
+
+  }
+
+}

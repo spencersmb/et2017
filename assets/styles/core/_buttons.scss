@@ -30,6 +30,7 @@
 }
 
 .et-btn-round,
+.more-link.et-download-btn,
 .et-btn-round-vc{
   border: 3px solid $dark-blue;
   border-radius: 50px;
@@ -76,6 +77,14 @@
       text-align: center;
     }
   }
+}
+
+.more-link.et-download-btn{
+  margin: 10px 0;
+  display: inline-block;
+  position: relative;
+  padding: 12px 25px;
+  color: $dark-blue;
 }
 
 .et-btn-left {

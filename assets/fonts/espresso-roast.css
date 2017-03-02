@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'espresso';
+    src: url('espresso-roast/EspressoRoast-Script.eot'),
+    url('espresso-roast/EspressoRoast-Script.woff2') format('woff2'),
+    url('espresso-roast/EspressoRoast-Script.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'espresso-caps';
+    src: url('espresso-roast/EspressoRoast-Caps.eot'),
+    url('espresso-roast/EspressoRoast-Caps.woff2') format('woff2'),
+    url('espresso-roast/EspressoRoast-Caps.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'espresso-symbols';
+    src: url('espresso-roast/EspressoRoast-Symbols.eot'),
+    url('espresso-roast/EspressoRoast-Symbols.woff2') format('woff2'),
+    url('espresso-roast/EspressoRoast-Symbols.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.espresso{
+    font-family: 'espresso';
+}
+.espresso.caps{
+    font-family: 'espresso-caps';
+}
+.espresso.symbols{
+    font-family: 'espresso-symbols';
+}

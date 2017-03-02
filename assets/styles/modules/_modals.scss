@@ -189,10 +189,18 @@
 
   .modal-content{
     margin-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     @include breakpoint(desktop){
         min-height: 83vh;
     }
+    @include breakpoint(desktopXL){
+      min-height: 90vh;
+      margin-bottom:0;
+    }
+
 
   }
 

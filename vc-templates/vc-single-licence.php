@@ -923,6 +923,20 @@ function et_twenty_seventeen_single_licence()
                 'description' => esc_html__( 'Add text for a bullet.', 'et_twenty_seventeen' ),
             ),
             array(
+                'type' => 'textfield',
+                'heading' => esc_html__( 'Bullet Item 6', 'et_twenty_seventeen' ),
+                'param_name' => 'bullet_6',
+                "admin_label" => false,
+                'description' => esc_html__( 'Add text for a bullet.', 'et_twenty_seventeen' ),
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => esc_html__( 'Bullet Item 7', 'et_twenty_seventeen' ),
+                'param_name' => 'bullet_7',
+                "admin_label" => false,
+                'description' => esc_html__( 'Add text for a bullet.', 'et_twenty_seventeen' ),
+            ),
+            array(
                 'param_name'  => 'class',
                 'heading'     => esc_html__( 'Class', 'et_twenty_seventeen' ),
                 'description' => esc_html__( '(Optional) Enter a unique class name.', 'et_twenty_seventeen' ),
@@ -956,7 +970,9 @@ function et_twenty_seventeen_single_licence_item_func( $atts, $content = null ) 
         'bullet_2' => '',
         'bullet_3' => '',
         'bullet_4' => '',
-        'bullet_5' => ''
+        'bullet_5' => '',
+        'bullet_6' => '',
+        'bullet_7' => ''
 
     ), $atts ) );
 
@@ -1009,6 +1025,18 @@ function et_twenty_seventeen_single_licence_item_func( $atts, $content = null ) 
         $output .= '
                     <li>
                         <i class="fa '.esc_attr($fa_icon).'" style="color:'.esc_attr($icon_color).'" aria-hidden="true"></i>'. wp_kses( $bullet_5 ,'et_twenty_seventeen') .'
+                    </li>';
+    endif;
+    if( strlen($bullet_6) > 0):
+        $output .= '
+                    <li>
+                        <i class="fa '.esc_attr($fa_icon).'" style="color:'.esc_attr($icon_color).'" aria-hidden="true"></i>'. wp_kses( $bullet_6 ,'et_twenty_seventeen') .'
+                    </li>';
+    endif;
+    if( strlen($bullet_7) > 0):
+        $output .= '
+                    <li>
+                        <i class="fa '.esc_attr($fa_icon).'" style="color:'.esc_attr($icon_color).'" aria-hidden="true"></i>'. wp_kses( $bullet_7 ,'et_twenty_seventeen') .'
                     </li>';
     endif;
         $output .= '

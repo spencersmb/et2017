@@ -44,6 +44,10 @@ if(isset($acf)){
         $extended_url = $acf['extended_license_url'];
     }
 
+    if(isset($acf['gumroad_link']) && $acf['gumroad_link']){
+        $gumroad_link = $acf['gumroad_link'];
+    }
+
 }
 
 ?>

@@ -58,6 +58,7 @@ Template: readanddigest
 @import 'modules/et-ck-forms';
 @import 'modules/et-flex-list';
 @import 'modules/modals';
+@import 'modules/resource-library';
 
 /* ----------------------------------------------------------------------------
  * Pages
@@ -76,3 +77,6 @@ Template: readanddigest
  * Widgets
  * ------------------------------------------------------------------------- */
 @import "widgets/about-widget";
+@import "widgets/search-widget";
+@import "widgets/jetpack-widgets";
+@import "widgets/text-widget";

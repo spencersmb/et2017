@@ -100,11 +100,12 @@
     display: none;
 
     @include breakpoint(tablet){
-        display: block;
+      display: flex;
     }
 
     img{
-      display: block;
+      flex: 1 0;
+      align-self: center;
       max-width: 100%;
       height: auto;
     }
@@ -144,6 +145,8 @@
     border: 1px solid #D6D6D6;
     border-radius: 25px;
     padding: 12px 15px;
+    font-size: 16px;
+
     &:focus{
       outline: none;
       border: 1px solid $blue;
@@ -397,6 +400,14 @@
   .wpcf7-form{
     max-width: 600px;
     margin: 0 auto;
+
+    p{
+      text-align: center;
+    }
+
+    .et-input{
+      margin: 1.5em 1em 1em 0;
+    }
   }
   .input__label.input__label--yoshiko{
     z-index: 2;

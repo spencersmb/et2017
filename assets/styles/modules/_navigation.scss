@@ -9,6 +9,73 @@
     visibility: visible;
   }
 }
+
+/*------------------------------------*\
+    Nav Flex Grid
+\*------------------------------------*/
+//main container wrapper
+
+.eltdf-sticky-header{
+
+  .eltdf-vertical-align-containers{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .eltdf-vertical-align-containers{
+    .eltdf-position-left{
+      float:none;
+      flex: .5;
+      display: flex;
+
+      .eltdf-position-left-inner,
+      .eltdf-logo-wrapper{
+        display: flex;
+      }
+
+      .eltdf-logo-wrapper{
+        padding: 0 10px;
+
+        a{
+          display: flex;
+          align-items: center;
+          max-height: none;
+          height: auto !important; //override JS
+        }
+        img{
+          max-height: 55px;
+        }
+      }
+
+    }
+    .eltdf-position-center{
+      position: relative;
+      width: auto;
+      flex:3;
+      justify-content: center;
+      display: flex;
+    }
+    .eltdf-position-right{
+      float:none;
+      flex: .5;
+    }
+  }
+  .eltdf-vertical-align-containers .eltdf-position-left:before,
+  .eltdf-vertical-align-containers .eltdf-position-center:before,
+  .eltdf-vertical-align-containers .eltdf-position-right:before{
+    content: none;
+  }
+
+  //Logo Settings
+  a img{
+    height: auto;
+    width: 100%;
+  }
+
+}
+
+
+
 /*------------------------------------*\
     Mobile header
 \*------------------------------------*/
@@ -22,6 +89,40 @@
   padding: 15px 0;
 }
 
+/*------------------------------------*\
+    Mobile Navigation
+\*------------------------------------*/
+.eltdf-mobile-header .eltdf-mobile-nav {
+
+  a, h6{
+    padding: 20px 0;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .mobile_arrow {
+    line-height: 32px;
+    width: 20px;
+    top: 10px;
+
+    .eltdf-sub-arrow{
+      transform-origin: top left;
+      display: block;
+
+      &.arrow_carrot-right:before{
+        font-size: 22px;
+        font-weight: 600;
+      }
+    }
+
+  }
+
+  ul ul{
+    padding-top: 5px;
+    padding-bottom: 30px;
+  }
+
+}
 /*------------------------------------*\
     Icon Nav
 \*------------------------------------*/
@@ -509,7 +610,11 @@
   content:'\f105';
   font-size: 16px;
 }
-.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul li>a:hover .item_text:after{
+.eltdf-menu-inner>ul li.current-menu-item>a .item_text:after{
+  left: 4px !important; //override because we are on the current page
+}
+.eltdf-drop-down .eltdf-menu-second .eltdf-menu-inner>ul li>a:hover .item_text:after
+{
   left: 4px;
 }
 
@@ -648,6 +753,11 @@
     height: 100%;
     position: relative;
   }
+}
+
+// sticky nav bg color
+.eltdf-page-header .eltdf-sticky-header .eltdf-sticky-holder{
+  background-color: $dark-blue;
 }
 
 

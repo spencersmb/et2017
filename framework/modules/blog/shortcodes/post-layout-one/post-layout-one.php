@@ -68,7 +68,7 @@ function et2017eltdf_layout_one($args, $atts){
     endif;
     wp_reset_postdata();
 
-    $extra_link = ($default_args['post_type'] === 'courses') ? "/courses" : "/products";
+    $extra_link = ($default_args['post_type'] === 'courses') ? "/courses/" : "/products/";
     $extra_text = ($default_args['post_type'] === 'courses') ? "Courses" : "Products";
 
 

@@ -1,0 +1,54 @@
+.et-search-menu-holder{
+  display: block;
+  margin:0 0 47px 0;
+  position: relative;
+
+  .eltdf-search-field{
+    border: 3px solid $dark-blue;
+    border-radius: 25px;
+    font-size: 14px;
+    width: 100%;
+    height: auto;
+    letter-spacing: 1px;
+    text-transform: inherit;
+    background-color: transparent;
+
+    &:focus{
+      border-color: $blue;
+    }
+  }
+
+  .eltdf-column-left{
+    display: block;
+  }
+
+  .eltdf-column-right{
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    top: 0;
+    right: 5px;
+    text-align: center;
+
+
+
+    .eltdf-search-submit{
+      background-color: transparent;
+      border: none;
+
+      i{
+        color: $dark-blue;
+        @include transition(all .3s);
+      }
+
+      &:hover{
+        background-color: transparent;
+        i{
+          color: $pink;
+        }
+      }
+
+    }
+  }
+
+}

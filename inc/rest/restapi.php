@@ -7,23 +7,25 @@ class et_register_endpoints{
         add_action('rest_api_init', array($this, 'register_routes' ) );
     }
 
-    function et_license_callback( WP_REST_Request $request ){
-
-        $url = get_site_url();
-        $postid = url_to_postid( $url . '/products' );
-        $standard_data = get_field('standard_content', $postid);
-        $extended_data = get_field('extended', $postid);
-
-        $standard_string = str_replace(array("\r\n", "\r", "\n"), "", $standard_data);
-        $extended_string = str_replace(array("\r\n", "\r", "\n"), "", $extended_data);
-
-        $test = array(
-            'standard' => wp_kses_post($standard_string),
-            'extended' => wp_kses_post($extended_string)
-        );
-
-        return $test;
-    }
+//    function et_license_callback( WP_REST_Request $request ){
+//
+//        $url = get_site_url();
+//        $postid = url_to_postid( $url . '/products' );
+//        $standard_data = get_field('standard_content', $postid);
+//        $extended_data = get_field('extended', $postid);
+//        $date_hash = get_field( 'time_picker', $postid);
+//
+//        $standard_string = str_replace(array("\r\n", "\r", "\n"), "", $standard_data);
+//        $extended_string = str_replace(array("\r\n", "\r", "\n"), "", $extended_data);
+//
+//        $test = array(
+//            'standard' => wp_kses_post($standard_string),
+//            'extended' => wp_kses_post($extended_string),
+//                'hash' => esc_attr($date_hash)
+//        );
+//
+//        return $test;
+//    }
 
     function get_licenses_data( WP_REST_Request $request ){
 
@@ -31,6 +33,7 @@ class et_register_endpoints{
         $postid = url_to_postid( $url . '/products' );
 
         $data = get_field('license_items', $postid);
+        $date_hash = get_field( 'time_picker', $postid);
 
         $content = '';
         
@@ -40,7 +43,8 @@ class et_register_endpoints{
         
         $output = array(
             'nav' => $this->build_license_nav($data),
-            'content' => $content
+            'content' => $content,
+            'hash' => $date_hash
         );
 
         //array(

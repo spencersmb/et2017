@@ -88,10 +88,13 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
     }
 
     global $featured_post;
-    $not_in = '';
-    if(isset($featured_post)){
-        $not_in = $featured_post->get_id();
-    }
+
+    // If post is selected as feature do not display in the list
+    //        'post__not_in' => [$not_in]
+    //    $not_in = '';
+    //    if(isset($featured_post)){
+    //        $not_in = $featured_post->get_id();
+    //    }
 
     //Create wp_Query
     $args = array(
@@ -99,7 +102,7 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
         'posts_per_page' => $number_of_posts,
         'orderby'        => $sort,
         'post__in' => $post_in,
-        'post__not_in' => [$not_in]
+
     );
 
     $output = '
@@ -111,7 +114,7 @@ function et_twenty_seventeen_box_list_shortcode( $atts, $content = null ) { // N
         $output .= '
             <div class="licenseModal-wrapper">
                 <a href=""
-                   class="licenseModal et-btn-round" 
+                   class="licenseModal-btn et-btn-round" 
                    data-target="#licenseModal">
                     <span class="more-button">'. esc_html__('View License Info', 'et-twenty-seventeen') .'</span>
                 </a>

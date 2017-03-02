@@ -27,6 +27,11 @@ body{
   }
 }
 
+//reduce padding bottom to match full-width template
+body.page-template-page-products .eltdf-content{
+  padding-bottom: 0;
+}
+
 // Added zindex control to help with CK pop-ups
 .eltdf-wrapper,
 .eltdf-content,
@@ -36,6 +41,7 @@ body{
 .eltdf-section{
   position: initial;
 }
+
 .eltdf-grid-section .eltdf-section-inner{
 }
 .insta-modal__open{
@@ -61,6 +67,7 @@ p{
     font-weight: 500;
   }
 }
+
 
 //Category page list
 .category,
@@ -194,5 +201,28 @@ p a:hover,
 button{
   &:active, &:focus{
     outline: none;
+  }
+}
+
+.et-ordered-list{
+  li{
+    list-style: none;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    position: relative;
+    font-size: 14px;
+    &:before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "\F054";
+      font-family: FontAwesome;
+      font-size: 12px;
+      color: $dark-grey-hover;
+    }
+    a{
+      color: $cinn;
+      font-weight: 600;
+    }
   }
 }

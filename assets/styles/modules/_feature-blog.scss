@@ -217,6 +217,8 @@
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
 
     .box-two-inner{
       flex-direction: column;

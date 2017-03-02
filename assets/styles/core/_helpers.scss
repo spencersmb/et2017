@@ -284,7 +284,7 @@
   @include e(h3){
     h3{
       font-size: 21px !important;
-      line-height: 36px !important;
+      line-height: 32px !important;
     }
   }
 
@@ -310,3 +310,20 @@
 .dots-bg-top{
   background-repeat: repeat-x !important;
 }
+
+.max-width-1170{
+  max-width: 1170px;
+  margin: 0 auto;
+  .eltdf-section-inner{
+    width: auto !important;
+  }
+}
+
+.remove-margin-inner{
+
+  .eltdf-section-inner-margin{
+    margin: 0;
+  }
+
+}
+

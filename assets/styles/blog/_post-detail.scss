@@ -22,6 +22,8 @@
   font-size: 17px;
   left: 16px;
   position: absolute;
+  font-family: FontAwesome;
+  font-style: normal;
 }
 
 .arrow_carrot-left:before{
@@ -132,6 +134,16 @@
   color: #818181;
 }
 
+//li LINKS in blog posts
+.eltdf-post-text-inner{
+  li{
+    a{
+      color: $cinn;
+      font-weight: 500;
+    }
+  }
+}
+
 //download module
 .et2017download{
 
@@ -233,6 +245,7 @@
       background-color: $pink;
       border-radius: 25px;
       color: $white;
+      font-weight: 600;
       @include transition(all .3s);
 
       &:hover{
@@ -332,4 +345,15 @@
   .pinit-button{
     visibility: hidden !important;
   }
+}
+
+//comments
+.eltdf-comment-form #respond {
+
+  textarea,
+  input{
+    text-transform: inherit;
+    font-size: 14px;
+  }
+
 }

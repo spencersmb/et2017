@@ -36,7 +36,7 @@ class ProductsModalsClass {
     this.localVariable = 'et_Licenses';
     this.licenseModal = $('#licenseModal');
     this.licenseModalBody = this.licenseModal.find(".modal-body");
-    this.licenseModalBtn = $('.licenseModal');
+    this.licenseModalBtn = $('.licenseModal-btn');
     this.lic_modal_tabContent = this.licenseModal.find('.tab-content');
     this.licenseData = localStorage.getItem(this.localVariable);
 
@@ -215,7 +215,6 @@ class ProductsModalsClass {
       }, 300);
     }
 
-
     this.asyncDataCall().then( (data: any) => {
 
       //remove spinner - content loaded
@@ -270,31 +269,70 @@ class ProductsModalsClass {
   asyncDataCall() {
 
     return new Promise( ( resolve:any, reject?:any ) => {
+
       let urlString = this.window.et_products.url + '/wp-json/product-licenses/v1/license';
 
-      if( this.licenseData !== null ){
+      let hashID = this.licenseModal.data('hash');
 
-        //check if data was just pulled from browser cache
-        if(typeof this.licenseData === 'string'){
-          this.licenseData = JSON.parse(this.licenseData);
+      //check local storage is anything is there
+      console.log(typeof this.licenseData);
+      if( this.licenseData !== null && typeof this.licenseData === 'string'){
+
+        // parse the local data
+        // this.licenseData = JSON.parse(this.licenseData);
+        let data = JSON.parse(this.licenseData);
+
+        // compare hashes
+        // and determine to make api call or not
+        console.log(hashID);
+        console.log(parseInt(data.hash));
+
+        if(hashID === parseInt(data.hash)){
+          console.log("Data Cached");
+
+          // returned the cached data and convert it to an object
+          resolve(data);
+
+        }else{
+          // hashes are not the same, there is new data
+          console.log("Data doesnt match, get new data");
+
+          // clear localstorage
+          localStorage.removeItem(this.localVariable);
+
+          // Make Ajax call
+          $.get(urlString)
+            .done((data)=>{
+
+              let stringData = JSON.stringify(data);
+              //set local storage
+              localStorage.setItem(this.localVariable, stringData);
+
+              //set our data on variable
+              this.licenseData = stringData;
+
+              //resolve promise data
+              resolve(data);
+            })
+            .fail((status, err) => reject(status + err.message));
+
         }
 
-        //returned the cached data
-        resolve(this.licenseData);
-
       }else{
-
+        console.log("No data, make API call");
         // Make Ajax call
         $.get(urlString)
           .done((data)=>{
+
+            let stringData = JSON.stringify(data);
             //set local storage
-            localStorage.setItem(this.localVariable, JSON.stringify(data));
-            
+            localStorage.setItem(this.localVariable, stringData);
+
             //set our data on variable
-            this.licenseData = data;
-            
+            this.licenseData = stringData;
+
             //resolve promise data
-            resolve(this.licenseData);
+            resolve(data);
           })
           .fail((status, err) => reject(status + err.message));
       }

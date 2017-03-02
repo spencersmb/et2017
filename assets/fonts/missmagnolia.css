@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'miss-magnolia';
+    src: url('miss-magnolia/MissMagnolia-Regular.eot'),
+    url('miss-magnolia/MissMagnolia-Regular.woff2') format('woff2'),
+    url('miss-magnolia/MissMagnolia-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.magnolia{
+    font-family: 'miss-magnolia';
+}

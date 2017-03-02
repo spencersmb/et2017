@@ -1,7 +1,7 @@
 <?php
 
 $url = et2017_check_post_type_nav($post_type);
-$url_blank = ($url == '/courses' || $url == '/products') ? false : true ;
+$url_blank = ($url == '/courses/' || $url == '/products/') ? false : true ;
 
 ?>
 
@@ -48,6 +48,7 @@ $url_blank = ($url == '/courses' || $url == '/products') ? false : true ;
         </div>
     <?php } ?>
 </div>
+
 <?php if($display_date == 'yes' || $display_author == 'yes' || $display_comments == 'yes' || $display_like == 'yes'){ ?>
     <div class="eltdf-pt-info-section clearfix">
         <div class="eltdf-pt-info-section-left">

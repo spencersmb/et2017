@@ -1,6 +1,11 @@
 .et_twenty_seventeen_about_widget{
+  .about-widget{
+    text-align: center;
+  }
   .about-round{
+    max-width: 225px;
     border-radius: 50%;
+    margin: 0 auto;
   }
   p{
     text-align: center;
