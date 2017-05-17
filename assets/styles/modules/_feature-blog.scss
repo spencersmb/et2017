@@ -62,13 +62,14 @@
   .eltdf-pswt-content-inner{
     padding: 10% 10% 7%;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    //display: flex;
+    //flex-direction: column;
+    //align-items: center;
+
     @include breakpoint(laptop){
       text-align: left;
       padding: 15% 10%;
-      align-items: baseline;
+      //align-items: baseline;
     }
     @include breakpoint(desktop){
       padding: 15% 15% 11%;
@@ -237,6 +238,7 @@
     .eltdf-pswt-content-inner{
       padding: 15% 10%;
       position: relative;
+      text-align: center;
       @include breakpoint(tablet){
           padding: 10%;
       }
@@ -264,7 +266,8 @@
     }
 
     .eltdf-pt-three-excerpt{
-      margin: 0 auto 30px;
+      display: table;
+      margin: 0 auto 20px;
 
       ul{
         position: relative;
@@ -302,8 +305,11 @@
     }
 
     .et-btn-round{
+      display: table;
       margin: 0 auto;
+      max-width: none;
     }
+
   }
 
 }

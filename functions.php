@@ -1,16 +1,30 @@
 <?php
 //define constants
 define('ET2017_ROOT', get_stylesheet_directory_uri());
+define('ET2017_ROOT_DIR', get_stylesheet_directory());
+define('WIDGETS_DIR', '/framework/modules/widgets');
+
 global $allowed_html;
 $allowed_html = array(
 	'a' => array(
 		'href' => array(),
-		'title' => array()
+		'title' => array(),
+		'target' => array(),
+		'rel' => array(),
+		'class' => array()
 	),
+	'class' => array(),
 	'br' => array(),
-	'p' => array(),
+	'p' => array(
+		'style' => array(),
+		'class' => array()
+	),
 	'em' => array(),
 	'strong' => array(),
+	'span'=> array(
+		'style' => array(),
+		'class' => array()
+	)
 );
 
 /*** Child Theme Function  ***/
@@ -133,13 +147,10 @@ function et_twenty_seventeen_register_my_menu() {
 add_action( 'init', 'et_twenty_seventeen_register_my_menu' );
 
 // Widget init
-include  get_stylesheet_directory() . '/widgets/link_widget.php';
-include  get_stylesheet_directory() . '/widgets/about_widget.php';
-include  get_stylesheet_directory() . '/widgets/instagram-widget.php';
-include  get_stylesheet_directory() . '/widgets/nav-search.php';
-include  get_stylesheet_directory().'/framework/modules/widgets/custom-nav/et2017_nav_custom.php';
-include  get_stylesheet_directory().'/includes/nav-mobile/mobile-navigation-walker.php';
-include  get_stylesheet_directory().'/framework/modules/widgets/search-form/search-form.php';
+include  get_stylesheet_directory() . '/framework/modules/widgets/widget_loader.php';
+
+//Mobile Nav Template (if needed)
+//include  get_stylesheet_directory().'/includes/nav-mobile/mobile-navigation-walker.php';
 
 // Link Shortcodes init
 include  get_stylesheet_directory() . '/shortcodes/react-font-preview.php';
@@ -267,6 +278,10 @@ function resource_lib_password_form() {
 
 		return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', build_resource_library_form());
 
+	}else{
+
+		return build_password_form();
+
 	}
 
 }
@@ -284,9 +299,32 @@ function build_resource_library_form(){
 
 	$output = readanddigest_get_list_shortcode_module_template_part('et-resource-library-form', 'templates', '', $atts);
 
-	$spencer = preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $output);
+	$remove_spacing = preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $output);
 
-	return $spencer;
+	return $remove_spacing;
+
+}
+
+function build_password_form(){
+
+	global $post;
+	$label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+
+	$title = ucfirst($post->post_title);
+
+	//Check if it has the word affiliate in it first, then pass that on if its true, otherwise use the title
+	$has_affiliate = strpos($title, 'affiliate');
+
+	$output = '';
+
+	$atts = array(
+		'label' => $label,
+		'title' => ($has_affiliate) ? 'Affiliates' : $title
+	);
+
+	$output = readanddigest_get_list_shortcode_module_template_part('et-password-form', 'templates', '', $atts);
+
+	return $output;
 
 }
 
@@ -296,7 +334,11 @@ add_filter('the_content', 'remove_empty_p', 20, 1);
 
 function remove_empty_p($content){
 
-	if(is_page('resource-library')){
+	global $post;
+	$post_title = $post->post_title;
+	$is_affilate = strpos($post_title, 'affiliates');
+
+	if(is_page('resource-library') || $is_affilate){
 		$content = preg_replace("/<br[^>]+\>/i", "", $content);
 		$content = force_balance_tags( $content );
 		$content = preg_replace( '~\s?<p>(\s|&nbsp;)+</p>\s?~', '', $content );

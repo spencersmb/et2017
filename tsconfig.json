@@ -9,7 +9,11 @@
     "strictNullChecks": true,
     "outDir": "./dist",
     "typeRoots": [ "node_modules/@types/" ],
-    "types": [ "jquery", "greensock" ]
+    "types": [ "jquery", "greensock" ],
+    "lib": [
+      "es2015",
+      "dom"
+    ]
   },
   "exclude": [
     "node_modules"
@@ -42,6 +46,5 @@
     "./assets/scripts/routes/Common.ts",
     "./assets/scripts/routes/Home.ts",
     "./assets/scripts/routes/Products.ts"
-
   ]
 }

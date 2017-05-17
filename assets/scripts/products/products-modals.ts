@@ -1,4 +1,7 @@
 const $ = jQuery;
+
+import {Promise} from 'es6-promise';
+
 /**
  *
  * Youtube modal functionality

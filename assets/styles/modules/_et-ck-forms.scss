@@ -254,6 +254,7 @@
 .et-input-container .wpcf7-form-control{
   width: 100%;
   // background-color: #d0d1d0;
+  //flex: 1;
   border: 3px solid transparent;
   -webkit-transition: background-color 0.25s, border-color 0.25s;
   transition: background-color 0.25s, border-color 0.25s;
@@ -299,6 +300,7 @@
 
 //subscribe form on main page
 .et-form-front-page{
+  text-align: center;
 
   .et_ck_form_container {
     // could add width to the modal as well if needed.
@@ -406,7 +408,12 @@
     }
 
     .et-input{
-      margin: 1.5em 1em 1em 0;
+      margin: 1.5em 0 1em 0;
+
+      @include breakpoint(tablet){
+        margin: 1.5em 1em 1em 0;
+      }
+
     }
   }
   .input__label.input__label--yoshiko{

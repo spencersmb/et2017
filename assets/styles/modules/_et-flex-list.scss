@@ -11,6 +11,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   &.list-wrap{
@@ -33,9 +34,11 @@
       position: relative;
       flex: 1;
       text-align: left;
-      display: flex;
 
       span{
+        position: relative;
+        display:flex;
+        flex-direction: column;
         padding: 0 20px 10px;
       }
 

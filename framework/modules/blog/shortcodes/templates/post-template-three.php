@@ -28,7 +28,7 @@
             </<?php echo esc_html($title_tag) ?>>
             <?php if($display_excerpt == 'yes'){ ?>
                 <div class="eltdf-pt-three-excerpt">
-                    <?php echo et_twenty_seventeen_getExcerpt($excerpt_length); ?>
+                    <?php echo et_twenty_seventeen_truncateExcerpt($excerpt_length); ?>
 
                 </div>
             <?php } ?>

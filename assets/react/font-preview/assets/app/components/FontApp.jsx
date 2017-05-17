@@ -56,7 +56,7 @@ class FontApp extends React.Component {
      Happens when user clicks on "try" button.
 
      */
-    document.addEventListener('fontCheck', () => {
+    window.addEventListener('fontCheck', () => {
 
       let data = this.getData();
       this.setState({
@@ -131,25 +131,28 @@ class FontApp extends React.Component {
   getData() {
 
     let app = document.getElementById('app');
-    let sidebar = app.dataset.sidebar;
+    //let sidebar = app.dataset.sidebar; // dataset is only available ie11 and above
+    let sidebar = app.getAttribute('data-sidebar');
+    console.log(app);
+    console.log(sidebar)
 
     // console.log(sidebar === "true");
     /*
      Get styles string, remove spaces & convert to an array.
 
      */
-    console.log(app.dataset.styles);
-    let styles = app.dataset.styles.replace(/\s+/g, '').split(',');
+    //console.log(app.dataset.styles); //ie11 and up
+    let styles = app.getAttribute('data-styles').replace(/\s+/g, '').split(',');
 
     //check if user has touched input
     let previewText = '';
 
 
     let initialState = {
-      placeholder: app.dataset.placeholder,
-      name: app.dataset.name,
+      placeholder: app.getAttribute('data-placeholder'),
+      name: app.getAttribute('data-name'),
       styles: styles,
-      sidebar: (sidebar === "true")
+      sidebar: (sidebar === "true") ? true : false
     };
 
     //check if input has been touched

@@ -11,6 +11,7 @@
 
   @include e(item){
     padding: 60px 0;
+    flex:1;
 
     @include breakpoint(tablet){
       padding: 60px;

@@ -24,9 +24,12 @@ const $ = jquery;
     }
 
     init(): void {
+
       new Router(this.routes).loadEvents();
     }
+
   }
+
 
   let bootstrap = new App();
 

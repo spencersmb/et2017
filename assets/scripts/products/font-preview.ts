@@ -22,7 +22,7 @@ interface fontPHPData {
   
 class ProductsFontPreviewComponent {
   fontPreviewArray: any;
-  event: Event;
+  event: CustomEvent;
   app: JQuery;
   isOpen: Boolean;
 
@@ -39,17 +39,26 @@ class ProductsFontPreviewComponent {
   }
 
   createEvent() {
-    this.event = new CustomEvent(
-      "fontCheck",
-      {
-        detail: {
-          message: "Font Component up!",
-          time: new Date(),
-        },
-        bubbles: true,
-        cancelable: true
-      }
-    );
+    //Modern Browser way to call event ie11 and above
+    // this.event = new CustomEvent(
+    //   "fontCheck",
+    //   {
+    //     detail: {
+    //       message: "Font Component up!",
+    //       time: new Date(),
+    //     },
+    //     bubbles: true,
+    //     cancelable: true
+    //   }
+    // );
+
+    this.event = document.createEvent("CustomEvent");
+    this.event.initCustomEvent('fontCheck', false, false, {
+        message: "Font Component up!",
+        time: new Date(),
+    });
+
+
   }
 
   setData( data:fontPHPData ) {
@@ -62,7 +71,7 @@ class ProductsFontPreviewComponent {
 
   buttonClick( e:Event ) {
     e.preventDefault();
-    console.log("fotn button click");
+    console.log("font button click");
     // Build font attr
     let element = $(e.currentTarget);
     let name = element.data("name");
@@ -77,7 +86,8 @@ class ProductsFontPreviewComponent {
     this.setData(data);
 
     // fire event to notify React app to update
-    e.currentTarget.dispatchEvent(this.event);
+    // e.currentTarget.dispatchEvent(this.event); //Ie11 and above
+    window.dispatchEvent(this.event); //
 
     // open slider
     this.open();

@@ -53,19 +53,3 @@ class ET2017_SearchForm extends ReadAndDigestWidget {
 
     <?php }
 }
-
-if (!function_exists('et2017_bulk_register_widgets')) {
-
-    function et2017_bulk_register_widgets() {
-
-        $widgets = array(
-            'ET2017_SearchForm'
-        );
-
-        foreach ($widgets as $widget) {
-            register_widget($widget);
-        }
-    }
-}
-
-add_action('widgets_init', 'et2017_bulk_register_widgets');

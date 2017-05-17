@@ -17,10 +17,14 @@
   }
 
   &.flex-container.list{
-    padding-top: 60px;
+    min-height: 280px;
+    padding-top: 30px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 4;
+
     @include breakpoint(tablet){
       flex-direction: row;
-      min-height: 100%;
     }
   }
 

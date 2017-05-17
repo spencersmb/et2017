@@ -17,7 +17,7 @@ global $allowed_html;
             ?>
 
             <div class="top-images">
-                <img class="img-responsive palette-round" src="<?php echo esc_url($image_url); ?>/assets/images/about/round-tray.jpg" alt="Every-Tuesday Watercolor Tools">
+                <img class="img-responsive palette-round" src="<?php echo esc_url($image_url); ?>/assets/images/about/color-tray-round.png" alt="Every-Tuesday Watercolor Tools">
                 <img class="img-responsive eyedroppers" src="<?php echo esc_url($image_url); ?>/assets/images/about/eye-droppers.jpg" alt="Every-Tuesday Color Inspiration">
             </div>
             <div class="left">

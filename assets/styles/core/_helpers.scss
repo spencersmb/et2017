@@ -251,30 +251,36 @@
     border-image-slice: 20% 20%;
     border-image-repeat: space;
     border-width: 4px 0 0 0;
+    border-top: 4px dotted #BCE3E0;
 
   // Home page Tabs - Feature Item
   .et-latest-news .eltdf-pb-one-holder & {
     border-width: 0 0 4px 0;
+    border-bottom: 4px dotted #BCE3E0;
   }
 
   // Home page Tabs - small items
   .et-latest-news .eltdf-post-item & {
     border-width: 4px 0 0;
+    border-top: 4px dotted #BCE3E0;
   }
 
   // Blog Index feature blog module
   &.et2017-blog-feature-item{
     border-width: 0 0 4px 0;
+    border-bottom: 4px dotted #BCE3E0;
   }
 
   // Blog List Items on blog index page
   &.eltdf-pt-three-item-inner{
     border-width: 0 0 4px 0;
+    border-bottom: 4px dotted #BCE3E0;
   }
 
   // Primary Navigation
   .eltdf-header-type3 .eltdf-menu-area &{
     border-width: 4px 0 0 0;
+    border-top: 4px dotted #BCE3E0;
   }
 
 

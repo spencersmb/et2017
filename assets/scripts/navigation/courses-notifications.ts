@@ -18,6 +18,9 @@ class SearchNavComponent {
   }
 
   toggleNotifyBtn(e: Event): void{
+    
+    // console.log("target: ", e.target);
+    // console.log("Selector: ", document.querySelector('.fa-times'));
 
     switch(this.isOpen){
 
@@ -41,6 +44,11 @@ class SearchNavComponent {
 
           // if open & target is icon in X btn -> close
           case document.querySelector('.fa-times'):
+            e.preventDefault();
+            this.closeNav();
+            break;
+
+          case document.querySelector('.fa-graduation-cap'):
             e.preventDefault();
             this.closeNav();
             break;

@@ -11,7 +11,9 @@
             'fallback_cb' => 'top_navigation_fallback',
             'link_before' => '<span>',
             'link_after' => '</span>',
-            'walker' => new Et_2017_ReadAndDigestMobileNavigationWalker()
+            'items_wrap'      => '<ul id="%1$s" class="%2$s"><li>'. get_search_form(false) .'</li>%3$s</ul>',
+            'walker' => new ReadAndDigestMobileNavigationWalker()
+//            'walker' => new Et_2017_ReadAndDigestMobileNavigationWalker()
         )); ?>
     </div>
 </nav>

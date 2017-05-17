@@ -2,8 +2,7 @@
 .jetpack_subscription_widget{
 
   form{
-    display: flex;
-    flex-direction: column;
+
   }
 
   #subscribe-email{
@@ -32,6 +31,9 @@
     background-color: transparent;
     outline: 0;
     vertical-align: middle;
+    flex: 1;
+    height: 40px;
+
     @include transition(all .3s);
 
     &:focus{

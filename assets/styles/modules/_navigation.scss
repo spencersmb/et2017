@@ -123,6 +123,54 @@
   }
 
 }
+
+//Mobile Search
+#menu-mobile-nav{
+  form{
+    & > div {
+      display: flex;
+      flex-direction: column;
+      height: 56px;
+      justify-content: center;
+    }
+
+    input[type="text"]{
+      padding: .5em 1.4em;
+      border: none;
+      border-radius: 50px;
+      background: #fff;
+      color: $dark-blue;
+      font-weight: 300;
+      font-size: 18px;
+      &:focus{
+        outline: none;
+      }
+    }
+
+    .eltdf-search-submit{
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      @include transform(translateY(-50%));
+      background: transparent;
+      outline: 0;
+      border: none;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .ion-ios-search{
+      font-size: 18px;
+      color: $dark-blue;
+      &:before {
+        font-family: "FontAwesome";
+        content: "\f002";
+      }
+    }
+
+  }
+}
+
 /*------------------------------------*\
     Icon Nav
 \*------------------------------------*/
@@ -225,9 +273,8 @@
     }
   }
 
-
-
-  .eltdf-search-widget-icon{
+  .eltdf-search-widget-icon,
+  .eltdf-search-submit{
     display: none;
   }
 }
@@ -238,7 +285,7 @@
 }
 
 /*------------------------------------*\
-    Online Courses update btn
+    Notify: Online Courses update btn
 \*------------------------------------*/
 .eltdf-page-header .eltdf-logo-area{
   z-index: 1000;
@@ -247,6 +294,8 @@
 #et2017-notify{
 
   ul{
+    display: block;
+
     position: absolute;
     width: 90%;
     max-width: 245px;
@@ -274,14 +323,18 @@
       list-style: none;
       border-bottom: 1px solid $grey;
       padding: 0;
-      display: flex;
+      //display: flex;
+      display: block;
+      width: 100%;
       opacity: 0;
       @include transform(translateX(100px));
       @include transition(background .3s);
 
       a, span{
         padding: 15px;
-        width: 100%;
+        //width: 100%;
+        width: auto;
+        display: block;
       }
 
       &:hover{
@@ -297,7 +350,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
         border-radius: 5px 25px 5px 5px;
-        width: 80%;
+        //width: 80%;
       }
 
       @for $i from 1 through 9 {
@@ -367,7 +420,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 18px;
-      min-height: 67px;
+      //min-height: 67px;
 
       a{
         padding-left: 50px;

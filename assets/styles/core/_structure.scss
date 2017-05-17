@@ -79,7 +79,7 @@ p{
       flex-direction: row;
       flex-wrap: wrap;
       flex:1 0 100%;
-
+      justify-content: center;
     }
     .et-post-item__inner{
       padding: 0 !important;
@@ -125,6 +125,8 @@ p{
     box-sizing: inherit;
     padding: 0;
     max-width: 408px;
+    height: auto;
+    min-height: 508px;
 
     @include breakpoint(rd-laptop-max){
       flex: 1 0 50%;

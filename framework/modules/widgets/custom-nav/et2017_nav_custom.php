@@ -6,18 +6,6 @@
  * Class PostLayoutOne
  */
 
-require get_template_directory() . '/framework/lib/eltd.layout.inc';
-require get_template_directory() . '/framework/lib/eltd.framework.inc';
-require get_template_directory() . '/framework/modules/widgets/lib/widget-class.php';
-
-add_action( 'widgets_init', 'et_twenty_seventeen_post_layout_load_widget' );
-
-function et_twenty_seventeen_post_layout_load_widget() {
-    register_widget( 'ET2017PostLayoutOne' );
-}
-
-
-
 class ET2017PostLayoutOne extends ReadAndDigestWidget {
     /**
      * Set basic widget options and call parent class construct

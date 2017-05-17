@@ -81,6 +81,7 @@
     font-weight: 800;
     display: table;
     transition: background .3s;
+    align-self: center;
 
     &:hover{
       background-color: $dark-blue;
